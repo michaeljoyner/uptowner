@@ -9,3 +9,9 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 .env
+/public/media/**/*
+/public/sitemap.xml
+/public/js/**/*
+/public/css/**/*
+/public/build
+/public/mix-manifest.json
