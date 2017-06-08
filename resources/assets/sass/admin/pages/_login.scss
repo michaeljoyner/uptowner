@@ -1,0 +1,40 @@
+.login-form {
+  padding: 30px;
+  margin-top: 100px;
+  background: $white;
+
+  input {
+    border-color: $brand_orange;
+  }
+
+  .login-logo {
+    display: block;
+    width: 70%;
+    margin: 30px auto;
+  }
+}
+
+
+
+.secondary-login-actions {
+  display: flex;
+
+
+  & > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    width: 50%;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .dd-checkbox-option {
+    justify-content: flex-start;
+  }
+
+  .forgot-link-box {
+    justify-content: flex-end;
+  }
+}

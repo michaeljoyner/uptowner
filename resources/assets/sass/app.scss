@@ -7,3 +7,12 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "admin/partials/navbar";
+@import "admin/partials/forms";
+@import "admin/partials/buttons";
+
+@import "admin/components/passwordemail";
+
+@import "admin/pages/login";
+@import "admin/pages/resetpassword";

@@ -14,3 +14,25 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('admin/login', 'Auth\LoginController@login');
+Route::post('admin/logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+//$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+$this->post('admin/users', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+$this->post('password/reset', 'Auth\ResetPasswordController@reset');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+
+
+    Route::group(['middleware' => 'auth'], function() {
+        Route::get('/', 'DashboardController@dashboard');
+    });
+});

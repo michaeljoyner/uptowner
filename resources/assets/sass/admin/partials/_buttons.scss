@@ -1,0 +1,12 @@
+.dd-btn {
+  background: $white;
+  border: 1px solid $brand_orange;
+  color: $brand_orange;
+  text-transform: uppercase;
+  border-radius: 0;
+
+  &:hover {
+    background: $brand_orange;
+    color: $white;
+  }
+}

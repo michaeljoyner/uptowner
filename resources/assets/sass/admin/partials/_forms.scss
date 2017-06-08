@@ -1,0 +1,97 @@
+.dd-form {
+  padding: 0 15px;
+
+  label {
+    color: $brand_dark;
+    text-transform: uppercase;
+    font-size: small;
+  }
+
+  input {
+    height: 32px;
+  }
+
+  input[type=text], input[type=email], input[type=password], textarea {
+    border-radius: 0;
+  }
+
+  textarea {
+    resize: none;
+    max-height: 120px;
+  }
+
+  .dd-tall-textbox {
+    height: 300px;
+  }
+
+  &.form-narrow {
+    display: block;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .dd-checkbox-option {
+    label:after {
+      content: '';
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      border: 1px solid $mid_grey;
+      background: $white;
+      transition: .5s;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    input {
+      display: none;
+    }
+
+    input:checked + label {
+      &:after {
+        background: $brand_dark;
+        border-color: $brand_dark;
+      }
+    }
+  }
+}
+
+.char-counting-input {
+
+  .usage-count.warn {
+    background: $brand_red;
+  }
+}
+
+.buttoned-input {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  border: 1px solid $brand_orange;
+
+  input {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    height: 32px;
+    border: none;
+    padding-left: 5px;
+    border-radius: 0;
+  }
+
+  button {
+    width: 60px;
+    background: $brand_orange;
+    color: $white;
+    border: none;
+    height: 32px;
+
+    &:hover {
+      background: $white;
+      color: $brand_orange;
+      border-left: 1px solid $brand_orange;
+    }
+  }
+
+}
