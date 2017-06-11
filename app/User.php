@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'superadmin'
     ];
 
     /**
@@ -27,8 +27,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $casts = ['superadmin' => 'boolean'];
+
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function isSuperadmin()
+    {
+        return $this->superadmin;
     }
 }

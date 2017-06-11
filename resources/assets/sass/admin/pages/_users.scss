@@ -1,0 +1,27 @@
+.user-card {
+  padding: 20px;
+  display: flex;
+  width: 90%;
+  margin: 1em;
+  justify-content: space-between;
+  align-items: center;
+  background: $white;
+
+  .user-card-name {
+    display: flex;
+    .initial {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: $brand_blue_light;
+      text-transform: uppercase;
+      margin-right: 30px;
+    }
+
+    font-size: 120%;
+    text-transform: capitalize;
+  }
+}
