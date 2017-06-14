@@ -45,6 +45,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 
         Route::get('users', 'UsersController@index');
         Route::delete('users/{user}', 'UsersController@delete')->middleware('superadmin');
+
+        Route::get('users/passwords', 'UsersPasswordController@edit');
+        Route::post('users/passwords', 'UsersPasswordController@update');
     });
 });
 

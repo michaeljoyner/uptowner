@@ -8,6 +8,12 @@
     position: relative;
     border-radius: 5px;
 
+    &:hover {
+      .delete-button-slider {
+        background: lighten($brand_red, 10%);
+      }
+    }
+
     .delete-button-slider {
       width: 100%;
       background: lighten($brand_red, 20%);
@@ -18,6 +24,8 @@
       text-align: center;
       padding-right: 15px;
 
+
+
       span {
         line-height: 32px;
         cursor: default;
@@ -25,6 +33,7 @@
     }
 
     &.alerted {
+      border: 1px solid $brand_dark;
       .delete-button-slider {
         transform: translate3d(-60px,0,0);
         background: $light_grey;
@@ -34,9 +43,11 @@
 
       .delete-actual {
         z-index: 5;
+        color: $brand_blue;
+        font-weight: 700;
         form:hover {
           button {
-            background: $brand_blue_light;
+            background: lighten($brand_blue_light, 20%);
           }
         }
 

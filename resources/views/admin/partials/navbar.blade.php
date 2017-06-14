@@ -44,6 +44,7 @@
                        aria-expanded="false"
                     >{{ Auth::user()->email }} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="/admin/users/passwords">Reset Password</a></li>
                         <li>
                             <form action="/admin/logout" method="POST" class="logout-form">
                                 {!! csrf_field() !!}

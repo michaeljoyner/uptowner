@@ -38,4 +38,10 @@ class User extends Authenticatable
     {
         return $this->superadmin;
     }
+
+    public function resetPassword($password)
+    {
+        $this->password = $password;
+        return $this->save();
+    }
 }
