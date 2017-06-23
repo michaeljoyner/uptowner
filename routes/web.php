@@ -34,6 +34,12 @@ Route::group(['prefix' => 'admin/services', 'namespace' => 'Admin\Services'], fu
 
     Route::group(['middleware' => 'auth'], function() {
         Route::get('users', 'UsersServiceController@index');
+
+        Route::get('menu/groups', 'MenuGroupServicesController@index');
+
+        Route::get('menu/groups/{group}/items', 'MenuItemServicesController@index');
+
+        Route::get('events', 'EventsServiceController@index');
     });
 });
 
@@ -48,6 +54,28 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 
         Route::get('users/passwords', 'UsersPasswordController@edit');
         Route::post('users/passwords', 'UsersPasswordController@update');
+
+        Route::get('menu/groups', 'MenuGroupController@index');
+        Route::get('menu/groups/{group}', 'MenuGroupController@show');
+        Route::post('menu/groups', 'MenuGroupController@store');
+        Route::post('menu/groups/{group}', 'MenuGroupController@update');
+
+        Route::post('menu/groups/{group}/items', 'MenuItemsController@store');
+        Route::post('menu/items/{item}', 'MenuItemsController@update');
+        Route::delete('menu/items/{item}', 'MenuItemsController@delete');
+
+        Route::post('menu/items/{item}/publish', 'MenuItemTogglesController@publish');
+        Route::post('menu/items/{item}/spicy', 'MenuItemTogglesController@spicy');
+        Route::post('menu/items/{item}/vegetarian', 'MenuItemTogglesController@vegetarian');
+        Route::post('menu/items/{item}/recommended', 'MenuItemTogglesController@recommended');
+        Route::post('menu/items/{item}/image', 'MenuItemsImageController@store');
+
+        Route::get('events', 'EventsController@index');
+        Route::post('events', 'EventsController@store');
+        Route::post('events/{event}', 'EventsController@update');
+        Route::delete('events/{event}', 'EventsController@delete');
+
+        Route::post('events/{event}/publish', 'EventsPublishingController@update');
     });
 });
 

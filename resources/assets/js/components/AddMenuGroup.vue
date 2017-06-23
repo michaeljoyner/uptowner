@@ -1,11 +1,11 @@
 <style></style>
 
 <template>
-    <span class="add-user-component">
-        <button class="dd-btn btn" @click="modalOpen = true">Add User</button>
+    <span class="add-menu-group-component">
+        <button class="dd-btn btn" @click="modalOpen = true">Add Menu Group</button>
         <modal :show="modalOpen">
             <div slot="header">
-                <h3>Register a New User</h3>
+                <h3>Create a New Menu Group</h3>
             </div>
             <div slot="body">
                 <p class="lead text-danger" v-show="mainError">{{ mainError }}</p>
@@ -15,32 +15,31 @@
                         <span class="error-message" v-show="form.errors.name">{{ form.errors.name }}</span>
                         <input type="text" name="name" v-model="form.data.name" class="form-control">
                     </div>
-                    <div class="form-group" :class="{'has-error': form.errors.email}">
-                        <label for="email">Your email</label>
-                        <span class="error-message" v-show="form.errors.email">{{ form.errors.email }}</span>
-                        <input type="email" v-model="form.data.email" class="form-control">
+                    <div class="form-group" :class="{'has-error': form.errors.name}">
+                        <label for="zh_name">Chinese Name</label>
+                        <span class="error-message" v-show="form.errors.zh_name">{{ form.errors.name }}</span>
+                        <input type="text" name="zh_name" v-model="form.data.zh_name" class="form-control">
                     </div>
-                    <div class="form-group" :class="{'has-error': form.errors.password}">
-                        <label for="password">Password</label>
-                        <span class="error-message" v-show="form.errors.password">{{ form.errors.password }}</span>
-                        <input type="password" name="password" v-model="form.data.password" class="form-control">
+                    <div class="form-group" :class="{'has-error': form.errors.description}">
+                        <label for="description">Description</label>
+                        <span class="error-message" v-show="form.errors.description">{{ form.errors.description }}</span>
+                        <textarea name="description"
+                                  v-model="form.data.description"
+                                  class="form-control"
+                        ></textarea>
                     </div>
-                    <div class="form-group" :class="{'has-error': form.errors.password_confirmation}">
-                        <label for="password_confirmation">Confirm Password</label>
-                        <span class="error-message" v-show="form.errors.password_confirmation">{{ form.errors.password_confirmation }}</span>
-                        <input type="password" name="password_confirmation" v-model="form.data.password_confirmation"
-                               class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <div class="dd-checkbox-option">
-                            <input type="checkbox" id="superadmin" name="superadmin" v-model="form.data.superadmin">
-                            <label for="superadmin">Is Super Admin</label>
-                        </div>
+                    <div class="form-group" :class="{'has-error': form.errors.zh_description}">
+                        <label for="zh_description">Chinese description</label>
+                        <span class="error-message" v-show="form.errors.zh_description">{{ form.errors.zh_description }}</span>
+                        <textarea name="zh_description"
+                                  v-model="form.data.zh_description"
+                                  class="form-control"
+                        ></textarea>
                     </div>
                     <div class="modal-form-button-bar">
                         <button class="dd-btn btn" type="button" @click="modalOpen = false">Cancel</button>
                         <button class="btn dd-btn" type="submit" :disabled="waiting">
-                            <span v-show="!waiting">Add User</span>
+                            <span v-show="!waiting">Add Group</span>
                             <div class="spinner" v-show="waiting">
                                 <div class="bounce1"></div>
                                 <div class="bounce2"></div>
@@ -57,7 +56,7 @@
 
 <script type="text/babel">
     import Form from './Form';
-    
+
     export default {
 
         data() {
@@ -65,10 +64,9 @@
                 modalOpen: false,
                 form: new Form({
                     name: '',
-                    email: '',
-                    password: '',
-                    password_confirmation: '',
-                    superadmin: false
+                    zh_name: '',
+                    description: '',
+                    zh_description: ''
                 }),
                 waiting: false,
                 mainError: ''
@@ -85,17 +83,12 @@
                 }
 
                 this.waiting = true;
-                axios.post('/admin/users', this.form.data)
-                        .then(res => this.onSuccess(res))
-                        .catch(({response}) => this.onFailure(response));
+                axios.post('/admin/menu/groups', this.form.data)
+                    .then(res => this.onSuccess(res))
+                    .catch(({response}) => this.onFailure(response));
             },
 
             canSubmit() {
-                if(this.form.data.password !== this.form.data.password_confirmation) {
-                    this.form.errors.password_confirmation = 'Password confirmation does not match password';
-                    return false;
-                }
-
                 return true;
             },
 
@@ -103,7 +96,7 @@
                 this.waiting = false;
                 this.form.clearForm();
                 this.modalOpen = false;
-                eventHub.$emit('user-added', res.data);
+                eventHub.$emit('menu-group-added', res.data);
             },
 
             onFailure(res) {
@@ -112,7 +105,7 @@
                     return this.form.setValidationErrors(res.data);
                 }
 
-                this.mainError = 'Unable to register new user. Please refresh and try again later.';
+                this.mainError = 'Unable to create menu group. Please refresh and try again later.';
             },
 
             clearErrors() {

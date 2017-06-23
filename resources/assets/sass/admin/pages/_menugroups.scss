@@ -1,0 +1,39 @@
+.menu-group-app-component {
+
+  .menu-group-index-card {
+    margin: 2em 0;
+    width: 80%;
+    max-width: 800px;
+    background: $white;
+
+    header {
+      background: $brand_blue_light;
+      color: $white;
+      padding: 10px 20px;
+
+      .main-header {
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      .sub-header {
+        font-size: 80%;
+        color: $brand_blue;
+      }
+    }
+
+    .body {
+      padding: 10px 20px;
+
+      p:first-child {
+        font-size: 1.2em;
+        color: $brand_dark;
+      }
+
+      p:nth-child(2) {
+        color: $mid_grey;
+      }
+    }
+
+  }
+}

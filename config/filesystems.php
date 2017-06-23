@@ -53,9 +53,14 @@ return [
             'root' => public_path('media'),
         ],
 
-        'test_media' => [
+        'test_media_dir' => [
             'driver' => 'local',
             'root' => public_path('test_media'),
+        ],
+
+        'test_media' => [
+            'driver' => 'local',
+            'root' => public_path('test_media/media'),
         ],
 
         'public' => [

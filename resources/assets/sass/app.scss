@@ -19,7 +19,11 @@
 
 @import "admin/components/passwordemail";
 @import "admin/components/deletebutton";
+@import "admin/components/menuitem";
+@import "admin/components/iconswitch";
+@import "admin/components/singleupload";
 
 @import "admin/pages/login";
 @import "admin/pages/resetpassword";
 @import "admin/pages/users";
+@import "admin/pages/menugroups";

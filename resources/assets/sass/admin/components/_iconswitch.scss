@@ -1,0 +1,91 @@
+.icon-switch-component {
+
+  .switch-outer {
+    display: flex;
+    align-items: center;
+  }
+
+  .switch-container {
+    margin-left: 15px;
+    position: relative;
+    margin-bottom: 0;
+
+    input[type=checkbox] {
+      display: none;
+    }
+  }
+}
+
+.icon-switch-component.slide-switch {
+  .switch-container {
+
+    .switch-rail {
+      width: 30px;
+      height: 8px;
+      background: $light_grey;
+      transition: .5s;
+      border-radius: 3px;
+    }
+
+    .switch-knob {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: $mid_grey;
+      position: absolute;
+      top: -3px;
+      left: -5px;
+      transform: translate3d(0,0,0);
+      transition: .5s;
+    }
+
+    &.active {
+      .switch-rail {
+        background: $brand_blue_light;
+      }
+
+      .switch-knob {
+        transform: translate3d(30px,0,0);
+        background: $brand_blue;
+      }
+    }
+  }
+}
+
+.icon-switch-component.svg-icon-switch {
+  .switch-container.active {
+    svg.green  {
+      .colour-fill {
+        fill: $brand_green;
+      }
+
+      .colour-stroke {
+        stroke: $brand_green;
+      }
+    }
+
+    svg.red  {
+      .colour-fill {
+        fill: $brand_red;
+      }
+
+      .colour-stroke {
+        stroke: $brand_red;
+      }
+    }
+
+    svg.orange  {
+      .colour-fill {
+        fill: $brand_orange;
+      }
+
+      .colour-stroke {
+        stroke: $brand_orange;
+      }
+    }
+  }
+}
+
+.icon-switch-component.compact {
+  margin: 0;
+}

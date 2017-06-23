@@ -20,6 +20,17 @@ Vue.component('modal', require('./components/Modal.vue'));
 Vue.component('add-user', require('./components/AddUser.vue'));
 Vue.component('delete-button', require('./components/DeleteButton.vue'));
 Vue.component('user-app', require('./components/UsersApp.vue'));
+Vue.component('add-menu-group', require('./components/AddMenuGroup.vue'));
+Vue.component('menu-group-app', require('./components/MenuGroupApp.vue'));
+Vue.component('menu-item-form', require('./components/MenuItemForm.vue'));
+Vue.component('menu-item-app', require('./components/MenuItemsApp.vue'));
+Vue.component('menu-item', require('./components/MenuItem.vue'));
+Vue.component('single-upload', require('./components/Singleupload.vue'));
+Vue.component('small-switch', require('./components/SmallSwitch.vue'));
+Vue.component('icon-switch', require('./components/IconSwitch.vue'));
+Vue.component('event-form', require('./components/EventForm.vue'));
+Vue.component('event-app', require('./components/EventsApp.vue'));
+Vue.component('event-item', require('./components/EventItem.vue'));
 
 window.eventHub = new Vue();
 window.swal = require('sweetalert');

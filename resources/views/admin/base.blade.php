@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
     @section('title')
-        <title>Good Gifts for Guys | Admin</title>
+        <title>Uptowner | Admin</title>
     @show
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
