@@ -1,0 +1,55 @@
+.events-app-component {
+
+  .event-item-component {
+    background: $white;
+    padding: 20px;
+    margin: 2em auto;
+
+    .event-header {
+      .event-date {
+        font-size: 2em;
+        color: $brand_orange;
+        text-align: center;
+      }
+    }
+
+    .event-body {
+      display: flex;
+
+      & > * {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 50%;
+        width: 50%;
+        padding: 5px;
+      }
+
+      .event-title {
+        font-weight: 700;
+        font-size: 120%;
+        margin-bottom: 0;
+      }
+
+      .time-of-day {
+        margin: 0;
+        color: $brand_orange;
+      }
+
+      .event-description {
+        padding: 15px 0;
+      }
+    }
+
+    .event-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      border-top: 1px solid $light_grey;
+      padding-top: 15px;
+
+      & > * {
+        margin: 0 2em;
+      }
+    }
+  }
+}

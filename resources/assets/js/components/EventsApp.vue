@@ -17,6 +17,8 @@
 </template>
 
 <script type="text/babel">
+    import moment from 'moment';
+
     export default {
 
         data() {

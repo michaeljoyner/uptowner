@@ -3,18 +3,18 @@
 <template>
     <div class="event-item-component">
         <div class="event-header">
-            <p class="event-date">{{ event_date }}</p>
+            <p class="event-date">{{ formatted_date }}</p>
         </div>
         <div class="event-body">
             <div class="event-en">
                 <p class="event-title">{{ name }}</p>
                 <p class="time-of-day">{{ time_of_day }}</p>
-                <p>{{ description }}</p>
+                <p class="event-description">{{ description }}</p>
             </div>
             <div class="event-zh">
                 <p class="event-title">{{ zh_name }}</p>
                 <p class="time-of-day">{{ zh_time_of_day }}</p>
-                <p>{{ zh_description }}</p>
+                <p class="event-description">{{ zh_description }}</p>
             </div>
         </div>
         <div class="event-actions">
@@ -48,6 +48,8 @@
 </template>
 
 <script type="text/babel">
+    import moment from 'moment';
+
     export default {
 
         props: [
@@ -75,6 +77,12 @@
             };
         },
 
+        computed: {
+            formatted_date() {
+                return moment(this.event_date).format("dddd, MMM Do YYYY");
+            }
+        },
+
         mounted() {
             this.inflateFromProps();
         },
@@ -97,14 +105,13 @@
             },
 
             updateEvent(updated_data) {
-                console.log(updated_data);
                 this.event_date = updated_data.event_date;
-                this.name = updated_data.name['en'];
-                this.zh_name = updated_data.name['zh'];
-                this.time_of_day = updated_data.time_of_day['en'];
-                this.zh_time_of_day = updated_data.time_of_day['zh'];
-                this.description = updated_data.description['en'];
-                this.zh_description = updated_data.description['zh'];
+                this.name = updated_data.name;
+                this.zh_name = updated_data.zh_name;
+                this.time_of_day = updated_data.time_of_day;
+                this.zh_time_of_day = updated_data.zh_time_of_day;
+                this.description = updated_data.description;
+                this.zh_description = updated_data.zh_description;
             }
         }
     }

@@ -19,6 +19,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="/admin">Home</a></li>
                 <li><a href="/admin/menu/groups">Menu</a></li>
+                <li><a href="/admin/events">Events</a></li>
                 {{--<li class="dropdown">--}}
                     {{--<a href="#"--}}
                        {{--class="dropdown-toggle"--}}

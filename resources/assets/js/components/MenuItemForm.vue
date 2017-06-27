@@ -116,10 +116,6 @@
             };
         },
 
-        mounted() {
-            console.log('Item: ', this.itemName);
-        },
-
         methods: {
 
             submit() {
@@ -140,25 +136,26 @@
             },
 
             onSuccess(res) {
+                const menuItem = {
+                    name: res.data.name['en'],
+                    zh_name: res.data.name['zh'],
+                    description: res.data.description['en'],
+                    zh_description: res.data.description['zh'],
+                    price: res.data.price
+                };
                 this.waiting = false;
-                this.form.clearForm();
+                this.form.clearForm(menuItem);
                 this.modalOpen = false;
-                this.emitEvent(res.data);
+                this.emitEvent(menuItem);
             },
 
-            emitEvent(data) {
+            emitEvent(menuItem) {
                 if(this.formType === 'create') {
-                    return eventHub.$emit('menu-item-added', data);
+                    return eventHub.$emit('menu-item-added', menuItem);
                 }
 
                 if(this.formType === 'update') {
-                    return this.$emit('item-updated', {
-                        name: data.name['en'],
-                        zh_name: data.name['zh'],
-                        description: data.description['en'],
-                        zh_description: data.description['zh'],
-                        price: data.price
-                    });
+                    return this.$emit('item-updated', menuItem);
                 }
             },
 
