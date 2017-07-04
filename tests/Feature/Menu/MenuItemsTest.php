@@ -104,7 +104,7 @@ class MenuItemsTest extends TestCase
         ];
 
         $response = $this->asLoggedInUser()->post('/admin/menu/items/' . $item->id, $update_data);
-        $response->assertStatus(302);
+        $response->assertStatus(200);
         $response->assertSessionMissing('errors');
 
         $this->assertTranslatableTableHas('menu_items', array_merge([
@@ -116,7 +116,7 @@ class MenuItemsTest extends TestCase
     /**
      *@test
      */
-    public function editing_a_menu_item_will_return_new_model()
+    public function editing_a_menu_item_will_return_new_model_correctly_formatted()
     {
         $this->disableExceptionHandling();
         $item = factory(MenuItem::class)->create();
@@ -135,10 +135,17 @@ class MenuItemsTest extends TestCase
         $response->assertStatus(200);
         $response->assertSessionMissing('errors');
 
-        $result = $response->decodeResponseJson();
+        $returned_item = $response->decodeResponseJson();
 
-        $this->assertEquals(['en' => 'Eggs Benedict', 'zh' => '満版復'], $result['name']);
-        $this->assertEquals(99, $result['price']);
+        $this->assertEquals('Eggs Benedict', $returned_item['name']);
+        $this->assertEquals('満版復', $returned_item['zh_name']);
+        $this->assertEquals('Eggs, bacon, scones, a sauce', $returned_item['description']);
+        $this->assertEquals('永門義会可際査別件村約候証民', $returned_item['zh_description']);
+        $this->assertEquals(99, $returned_item['price']);
+        $this->assertTrue($returned_item['is_vegetarian']);
+        $this->assertTrue($returned_item['is_recommended']);
+        $this->assertFalse($returned_item['is_spicy']);
+        $this->assertFalse($returned_item['published']);
         
     }
 
@@ -168,7 +175,7 @@ class MenuItemsTest extends TestCase
         ];
 
         $response = $this->asLoggedInUser()->post('/admin/menu/items/' . $item->id, $update_data);
-        $response->assertStatus(302);
+        $response->assertStatus(200);
         $response->assertSessionMissing('errors');
 
         $this->assertTranslatableTableHas('menu_items', $expected_attributes);
@@ -200,7 +207,7 @@ class MenuItemsTest extends TestCase
         ];
 
         $response = $this->asLoggedInUser()->post('/admin/menu/items/' . $item->id, $update_data);
-        $response->assertStatus(302);
+        $response->assertStatus(200);
         $response->assertSessionMissing('errors');
 
         $this->assertTranslatableTableHas('menu_items', $expected_attributes);

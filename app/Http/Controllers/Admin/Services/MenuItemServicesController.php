@@ -11,11 +11,19 @@ class MenuItemServicesController extends Controller
     public function index(MenuGroup $group)
     {
         return $group->items->map(function($item) {
-            return array_merge($item->toArray(), [
-                'thumb_src' => $item->imageUrl('thumb'),
-                'web_src' => $item->imageUrl('web'),
-                'image_src' => $item->imageUrl()
-            ]);
+            return [
+                'id' => $item->id,
+                'name' => $item->name,
+                'zh_name' => $item->getTranslation('name', 'zh'),
+                'description' => $item->description,
+                'zh_description' => $item->getTranslation('description', 'zh'),
+                'price' => $item->price,
+                'is_spicy' => $item->is_spicy,
+                'is_vegetarian' => $item->is_vegetarian,
+                'is_recommended' => $item->is_recommended,
+                'published' => $item->published,
+                'image' => $item->imageUrl('thumb')
+            ];;
         });
     }
 }

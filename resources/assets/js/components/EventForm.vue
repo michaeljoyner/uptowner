@@ -81,33 +81,12 @@
     export default {
 
         props: {
-            'item-event-date': {
-                type: String,
-                default: ''
-            },
-            'item-name': {
-                type: String,
-                default: ''
-            },
-            'item-zh-name': {
-                type: String,
-                default: ''
-            },
-            'item-description': {
-                type: String,
-                default: ''
-            },
-            'item-zh-description': {
-                type: String,
-                default: ''
-            },
-            'item-time-of-day': {
-                type: String,
-                default: ''
-            },
-            'item-zh-time-of-day': {
-                type: String,
-                default: ''
+            'form-attributes': {
+                type: Object,
+                required: false,
+                default() {
+                    return {};
+                }
             },
             url: {
                 required: true,
@@ -127,13 +106,13 @@
             return {
                 modalOpen: false,
                 form: new Form({
-                    name: this.itemName,
-                    zh_name: this.itemZhName,
-                    description: this.itemDescription,
-                    zh_description: this.itemZhDescription,
-                    event_date: this.itemEventDate.substr(0,10),
-                    time_of_day: this.itemTimeOfDay,
-                    zh_time_of_day: this.itemZhTimeOfDay,
+                    name: this.formAttributes.name || '',
+                    zh_name: this.formAttributes.zh_name || '',
+                    description: this.formAttributes.description || '',
+                    zh_description: this.formAttributes.zh_description || '',
+                    event_date: this.formAttributes.event_date || null,
+                    time_of_day: this.formAttributes.time_of_day || '',
+                    zh_time_of_day: this.formAttributes.zh_time_of_day || '',
                 }),
                 waiting: false,
                 mainError: ''
@@ -160,35 +139,28 @@
             },
 
             onSuccess(res) {
+                const updated_data = {
+                    name: res.data.name,
+                    zh_name: res.data.zh_name,
+                    event_date: res.data.event_date,
+                    description: res.data.description,
+                    zh_description: res.data.zh_description,
+                    time_of_day: res.data.time_of_day,
+                    zh_time_of_day: res.data.zh_time_of_day
+                };
                 this.waiting = false;
-                this.form.clearForm({
-                    name: res.data.name['en'],
-                    zh_name: res.data.name['en'],
-                    event_date: res.data.event_date.substr(0,10),
-                    description: res.data.description['en'],
-                    zh_description: res.data.description['zh'],
-                    time_of_day: res.data.time_of_day['en'],
-                    zh_time_of_day: res.data.time_of_day['zh']
-                });
+                this.form.clearForm(this.formType === 'create' ? {} : updated_data);
                 this.modalOpen = false;
-                this.emitEvent(res.data);
+                this.emitEvent(updated_data);
             },
 
-            emitEvent(data) {
+            emitEvent(updated_data) {
                 if (this.formType === 'create') {
-                    return eventHub.$emit('event-added', data);
+                    return eventHub.$emit('event-added', updated_data);
                 }
 
                 if (this.formType === 'update') {
-                    return this.$emit('event-updated', {
-                        name: data.name['en'],
-                        zh_name: data.name['zh'],
-                        description: data.description['en'],
-                        zh_description: data.description['zh'],
-                        event_date: data.event_date,
-                        time_of_day: data.time_of_day['en'],
-                        zh_time_of_day: data.time_of_day['zh']
-                    });
+                    return this.$emit('event-updated', updated_data);
                 }
             },
 

@@ -31,6 +31,9 @@ Vue.component('icon-switch', require('./components/IconSwitch.vue'));
 Vue.component('event-form', require('./components/EventForm.vue'));
 Vue.component('event-app', require('./components/EventsApp.vue'));
 Vue.component('event-item', require('./components/EventItem.vue'));
+Vue.component('special-form', require('./components/SpecialForm.vue'));
+Vue.component('special-app', require('./components/SpecialsApp.vue'));
+Vue.component('special-item', require('./components/Special.vue'));
 
 window.eventHub = new Vue();
 window.swal = require('sweetalert');

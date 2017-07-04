@@ -63,6 +63,33 @@ class EventsTest extends TestCase
         $this->assertTranslatableTableHas('events', $expected_data);
         $this->assertTrue(Event::first()->event_date->isSameDay(Carbon::parse('+5 days')));
     }
+    
+    /**
+     *@test
+     */
+    public function an_update_request_returns_the_updated_data_in_the_correct_format()
+    {
+        $event = factory(Event::class)->create();
+        $update_data = [
+            'event_date' => Carbon::parse('+5 days')->format('Y-m-d'),
+            'name' => 'An Event Apart',
+            'description' => 'An exciting event at a locale near you'
+        ];
+
+        $response = $this->asLoggedInUser()->json('POST', '/admin/events/' . $event->id, $update_data);
+        $response->assertStatus(200);
+
+        $updated_data = $response->decodeResponseJson();
+        $event = $event->fresh();
+        
+        $this->assertEquals($event->name, $updated_data['name']);
+        $this->assertEquals($event->getTranslation('name', 'zh'), $updated_data['zh_name']);
+        $this->assertEquals($event->description, $updated_data['description']);
+        $this->assertEquals($event->getTranslation('description', 'zh'), $updated_data['zh_description']);
+        $this->assertEquals($event->time_of_day, $updated_data['time_of_day']);
+        $this->assertEquals($event->getTranslation('time_of_day', 'zh'), $updated_data['zh_time_of_day']);
+        $this->assertEquals($event->event_date->format('Y-m-d'), $updated_data['event_date']);
+    }
 
     /**
      *@test

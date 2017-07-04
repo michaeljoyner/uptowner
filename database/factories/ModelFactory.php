@@ -49,6 +49,18 @@ $factory->define(App\Menu\MenuItem::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Specials\Special::class, function (Faker\Generator $faker) {
+    $zh_faker = Faker\Factory::create('zh_TW');
+
+    return [
+        'title'           => ['en' => $faker->sentence, 'zh' => $zh_faker->realText(12)],
+        'description'    => ['en' => $faker->sentence, 'zh' => $zh_faker->realText(20)],
+        'price'          => $faker->numberBetween(100, 400),
+        'start_date' => \Carbon\Carbon::now(),
+        'end_date'      => \Carbon\Carbon::parse('+7 days')
+    ];
+});
+
 $factory->define(App\Occasions\Event::class, function (Faker\Generator $faker) {
     $zh_faker = Faker\Factory::create('zh_TW');
 

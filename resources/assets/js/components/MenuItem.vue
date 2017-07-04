@@ -3,12 +3,12 @@
 <template>
     <div class="menu-item-component">
         <div class="component-image-box single-image-uploader-box">
-            <single-upload :default="thumb_src"
-                           :url="`/admin/menu/items/${id}/image`"
+            <single-upload :default="itemAttributes.image"
+                           :url="`/admin/menu/items/${itemAttributes.id}/image`"
                            size="preview"
                            :preview-width="200"
                            :preview-height="150"
-                           :unique="itemId"
+                           :unique="itemAttributes.id"
             ></single-upload>
         </div>
         <div class="component-detail">
@@ -19,12 +19,8 @@
                 </div>
                 <div class="rightside">
                     <p class="item-price">NT${{ price }}</p>
-                    <menu-item-form :item-name="itemName"
-                                    :item-zh-name="itemZhName"
-                                    :item-description="itemDescription"
-                                    :item-zh-description="itemZhDescription"
-                                    :item-price="itemPrice"
-                                    :url="`/admin/menu/items/${itemId}`"
+                    <menu-item-form :form-attributes="itemAttributes"
+                                    :url="`/admin/menu/items/${itemAttributes.id}`"
                                     button-text="edit"
                                     form-type="update"
                                     @item-updated="updateItem"
@@ -39,10 +35,10 @@
             </div>
             <div class="menu-items-actions">
                 <div class="icon-switches">
-                    <icon-switch :url="`/admin/menu/items/${itemId}/recommended`"
+                    <icon-switch :url="`/admin/menu/items/${itemAttributes.id}/recommended`"
                                  switch-field="is_recommended"
-                                 :initial="itemRecommended"
-                                 :unique="`recommended-${itemId}`"
+                                 :initial="itemAttributes.is_recommended"
+                                 :unique="`recommended-${itemAttributes.id}`"
                                  component-class="svg-icon-switch compact"
                     >
                         <svg slot="icon" class="orange"
@@ -57,10 +53,10 @@
                                   d="M3.58,2.28l.28.85a.06.06,0,0,0,.06,0h.9a.06.06,0,0,1,0,.11l-.73.53a.06.06,0,0,0,0,.07l.28.85a.06.06,0,0,1-.09.07l-.73-.53a.06.06,0,0,0-.07,0l-.73.53a.06.06,0,0,1-.09-.07l.28-.85a.06.06,0,0,0,0-.07L2.2,3.28a.06.06,0,0,1,0-.11h.9a.06.06,0,0,0,.06,0l.28-.85A.06.06,0,0,1,3.58,2.28Z"/>
                         </svg>
                     </icon-switch>
-                    <icon-switch :url="`/admin/menu/items/${itemId}/vegetarian`"
+                    <icon-switch :url="`/admin/menu/items/${itemAttributes.id}/vegetarian`"
                                  switch-field="is_vegetarian"
-                                 :initial="itemVegetarian"
-                                 :unique="`vegetarian-${itemId}`"
+                                 :initial="itemAttributes.is_vegetarian"
+                                 :unique="`vegetarian-${itemAttributes.id}`"
                                  component-class="svg-icon-switch compact"
                     >
                         <svg slot="icon" class="green"
@@ -74,10 +70,10 @@
                                   d="M4.06,2.27H5.14v.45H4.91L3.86,4.77H3.18l-1-2.05H1.94V2.27H3v.45H2.75l.78,1.62.82-1.62H4.06Z"/>
                         </svg>
                     </icon-switch>
-                    <icon-switch :url="`/admin/menu/items/${itemId}/spicy`"
+                    <icon-switch :url="`/admin/menu/items/${itemAttributes.id}/spicy`"
                                  switch-field="is_spicy"
-                                 :initial="itemSpicy"
-                                 :unique="`spicy-${itemId}`"
+                                 :initial="itemAttributes.is_spicy"
+                                 :unique="`spicy-${itemAttributes.id}`"
                                  component-class="svg-icon-switch compact"
                     >
                         <svg slot="icon" class="red"
@@ -97,9 +93,9 @@
                     </icon-switch>
                 </div>
                 <icon-switch switch-field="published"
-                             :initial="itemPublished"
-                             :url="`/admin/menu/items/${itemId}/publish`"
-                             :unique="`pub-${itemId}`"
+                             :initial="itemAttributes.published"
+                             :url="`/admin/menu/items/${itemAttributes.id}/publish`"
+                             :unique="`pub-${itemAttributes.id}`"
                              component-class="slide-switch"
                 >
                     <span slot="label">Publish</span>
@@ -108,16 +104,22 @@
                         <div class="switch-knob"></div>
                     </div>
                 </icon-switch>
-                <delete-button :delete-url="`/admin/menu/items/${itemId}`" @item-deleted="removeItem"></delete-button>
+                <delete-button :delete-url="`/admin/menu/items/${itemAttributes.id}`"
+                               @item-deleted="removeItem"
+                ></delete-button>
             </div>
         </div>
     </div>
 </template>
 
 <script type="text/babel">
+    import setsData from "./mixins/SetsDataFromObject";
+
     export default {
 
-        props: ['item-id', 'item-name', 'item-zh-name', 'item-description', 'item-zh-description', 'item-price', 'item-thumb_src', 'item-published', 'item-spicy', 'item-vegetarian', 'item-recommended'],
+        props: ['item-attributes'],
+
+        mixins: [setsData],
 
         data() {
             return {
@@ -126,36 +128,21 @@
                 description: '',
                 zh_description: '',
                 price: null,
-                id: null,
-                thumb_src: ''
             };
         },
 
         mounted() {
-            this.inflateFromProps();
+            this.setDataFrom(this.itemAttributes);
         },
 
         methods: {
-            inflateFromProps() {
-                this.name = this.itemName;
-                this.zh_name = this.itemZhName;
-                this.description = this.itemDescription;
-                this.zh_description = this.itemZhDescription;
-                this.price = this.itemPrice;
-                this.id = this.itemId;
-                this.thumb_src = this.itemThumb_src;
-            },
 
             removeItem() {
-                this.$emit('remove-menu-item', {item_id: this.itemId});
+                this.$emit('remove-menu-item', {item_id: this.itemAttributes.id});
             },
 
-            updateItem(data) {
-                this.name = data.name;
-                this.zh_name = data.zh_name;
-                this.description = data.description;
-                this.zh_description = data.zh_description;
-                this.price = data.price;
+            updateItem(updated_data) {
+                this.setDataFrom(updated_data);
             }
         }
     }

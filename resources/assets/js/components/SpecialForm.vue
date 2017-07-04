@@ -1,29 +1,28 @@
 <style></style>
 
 <template>
-    <span class="add-menu-item-component">
-        <button class="dd-btn btn" @click="modalOpen = true">{{ buttonText }}</button>
+    <span class="add-special-component">
+        <button class="dd-btn btn" @click="modalOpen = true">{{ formType === 'create' ? 'New Special' : 'Edit' }}</button>
         <modal :show="modalOpen">
             <div slot="header">
-                <h3>{{ formType === 'create' ? 'Add A New Menu Item' : 'Update this Menu Item' }}</h3>
+                <h3>{{ formType === 'create' ? 'Create a New Special' : 'Update This Special' }}</h3>
             </div>
             <div slot="body">
                 <p class="lead text-danger" v-show="mainError">{{ mainError }}</p>
                 <form action="" class="dd-form" @submit.stop.prevent="submit">
-                    <div class="form-group" :class="{'has-error': form.errors.name}">
-                        <label for="name">Name</label>
-                        <span class="error-message" v-show="form.errors.name">{{ form.errors.name }}</span>
-                        <input type="text" name="name" v-model="form.data.name" class="form-control">
+                    <div class="form-group" :class="{'has-error': form.errors.title}">
+                        <label for="name">Title</label>
+                        <span class="error-message" v-show="form.errors.title">{{ form.errors.title }}</span>
+                        <input type="text" name="title" v-model="form.data.title" class="form-control">
                     </div>
-                    <div class="form-group" :class="{'has-error': form.errors.zh_name}">
-                        <label for="zh_name">Chinese Name</label>
-                        <span class="error-message" v-show="form.errors.zh_name">{{ form.errors.zh_name }}</span>
-                        <input type="text" name="zh_name" v-model="form.data.zh_name" class="form-control">
+                    <div class="form-group" :class="{'has-error': form.errors.zh_title}">
+                        <label for="zh_title">Chinese Title</label>
+                        <span class="error-message" v-show="form.errors.zh_title">{{ form.errors.zh_title }}</span>
+                        <input type="text" name="zh_title" v-model="form.data.zh_title" class="form-control">
                     </div>
                     <div class="form-group" :class="{'has-error': form.errors.description}">
                         <label for="description">Description</label>
-                        <span class="error-message"
-                              v-show="form.errors.description">{{ form.errors.description }}</span>
+                        <span class="error-message" v-show="form.errors.description">{{ form.errors.description }}</span>
                         <textarea name="description"
                                   v-model="form.data.description"
                                   class="form-control"
@@ -42,8 +41,17 @@
                     <div class="form-group" :class="{'has-error': form.errors.price}">
                         <label for="price">Price</label>
                         <span class="error-message" v-show="form.errors.price">{{ form.errors.price }}</span>
-                        <input type="number" step="1" min="0" max="99999" name="price" v-model="form.data.price"
-                               class="form-control">
+                        <input type="number" step="1" min="0" max="99999" name="price" v-model="form.data.price" class="form-control">
+                    </div>
+                    <div class="form-group" :class="{'has-error': form.errors.start_date}">
+                        <label for="start_date">Start Date</label>
+                        <span class="error-message" v-show="form.errors.start_date">{{ form.errors.start_date }}</span>
+                        <input type="date" name="start_date" v-model="form.data.start_date" class="form-control">
+                    </div>
+                    <div class="form-group" :class="{'has-error': form.errors.end_date}">
+                        <label for="end_date">End Date</label>
+                        <span class="error-message" v-show="form.errors.end_date">{{ form.errors.end_date }}</span>
+                        <input type="date" name="end_date" v-model="form.data.end_date" class="form-control">
                     </div>
                     <div class="modal-form-button-bar">
                         <button class="dd-btn btn" type="button" @click="modalOpen = false">Cancel</button>
@@ -65,43 +73,41 @@
 
 <script type="text/babel">
     import Form from './Form';
+    import moment from 'moment';
 
     export default {
-
         props: {
+            url: {
+                required: true,
+                type: String
+            },
+            'form-type': {
+                required: true,
+                type: String
+            },
             'form-attributes': {
                 required: false,
                 type: Object,
                 default() {
                     return {};
                 }
-            },
-            url: {
-                required: true,
-                type: String
-            },
-            'form-type': {
-                type: String,
-                default: 'create'
-            },
-            'button-text': {
-                type: String,
-                default: 'add menu item'
             }
         },
 
         data() {
             return {
                 modalOpen: false,
+                waiting: false,
+                mainError: '',
                 form: new Form({
-                    name: this.formAttributes.name || '',
-                    zh_name: this.formAttributes.zh_name || '',
+                    title: this.formAttributes.title || '',
+                    zh_title: this.formAttributes.zh_title || '',
                     description: this.formAttributes.description || '',
                     zh_description: this.formAttributes.zh_description || '',
-                    price: this.formAttributes.price || 0
+                    price: this.formAttributes.price || 0,
+                    start_date: this.formAttributes.start_date || moment().add(7, 'days').format('YYYY-MM-DD'),
+                    end_date: this.formAttributes.end_date || moment().add(14, 'days').format('YYYY-MM-DD')
                 }),
-                waiting: false,
-                mainError: ''
             };
         },
 
@@ -110,7 +116,7 @@
             submit() {
                 this.clearErrors();
 
-                if (!this.canSubmit()) {
+                if(! this.canSubmit()) {
                     return;
                 }
 
@@ -125,32 +131,37 @@
             },
 
             onSuccess(res) {
-                const menuItem = {
-                    name: res.data.name,
-                    zh_name: res.data.zh_name,
-                    description: res.data.description,
-                    zh_description: res.data.zh_description,
-                    price: res.data.price
-                };
+                const updated_special = res.data;
                 this.waiting = false;
-                this.form.clearForm(this.formType === 'create' ? {} : menuItem);
+
+                if(this.formType === 'create') {
+                    this.form.clearForm();
+                } else {
+                    this.form.clearForm({
+                        title: updated_special.title,
+                        zh_title: updated_special.zh_title,
+                        description: updated_special.description,
+                        zh_description: updated_special.zh_description,
+                        price: updated_special.price,
+                        start_date: updated_special.start_date,
+                        end_date: updated_special.end_date
+                    });
+                }
+
                 this.modalOpen = false;
-                this.emitEvent(menuItem);
+                this.emitEvent(updated_special);
             },
 
-            emitEvent(menuItem) {
-                if (this.formType === 'create') {
-                    return eventHub.$emit('menu-item-added', menuItem);
+            emitEvent(special_data) {
+                if(this.formType === 'create') {
+                    return eventHub.$emit('special-added');
                 }
-
-                if (this.formType === 'update') {
-                    return this.$emit('item-updated', menuItem);
-                }
+                this.$emit('special-updated', special_data);
             },
 
             onFailure(res) {
                 this.waiting = false;
-                if (res.status === 422) {
+                if(res.status === 422) {
                     return this.form.setValidationErrors(res.data);
                 }
 

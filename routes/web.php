@@ -40,6 +40,8 @@ Route::group(['prefix' => 'admin/services', 'namespace' => 'Admin\Services'], fu
         Route::get('menu/groups/{group}/items', 'MenuItemServicesController@index');
 
         Route::get('events', 'EventsServiceController@index');
+
+        Route::get('specials', 'SpecialsServicesController@index');
     });
 });
 
@@ -76,6 +78,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         Route::delete('events/{event}', 'EventsController@delete');
 
         Route::post('events/{event}/publish', 'EventsPublishingController@update');
+
+        Route::get('specials', 'SpecialsController@index');
+        Route::post('specials', 'SpecialsController@store');
+        Route::post('specials/{special}', 'SpecialsController@update');
+        Route::delete('specials/{special}', 'SpecialsController@delete');
+
+        Route::post('specials/{special}/image', 'SpecialImagesController@store');
+        Route::post('specials/{special}/publish', 'SpecialPublishingController@update');
     });
 });
 

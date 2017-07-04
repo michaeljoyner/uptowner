@@ -3,18 +3,7 @@
 <template>
     <div class="menu-items-app-component">
         <menu-item v-for="item in menu_items" :key="item.id" @remove-menu-item="removeMenuItem"
-                   :item-name="item.name['en']"
-                   :item-zh-name="item.name['zh']"
-                   :item-description="item.description['en']"
-                   :item-zh-description="item.description['zh']"
-                   :item-price="item.price"
-                   :item-id="item.id"
-                   :item-thumb_src="item.thumb_src"
-                   :unique="item.id"
-                   :item-published="item.published"
-                   :item-spicy="item.is_spicy"
-                   :item-vegetarian="item.is_vegetarian"
-                   :item-recommended="item.is_recommended"
+                   :item-attributes="item"
         ></menu-item>
     </div>
 </template>

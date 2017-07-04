@@ -4,6 +4,7 @@ namespace App\Menu;
 
 use App\DefaultImage;
 use App\HandlesTranslations;
+use App\HasModelImage;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
@@ -11,7 +12,7 @@ use Spatie\Translatable\HasTranslations;
 
 class MenuItem extends Model implements HasMediaConversions
 {
-    use HasTranslations, HandlesTranslations, HasMediaTrait;
+    use HasTranslations, HandlesTranslations, HasMediaTrait, HasModelImage;
 
     const DEFAULT_IMG_URL = '/images/defaults/menuitem.jpg';
 
@@ -46,34 +47,5 @@ class MenuItem extends Model implements HasMediaConversions
             ->performOnCollections('default');
     }
 
-    public function setImage($file)
-    {
-        return tap($this->makeImage($file), function ($image) {
-            $this->deleteAllImagesExcept($image);
-        });
-    }
 
-    public function imageUrl($conversion = '')
-    {
-        return $this->getImage()->getUrl($conversion);
-    }
-
-    private function getImage()
-    {
-        return $this->getMedia()->first() ?? new DefaultImage(static::DEFAULT_IMG_URL);
-    }
-
-    private function deleteAllImagesExcept($image)
-    {
-        $this->getMedia()->reject(function ($file) use ($image) {
-            return $file->id === $image->id;
-        })->each(function ($file) {
-            $file->delete();
-        });
-    }
-
-    private function makeImage($file): \Spatie\MediaLibrary\Media
-    {
-        return $this->addMedia($file)->preservingOriginal()->toCollection('default');
-    }
 }

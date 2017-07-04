@@ -3,15 +3,7 @@
 <template>
     <div class="events-app-component">
         <event-item v-for="event in events" :key="event.id" @remove-event="removeEvent"
-                    :item-id="event.id"
-                    :item-event-date="event.event_date"
-                    :item-name="event.name['en']"
-                    :item-zh-name="event.name['zh']"
-                    :item-description="event.description['en']"
-                    :item-zh-description="event.description['zh']"
-                    :item-time-of-day="event.time_of_day['en']"
-                    :item-zh-time-of-day="event.time_of_day['zh']"
-                    :item-published="event.published"
+                    :event-attributes="event"
         ></event-item>
     </div>
 </template>

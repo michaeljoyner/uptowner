@@ -18,22 +18,16 @@
             </div>
         </div>
         <div class="event-actions">
-            <event-form :url="`/admin/events/${itemId}`"
+            <event-form :url="`/admin/events/${eventAttributes.id}`"
                         form-type="update"
                         button-text="edit"
-                        :item-name="itemName"
-                        :item-zh-name="itemZhName"
-                        :item-time-of-day="itemTimeOfDay"
-                        :item-zh-time-of-day="itemZhTimeOfDay"
-                        :item-description="itemDescription"
-                        :item-zh-description="itemZhDescription"
-                        :item-event-date="itemEventDate"
+                        :form-attributes="eventAttributes"
                         @event-updated="updateEvent"
             ></event-form>
             <icon-switch switch-field="published"
-                         :initial="itemPublished"
-                         :url="`/admin/events/${itemId}/publish`"
-                         :unique="`pub-${itemId}`"
+                         :initial="eventAttributes.published"
+                         :url="`/admin/events/${eventAttributes.id}/publish`"
+                         :unique="`pub-${eventAttributes.id}`"
                          component-class="slide-switch"
             >
                 <span slot="label">Publish</span>
@@ -42,31 +36,23 @@
                     <div class="switch-knob"></div>
                 </div>
             </icon-switch>
-            <delete-button :delete-url="`/admin/events/${itemId}`" @item-deleted="removeItem"></delete-button>
+            <delete-button :delete-url="`/admin/events/${eventAttributes.id}`" @item-deleted="removeItem"></delete-button>
         </div>
     </div>
 </template>
 
 <script type="text/babel">
     import moment from 'moment';
+    import setsData from './mixins/SetsDataFromObject';
 
     export default {
 
-        props: [
-            'item-id',
-            'item-event-date',
-            'item-name',
-            'item-zh-name',
-            'item-description',
-            'item-zh-description',
-            'item-time-of-day',
-            'item-zh-time-of-day',
-            'item-published'
-        ],
+        props: ['event-attributes'],
+
+        mixins: [setsData],
 
         data() {
             return {
-                id: null,
                 event_date: null,
                 name: '',
                 zh_name: '',
@@ -84,34 +70,17 @@
         },
 
         mounted() {
-            this.inflateFromProps();
+            this.setDataFrom(this.eventAttributes);
         },
 
         methods: {
-
-            inflateFromProps() {
-                this.id = this.itemId;
-                this.event_date = this.itemEventDate;
-                this.name = this.itemName;
-                this.zh_name = this.itemZhName;
-                this.time_of_day = this.itemTimeOfDay;
-                this.zh_time_of_day = this.itemZhTimeOfDay;
-                this.description = this.itemDescription;
-                this.zh_description = this.itemZhDescription;
-            },
 
             removeItem() {
                 this.$emit('remove-event', {id: this.id});
             },
 
             updateEvent(updated_data) {
-                this.event_date = updated_data.event_date;
-                this.name = updated_data.name;
-                this.zh_name = updated_data.zh_name;
-                this.time_of_day = updated_data.time_of_day;
-                this.zh_time_of_day = updated_data.zh_time_of_day;
-                this.description = updated_data.description;
-                this.zh_description = updated_data.zh_description;
+                this.setDataFrom(updated_data);
             }
         }
     }
