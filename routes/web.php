@@ -11,8 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+//localised routes
+Route::group([
+    'prefix'     => Loc::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect']
+], function () {
+    Route::get('/', function () {
+        return view('front.home.page');
+    });
 });
 
 Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -29,10 +36,10 @@ $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::group(['prefix' => 'admin/services', 'namespace' => 'Admin\Services'], function() {
+Route::group(['prefix' => 'admin/services', 'namespace' => 'Admin\Services'], function () {
 
 
-    Route::group(['middleware' => 'auth'], function() {
+    Route::group(['middleware' => 'auth'], function () {
         Route::get('users', 'UsersServiceController@index');
 
         Route::get('menu/groups', 'MenuGroupServicesController@index');
@@ -45,10 +52,10 @@ Route::group(['prefix' => 'admin/services', 'namespace' => 'Admin\Services'], fu
     });
 });
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 
-    Route::group(['middleware' => 'auth'], function() {
+    Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'DashboardController@dashboard');
 
         Route::get('users', 'UsersController@index');

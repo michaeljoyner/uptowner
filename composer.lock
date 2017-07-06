@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "db292d63274a326d23d7490ed250d84b",
-    "content-hash": "0242df2f2ad2b28c2a7d60daf86fe0b3",
+    "hash": "67564f94c87e47d3c66af929e8c2cfd9",
+    "content-hash": "9532117ae27e353b1d6f0d75e37aaccc",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -748,6 +748,55 @@
                 "processing"
             ],
             "time": "2017-05-09 17:41:49"
+        },
+        {
+            "name": "mcamara/laravel-localization",
+            "version": "v1.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcamara/laravel-localization.git",
+                "reference": "2177e05d5cf35efea3a43c0f1785a3edd816347f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/2177e05d5cf35efea3a43c0f1785a3edd816347f",
+                "reference": "2177e05d5cf35efea3a43c0f1785a3edd816347f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.2",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "orchestra/testbench-browser-kit": "~3.4",
+                "phpunit/phpunit": "5.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [],
+                "psr-0": {
+                    "Mcamara\\LaravelLocalization": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Cámara",
+                    "email": "mcamara88@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easy localization for Laravel",
+            "homepage": "https://github.com/mcamara/laravel-localization",
+            "keywords": [
+                "laravel",
+                "localization",
+                "php"
+            ],
+            "time": "2017-05-18 10:22:35"
         },
         {
             "name": "monolog/monolog",

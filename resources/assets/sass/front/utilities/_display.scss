@@ -1,0 +1,57 @@
+.block {
+  display: block;
+}
+
+.dib {
+  display: inline-block;
+}
+
+.din {
+  display: inline;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-center-y {
+  align-items: center;
+}
+
+.flex-center-x {
+  justify-content: center;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.flex-space {
+  justify-content: space-around;
+}
+
+.flex-spaced {
+  justify-content: space-between;
+}
+
+.flex-static {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+.flex-adapt {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+}

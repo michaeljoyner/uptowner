@@ -1,0 +1,41 @@
+@for $i from 1 to 10 {
+  .pd-#{$i} { padding: map-get($sizes, $i); }
+}
+
+@for $i from 1 to 10 {
+  .pd-x-#{$i} {
+    padding-left: map-get($sizes, $i);
+    padding-right: map-get($sizes, $i);
+  }
+}
+
+@for $i from 1 to 10 {
+  .pd-y-#{$i} {
+    padding-top: map-get($sizes, $i);
+    padding-bottom: map-get($sizes, $i);
+  }
+}
+
+@for $i from 1 to 10 {
+  .pb-#{$i} {
+    padding-bottom: map-get($sizes, $i);
+  }
+}
+
+@for $i from 1 to 10 {
+  .pt-#{$i} {
+    padding-top: map-get($sizes, $i);
+  }
+}
+
+@for $i from 1 to 10 {
+  .pl-#{$i} {
+    padding-left: map-get($sizes, $i);
+  }
+}
+
+@for $i from 1 to 10 {
+  .pr-#{$i} {
+    padding-right: map-get($sizes, $i);
+  }
+}

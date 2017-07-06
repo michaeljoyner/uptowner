@@ -1,0 +1,66 @@
+.heading {
+  font-family: $serif;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.h1 {
+  @extend .heading;
+  font-size: map-get($sizes, 9);
+}
+
+.h2 {
+  @extend .heading;
+  font-size: map-get($sizes, 7);
+}
+
+.h3 {
+  @extend .heading;
+  font-size: map-get($sizes, 6);
+}
+
+.h4 {
+  @extend .heading;
+  font-size: map-get($sizes, 5);
+}
+
+.body-text {
+  font-family: $sans_serif;
+}
+
+.body-italic {
+  font-family: $sans_serif;
+  font-style: italic;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-colour {
+  color: $brand_primary;
+}
+
+.text-colour-soft {
+  color: $brand_primary_soft;
+}
+
+.text-colour-light {
+  color: $brand_light;
+}
+
+.text-large {
+  font-size: map_get($sizes, 6);
+}
+
+.text-largish {
+  font-size: map_get($sizes, 5);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}

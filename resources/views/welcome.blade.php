@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    {{ __('auth.tester') }}
                 </div>
 
                 <div class="links">

@@ -1,0 +1,21 @@
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: $base_font_size;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: $brand_dark;
+  background: $brand_light;
+  min-height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
