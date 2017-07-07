@@ -7,7 +7,10 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue';
+import VueDraggable from 'vue-draggable';
+Vue.use(VueDraggable);
+window.Vue = Vue;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -34,6 +37,9 @@ Vue.component('event-item', require('./components/EventItem.vue'));
 Vue.component('special-form', require('./components/SpecialForm.vue'));
 Vue.component('special-app', require('./components/SpecialsApp.vue'));
 Vue.component('special-item', require('./components/Special.vue'));
+Vue.component('featured-app', require('./components/FeaturedItemApp.vue'));
+Vue.component('menu-item-small', require('./components/MenuItemSmall.vue'));
+Vue.component('featured-item', require('./components/FeaturedItem.vue'));
 
 window.eventHub = new Vue();
 window.swal = require('sweetalert');

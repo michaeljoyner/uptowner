@@ -47,5 +47,42 @@ class MenuItem extends Model implements HasMediaConversions
             ->performOnCollections('default');
     }
 
+    public function presentAttributes()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'zh_name' => $this->getTranslation('name', 'zh'),
+            'description' => $this->description,
+            'zh_description' => $this->getTranslation('description', 'zh'),
+            'price' => $this->price,
+            'is_spicy' => $this->is_spicy,
+            'is_vegetarian' => $this->is_vegetarian,
+            'is_recommended' => $this->is_recommended,
+            'published' => $this->published,
+            'image' => $this->imageUrl('thumb')
+        ];
+    }
+
+    public function featureParent()
+    {
+        return $this->hasOne(FeaturedItem::class, 'menu_item_id');
+    }
+
+    public function feature()
+    {
+        return $this->featureParent()->create([]);
+    }
+
+    public function demote()
+    {
+        return $this->featureParent->delete();
+    }
+
+    public function isFeatured()
+    {
+        return !! $this->featureParent;
+    }
+
 
 }

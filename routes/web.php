@@ -44,11 +44,14 @@ Route::group(['prefix' => 'admin/services', 'namespace' => 'Admin\Services'], fu
 
         Route::get('menu/groups', 'MenuGroupServicesController@index');
 
-        Route::get('menu/groups/{group}/items', 'MenuItemServicesController@index');
+        Route::get('menu/items', 'MenuItemsServiceController@index');
+        Route::get('menu/groups/{group}/items', 'MenuGroupItemsServicesController@index');
 
         Route::get('events', 'EventsServiceController@index');
 
         Route::get('specials', 'SpecialsServicesController@index');
+
+        Route::get('menu/featured', 'FeaturedMenuItemsServiceController@index');
     });
 });
 
@@ -93,6 +96,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
         Route::post('specials/{special}/image', 'SpecialImagesController@store');
         Route::post('specials/{special}/publish', 'SpecialPublishingController@update');
+
+        Route::get('menu/featured', 'FeaturedMenuItemsController@index');
+        Route::post('menu/featured', 'FeaturedMenuItemsController@update');
+        Route::delete('menu/featured/{menuItemId}', 'FeaturedMenuItemsController@delete');
     });
 });
 

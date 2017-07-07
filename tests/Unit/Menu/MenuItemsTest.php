@@ -84,6 +84,38 @@ class MenuItemsTest extends TestCase
         $this->assertEquals($original_zh_name, $item->fresh()->getTranslation('name', 'zh'));
         $this->assertEquals($original_zh_description, $item->fresh()->getTranslation('description', 'zh'));
     }
+
+    /**
+     *@test
+     */
+    public function a_menu_item_can_present_its_attributes()
+    {
+        $menu_item = factory(MenuItem::class)->create([
+            'name' => ['en' => 'TEST NAME', 'zh' => 'TEST ZH NAME'],
+            'description' => ['en' => 'TEST DESCRIPTION', 'zh' => 'TEST ZH DESCRIPTION'],
+            'price' => 99,
+            'is_spicy' => false,
+            'is_vegetarian' => true,
+            'is_recommended' => true,
+            'published' => false,
+        ]);
+
+        $expected_attributes = [
+            'id' => $menu_item->id,
+            'name' => 'TEST NAME',
+            'zh_name' => 'TEST ZH NAME',
+            'description' => 'TEST DESCRIPTION',
+            'zh_description' => 'TEST ZH DESCRIPTION',
+            'price' => 99,
+            'is_spicy' => false,
+            'is_vegetarian' => true,
+            'is_recommended' => true,
+            'published' => false,
+            'image' => MenuItem::DEFAULT_IMG_URL
+        ];
+
+        $this->assertEquals($expected_attributes, $menu_item->presentAttributes());
+    }
     
 
 }

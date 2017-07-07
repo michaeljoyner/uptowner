@@ -1,0 +1,25 @@
+.featured-menu-item-app-component {
+  display: flex;
+  justify-content: space-between;
+
+  .menu-item-selection {
+    width: 50%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+  }
+
+  .current-featured-items {
+    width: 40%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+
+    .featured-items-box {
+      border: 1px solid $light_grey;
+      border-radius: 10px;
+      background: $white;
+      min-height: 500px;
+    }
+  }
+}

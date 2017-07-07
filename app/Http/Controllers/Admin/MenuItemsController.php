@@ -25,17 +25,7 @@ class MenuItemsController extends Controller
         $item->updateWithTranslations(request()->all());
         $item = $item->fresh();
 
-        return [
-            'name' => $item->name,
-            'zh_name' => $item->getTranslation('name', 'zh'),
-            'description' => $item->description,
-            'zh_description' => $item->getTranslation('description', 'zh'),
-            'price' => $item->price,
-            'is_spicy' => $item->is_spicy,
-            'is_vegetarian' => $item->is_vegetarian,
-            'is_recommended' => $item->is_recommended,
-            'published' => $item->published
-        ];
+        return $item->presentAttributes();
     }
 
 

@@ -78,4 +78,41 @@ class MenuItemsServicesTest extends TestCase
         $this->assertCount(1, $result);
         $this->assertEquals($thumb_src, $result[0]['image']);
     }
+
+    /**
+     *@test
+     */
+    public function all_menu_items_can_be_fetched()
+    {
+        $this->disableExceptionHandling();
+        $menu_items = factory(MenuItem::class, 15)->create();
+
+        $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/items');
+        $response->assertStatus(200);
+
+        $fetched_items = $response->decodeResponseJson();
+
+        $this->assertEquals(
+            $menu_items->pluck('id')->toArray(),
+            collect($fetched_items)->pluck('id')->toArray()
+        );
+    }
+
+    /**
+     *@test
+     */
+    public function fetched_menu_items_include_the_image()
+    {
+        $this->disableExceptionHandling();
+        factory(MenuItem::class, 2)->create();
+
+        $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/items');
+        $response->assertStatus(200);
+
+        $fetched_items = $response->decodeResponseJson();
+
+        collect($fetched_items)->each(function($item) {
+           $this->assertArrayHasKey('image', $item);
+        });
+    }
 }

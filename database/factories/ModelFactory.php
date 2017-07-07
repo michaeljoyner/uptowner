@@ -72,3 +72,12 @@ $factory->define(App\Occasions\Event::class, function (Faker\Generator $faker) {
         'published'   => false
     ];
 });
+
+$factory->define(App\Menu\FeaturedItem::class, function (Faker\Generator $faker) {
+
+    return [
+        'menu_item_id' => function() {
+            return factory(\App\Menu\MenuItem::class)->create()->id;
+        }
+    ];
+});
