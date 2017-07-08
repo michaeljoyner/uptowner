@@ -18,22 +18,21 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="/admin">Home</a></li>
-                <li><a href="/admin/menu/groups">Menu</a></li>
+                <li class="dropdown">
+                    <a href="#"
+                       class="dropdown-toggle"
+                       data-toggle="dropdown"
+                       role="button"
+                       aria-haspopup="true"
+                       aria-expanded="false"
+                    >Menu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/admin/menu/groups">Categories</a></li>
+                        <li><a href="/admin/menu/featured">Featured Items</a></li>
+                    </ul>
+                </li>
                 <li><a href="/admin/specials">Specials</a></li>
                 <li><a href="/admin/events">Events</a></li>
-                {{--<li class="dropdown">--}}
-                    {{--<a href="#"--}}
-                       {{--class="dropdown-toggle"--}}
-                       {{--data-toggle="dropdown"--}}
-                       {{--role="button"--}}
-                       {{--aria-haspopup="true"--}}
-                       {{--aria-expanded="false"--}}
-                    {{-->Cards <span class="caret"></span></a>--}}
-                    {{--<ul class="dropdown-menu">--}}
-                        {{--<li><a href="/admin/cards">View</a></li>--}}
-                        {{--<li><a href="/admin/cards/search">Search</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
