@@ -7,7 +7,17 @@
   background: $brand_primary;
 }
 
+.bg-light {
+  background: $brand_light;
+}
+
 .bg-blended-col {
   background-color: $brand_primary;
   background-blend-mode: multiply;
+}
+
+.bg-pattern-grey {
+  background-image: url('./images/pattern_grey.png');
+  background-repeat: repeat;
+  background-size: 300px;
 }

@@ -40,4 +40,17 @@ class FeaturedMenuItemsTest extends TestCase
 
         $this->assertDatabaseMissing('featured_items', ['menu_item_id' => $menu_item->id]);
     }
+
+    /**
+     *@test
+     */
+    public function deleting_an_item_that_is_featured_will_also_delete_the_featured_item()
+    {
+        $menu_item = factory(MenuItem::class)->create();
+        $featured_item = $menu_item->feature();
+
+        $menu_item->delete();
+
+        $this->assertDatabaseMissing('featured_items', ['id' => $featured_item->id]);
+    }
 }

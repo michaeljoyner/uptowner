@@ -3,6 +3,7 @@
 namespace App\Menu;
 
 use App\DefaultImage;
+use App\Events\DeletingMenuItem;
 use App\HandlesTranslations;
 use App\HasModelImage;
 use Illuminate\Database\Eloquent\Model;
@@ -33,6 +34,10 @@ class MenuItem extends Model implements HasMediaConversions
         'is_spicy',
         'is_recommended',
         'published'
+    ];
+
+    public $events = [
+        'deleting' => DeletingMenuItem::class
     ];
 
     public $translatable = ['name', 'description'];
