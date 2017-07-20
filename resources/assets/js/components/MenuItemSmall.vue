@@ -19,10 +19,8 @@
 
         methods: {
             startDrag(event) {
-//                console.log(event.dataTransfer);
                 event.dataTransfer.setData('text/plain', this.itemAttributes.id);
                 event.dataTransfer.setData('it_is_a_menu_item', 'true');
-//                console.log(event);
             },
 
 

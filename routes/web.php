@@ -20,6 +20,11 @@ Route::group([
     Route::get('/', function () {
         return view('front.home.page');
     });
+
+    Route::get('menu', function() {
+        $burgers = \App\Menu\MenuItem::all();
+        return view('front.menu.page')->with(compact('burgers'));
+    });
 });
 
 Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -52,6 +57,10 @@ Route::group(['prefix' => 'admin/services', 'namespace' => 'Admin\Services'], fu
         Route::get('specials', 'SpecialsServicesController@index');
 
         Route::get('menu/featured', 'FeaturedMenuItemsServiceController@index');
+
+        Route::get('menu/pages', 'MenuPagesServiceController@index');
+
+        Route::get('menu/pages/{page}/groups', 'MenuPagesMenuGroupsServicesController@index');
     });
 });
 
@@ -66,6 +75,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
         Route::get('users/passwords', 'UsersPasswordController@edit');
         Route::post('users/passwords', 'UsersPasswordController@update');
+
+        Route::get('menu/pages', 'MenuPagesController@index');
+        Route::get('menu/pages/{page}', 'MenuPagesController@show');
+        Route::post('menu/pages', 'MenuPagesController@store');
+        Route::post('menu/pages/{page}', 'MenuPagesController@update');
+        Route::delete('menu/pages/{page}', 'MenuPagesController@delete');
+
+        Route::post('menu/pages/{page}/publish', 'MenuPagePublishingController@update');
+
+        Route::post('menu/pages/{page}/groups', 'MenuPagesMenuGroupsController@store');
+        Route::delete('menu/pages/{page}/groups/{group}', 'MenuPagesMenuGroupsController@delete');
 
         Route::get('menu/groups', 'MenuGroupController@index');
         Route::get('menu/groups/{group}', 'MenuGroupController@show');

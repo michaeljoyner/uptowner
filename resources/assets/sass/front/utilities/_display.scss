@@ -48,6 +48,10 @@
   justify-content: space-between;
 }
 
+.flex-start {
+  align-items: flex-start;
+}
+
 .flex-split {
   & > * {
     flex-grow: 0;

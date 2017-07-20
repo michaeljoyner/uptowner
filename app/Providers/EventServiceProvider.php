@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\DeletingMenuItem' => [
             'App\Listeners\ClearDeletedFeaturedItem',
         ],
+        'App\Events\DeletingMenuPage' => [
+            'App\Listeners\UnAssignMenuGroups',
+        ],
 
     ];
 

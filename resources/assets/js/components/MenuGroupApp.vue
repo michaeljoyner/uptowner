@@ -2,18 +2,19 @@
 
 <template>
     <div class="menu-group-app-component">
-        <article class="menu-group-index-card" v-for="group in menu_groups">
-            <a :href="`/admin/menu/groups/${group.id}`">
-                <header>
-                    <h3 class="main-header">{{ group.name['en'] }}</h3>
-                    <p class="sub-header">{{ group.name['zh'] }}</p>
-                </header>
-            </a>
-            <div class="body">
-                <p>{{ group.description['en'] }}</p>
-                <p>{{ group.description['zh'] }}</p>
-            </div>
-        </article>
+        <!--<article class="menu-group-index-card" v-for="group in menu_groups">-->
+            <!--<a :href="`/admin/menu/groups/${group.id}`">-->
+                <!--<header>-->
+                    <!--<h3 class="main-header">{{ group.name['en'] }}</h3>-->
+                    <!--<p class="sub-header">{{ group.name['zh'] }}</p>-->
+                <!--</header>-->
+            <!--</a>-->
+            <!--<div class="body">-->
+                <!--<p>{{ group.description['en'] }}</p>-->
+                <!--<p>{{ group.description['zh'] }}</p>-->
+            <!--</div>-->
+        <!--</article>-->
+        <menu-group v-for="group in menu_groups" :key="group.id" :itemAttributes="group"></menu-group>
     </div>
 </template>
 

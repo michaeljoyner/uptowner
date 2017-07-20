@@ -5,6 +5,7 @@ namespace Tests\Unit\Menu;
 
 use App\Menu\MenuGroup;
 use App\Menu\MenuItem;
+use App\Menu\MenuPage;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
@@ -41,5 +42,18 @@ class MenuGroupsTest extends TestCase
         $this->assertFalse($item->is_spicy);
         $this->assertTrue($item->is_vegetarian);
         $this->assertTrue($item->is_recommended);
+    }
+
+    /**
+     *@test
+     */
+    public function a_menu_group_can_detach_from_its_page()
+    {
+        $page = factory(MenuPage::class)->create();
+        $group = factory(MenuGroup::class)->create(['menu_page_id' => $page->id]);
+
+        $group->detachFromPage();
+
+        $this->assertNull($group->fresh()->menu_page_id);
     }
 }

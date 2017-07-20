@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMenuGroupsTable extends Migration
+class CreateMenuPagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateMenuGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu_groups', function (Blueprint $table) {
+        Schema::create('menu_pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('menu_page_id')->nullable();
             $table->text('name');
-            $table->text('description');
+            $table->boolean('published')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateMenuGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menu_groups');
+        Schema::dropIfExists('menu_pages');
     }
 }

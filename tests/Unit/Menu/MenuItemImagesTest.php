@@ -87,4 +87,20 @@ class MenuItemImagesTest extends TestCase
         $this->assertEquals(MenuItem::DEFAULT_IMG_URL, $item->imageUrl('thumb'));
         $this->assertEquals(MenuItem::DEFAULT_IMG_URL, $item->imageUrl('web'));
     }
+
+    /**
+     *@test
+     */
+    public function a_menu_item_knows_if_it_has_its_own_image()
+    {
+        $item = factory(MenuItem::class)->create();
+        $this->assertCount(0, $item->getMedia());
+
+        $this->assertFalse($item->hasOwnImage());
+
+        $item2 = factory(MenuItem::class)->create();
+        $item2->setImage(UploadedFile::fake()->image('testpic.jpg'));
+
+        $this->assertTrue($item2->hasOwnImage());
+    }
 }

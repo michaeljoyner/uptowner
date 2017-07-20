@@ -1,0 +1,19 @@
+.menu-page-groups-app-component {
+  display: flex;
+  justify-content: space-between;
+
+  .group-selection-box, .group-dropzone-box {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    width: 45%;
+  }
+
+  .group-dropzone {
+    border: 1px solid $mid_grey;
+    background: $white;
+    min-height: 500px;
+    padding: 20px;
+    border-radius: 8px;
+  }
+}

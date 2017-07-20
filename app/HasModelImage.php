@@ -18,6 +18,11 @@ trait HasModelImage
         return $this->getImage()->getUrl($conversion);
     }
 
+    public function hasOwnImage()
+    {
+        return $this->imageUrl() !== static::DEFAULT_IMG_URL;
+    }
+
     private function getImage()
     {
         return $this->getMedia()->first() ?? new DefaultImage(static::DEFAULT_IMG_URL ?? '');

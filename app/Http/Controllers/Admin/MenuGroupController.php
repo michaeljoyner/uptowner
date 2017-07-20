@@ -35,6 +35,14 @@ class MenuGroupController extends Controller
             'name' => 'required',
         ]);
         $group->updateWithTranslations(request()->all());
-        return redirect('/admin');
+        $group = $group->fresh();
+
+        return response()->json([
+            'id' => $group->id,
+            'name' => $group->name,
+            'zh_name' => $group->getTranslation('name', 'zh'),
+            'description' => $group->description,
+            'zh_description' => $group->getTranslation('description', 'zh')
+        ]);
     }
 }

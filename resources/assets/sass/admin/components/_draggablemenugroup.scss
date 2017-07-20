@@ -1,0 +1,40 @@
+.draggable-menu-group-component {
+
+  border: 1px solid $mid_grey;
+  border-radius: 5px;
+  margin-bottom: 15px;
+
+  header {
+    background: $mid_grey;
+    color: $white;
+    padding: 10px;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .body {
+    padding: 10px;
+  }
+
+  &.available {
+    border-color: $brand_blue_light;
+
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+
+    &:active {
+      cursor: grabbing;
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing;
+    }
+
+    header {
+      background: $brand_blue_light;
+      color: $white;
+    }
+  }
+}

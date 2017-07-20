@@ -81,7 +81,6 @@
             },
 
             dragEnterBox(event) {
-                console.log([...event.dataTransfer.types].includes('it_is_a_menu_item'));
                 if([...event.dataTransfer.types].includes('it_is_a_menu_item')) {
                     event.stopPropagation();
                     event.preventDefault();

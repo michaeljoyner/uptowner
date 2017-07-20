@@ -28,4 +28,17 @@ class MenuGroup extends Model
             $item->updateWithTranslations($attributes);
         });
     }
+
+    public function page()
+    {
+        return $this->belongsTo(MenuPage::class, 'menu_page_id');
+    }
+
+    public function detachFromPage()
+    {
+        $this->menu_page_id = null;
+        return $this->save();
+    }
+
+
 }

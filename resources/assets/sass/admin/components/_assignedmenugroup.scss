@@ -1,0 +1,34 @@
+.assigned-menu-group-component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: $brand_orange_light;
+  border-radius: 5px;
+  margin-bottom: 15px;
+
+  p {
+    margin: 0;
+    color: $white;
+  }
+
+
+  .close-btn {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    background: lighten($brand_dark, 20%);
+    color: $white;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    line-height: 18px;
+    cursor: default;
+  }
+}

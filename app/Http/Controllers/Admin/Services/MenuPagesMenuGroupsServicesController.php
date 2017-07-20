@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Services;
 
-use App\Menu\MenuGroup;
+use App\Menu\MenuPage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class MenuGroupServicesController extends Controller
+class MenuPagesMenuGroupsServicesController extends Controller
 {
-    public function index()
+    public function index(MenuPage $page)
     {
-        return MenuGroup::all()->map(function($group) {
+        return $page->groups->map(function($group) {
             return [
                 'id' => $group->id,
                 'name' => $group->name,
