@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\DeletingMenuPage' => [
             'App\Listeners\UnAssignMenuGroups',
         ],
+        'App\Events\DeletingMenuGroup' => [
+            'App\Listeners\GuardAgainstDeletingNonEmptyMenuGroup',
+        ],
 
     ];
 

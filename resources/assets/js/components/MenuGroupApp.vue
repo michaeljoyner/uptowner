@@ -14,7 +14,11 @@
                 <!--<p>{{ group.description['zh'] }}</p>-->
             <!--</div>-->
         <!--</article>-->
-        <menu-group v-for="group in menu_groups" :key="group.id" :itemAttributes="group"></menu-group>
+        <menu-group v-for="group in menu_groups"
+                    :key="group.id"
+                    :itemAttributes="group"
+                    @menu-group-deleted="removeGroup(group)"
+        ></menu-group>
     </div>
 </template>
 
@@ -37,6 +41,10 @@
                 axios.get('/admin/services/menu/groups')
                     .then(({data}) => this.menu_groups = data)
                     .catch(err => console.log(err.response));
+            },
+
+            removeGroup(group) {
+                this.menu_groups.splice(this.menu_groups.indexOf(group), 1);
             }
         }
     }

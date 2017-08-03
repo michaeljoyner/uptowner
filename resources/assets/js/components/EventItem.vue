@@ -6,6 +6,15 @@
             <p class="event-date">{{ formatted_date }}</p>
         </div>
         <div class="event-body">
+            <div class="event-image single-image-uploader-box">
+                <single-upload :default="eventAttributes.image"
+                               :url="`/admin/events/${eventAttributes.id}/image`"
+                               size="preview"
+                               :preview-width="200"
+                               :preview-height="150"
+                               :unique="eventAttributes.id"
+                ></single-upload>
+            </div>
             <div class="event-en">
                 <p class="event-title">{{ name }}</p>
                 <p class="time-of-day">{{ time_of_day }}</p>
@@ -18,6 +27,19 @@
             </div>
         </div>
         <div class="event-actions">
+            <icon-switch switch-field="feature"
+                         :initial="eventAttributes.featured"
+                         :url="`/admin/events/${eventAttributes.id}/feature`"
+                         :unique="`feat-${eventAttributes.id}`"
+                         component-class="slide-switch"
+                         @switch-flipped="featuredChanged"
+            >
+                <span slot="label">Feature</span>
+                <div slot="icon">
+                    <div class="switch-rail"></div>
+                    <div class="switch-knob"></div>
+                </div>
+            </icon-switch>
             <event-form :url="`/admin/events/${eventAttributes.id}`"
                         form-type="update"
                         button-text="edit"
@@ -81,6 +103,10 @@
 
             updateEvent(updated_data) {
                 this.setDataFrom(updated_data);
+            },
+
+            featuredChanged() {
+                eventHub.$emit('event-featured');
             }
         }
     }

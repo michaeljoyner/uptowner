@@ -1,0 +1,52 @@
+.menu-order-app-component {
+  display: flex;
+  justify-content: space-between;
+
+  .menu-top {
+    font-size: 1.25em;
+    text-transform: uppercase;
+    color: $brand_red_dark;
+    cursor: pointer;
+  }
+
+  .menu-inner {
+    color: $brand_orange;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  p.active {
+    background: $brand_blue;
+    color: $white;
+    padding: 3px 5px;
+  }
+
+  .menu-breadcrumbs {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    width: 30%;
+
+     & > ul {
+      padding: 0;
+      list-style-type: none;
+
+       ul {
+         list-style-type: none;
+         padding-left: 10px;
+       }
+
+
+      li {
+
+      }
+    }
+  }
+
+  .menu-order-list-box {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    width: 65%;
+  }
+}

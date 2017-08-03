@@ -11,5 +11,11 @@
 @import "front/utilities/margins";
 @import "front/utilities/widths";
 @import "front/utilities/misc";
+@import "front/utilities/position";
+
+@import "front/components/navbar";
+@import "front/components/menunav";
+@import "front/components/banner";
 
 @import "front/pages/home";
+@import "front/pages/events";

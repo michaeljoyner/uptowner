@@ -19,8 +19,11 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
+    "jump.js": "^1.0.2",
     "laravel-mix": "^1.1.1",
     "moment": "^2.18.1",
+    "smooth-scroll": "github:cferdinandi/smooth-scroll",
+    "sortablejs": "^1.6.0",
     "sweetalert": "^1.1.3"
   }
 }

@@ -14,7 +14,8 @@ class MenuPagesServiceController extends Controller
             return [
                 'id' => $page->id,
                 'name' => $page->name,
-                'zh_name' => $page->getTranslation('name', 'zh')
+                'zh_name' => $page->getTranslation('name', 'zh'),
+                'published' => $page->published
             ];
         });
     }

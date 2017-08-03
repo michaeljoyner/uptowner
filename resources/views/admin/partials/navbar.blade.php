@@ -27,6 +27,8 @@
                        aria-expanded="false"
                     >Menu <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="/admin/menu/overview">Arrange</a></li>
+                        <li><a href="/admin/menu/pages">Pages</a></li>
                         <li><a href="/admin/menu/groups">Categories</a></li>
                         <li><a href="/admin/menu/featured">Featured Items</a></li>
                     </ul>

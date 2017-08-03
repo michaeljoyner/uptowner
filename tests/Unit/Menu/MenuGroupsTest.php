@@ -56,4 +56,60 @@ class MenuGroupsTest extends TestCase
 
         $this->assertNull($group->fresh()->menu_page_id);
     }
+
+    /**
+     *@test
+     */
+    public function a_menu_group_has_a_published_scope()
+    {
+        factory(MenuGroup::class, 4)->create(['published' => true]);
+        factory(MenuGroup::class, 2)->create(['published' => false]);
+
+        $this->assertCount(4, MenuGroup::published()->get());
+    }
+
+    /**
+     *@test
+     */
+    public function it_has_a_scoped_relationship_for_published_items()
+    {
+        $group = factory(MenuGroup::class)->create();
+        factory(MenuItem::class, 3)->create(['published' => true, 'menu_group_id' => $group->id]);
+        factory(MenuItem::class, 1)->create(['published' => false, 'menu_group_id' => $group->id]);
+
+        $this->assertCount(3, $group->publishedItems);
+    }
+
+    /**
+     *@test
+     */
+    public function a_menu_group_with_at_least_one_item_attached_can_not_be_deleted()
+    {
+        $group = factory(MenuGroup::class)->create();
+        factory(MenuItem::class, 1)->create(['menu_group_id' => $group->id]);
+
+        try {
+            $group->delete();
+            $this->fail('Expecting Exception to be thrown');
+        } catch(\Exception $e) {
+            $this->assertEquals('Cannot delete non empty menu group', $e->getMessage());
+        }
+
+        $this->assertNotNull(MenuGroup::find($group->id));
+    }
+
+    /**
+     *@test
+     */
+    public function a_menu_group_knows_if_it_can_be_deleted()
+    {
+        $group = factory(MenuGroup::class)->create();
+        $item = factory(MenuItem::class)->create(['menu_group_id' => $group->id]);
+
+        $this->assertFalse($group->canBeDeleted());
+
+        $item->delete();
+        $this->assertCount(0, $group->fresh()->items);
+        $this->assertTrue($group->fresh()->canBeDeleted());
+    }
 }

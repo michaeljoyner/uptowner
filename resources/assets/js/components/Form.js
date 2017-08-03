@@ -19,7 +19,8 @@ export default class Form {
     }
 
     clearForm(form_attributes = {}) {
-        this.data = Object.assign(this.defaults, form_attributes);
+        const defaults = Object.assign({}, this.defaults);
+        this.data = Object.assign(defaults, form_attributes);
     }
 
     makeErrorObject(attributes) {

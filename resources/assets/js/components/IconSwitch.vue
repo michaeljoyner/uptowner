@@ -46,6 +46,7 @@
             onSuccess(response) {
                 this.syncing = false;
                 this.is_on = response.new_status;
+                this.$emit('switch-flipped', {current_status: this.is_on});
             },
 
             onFailure(error) {

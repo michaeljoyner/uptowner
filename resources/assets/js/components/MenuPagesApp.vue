@@ -2,7 +2,7 @@
 
 <template>
     <div class="menu-pages-app-component">
-        <menu-page v-for="page in pages" :key="page.id" :itemAttributes="page"></menu-page>
+        <menu-page v-for="page in pages" :key="page.id" :itemAttributes="page" @menu-page-deleted="removePage(page)"></menu-page>
     </div>
 </template>
 
@@ -25,6 +25,10 @@
                 axios.get('/admin/services/menu/pages')
                     .then(({data}) => this.pages = data)
                     .catch(err => console.log(err));
+            },
+
+            removePage(page) {
+                this.pages.splice(this.pages.indexOf(page), 1);
             }
         }
     }

@@ -22,6 +22,7 @@
         mounted() {
             this.fetchEvents();
             eventHub.$on('event-added', () => this.fetchEvents());
+            eventHub.$on('event-featured', () => this.fetchEvents());
         },
 
         methods: {

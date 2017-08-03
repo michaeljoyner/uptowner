@@ -12,12 +12,15 @@
     <link href="https://fonts.googleapis.com/css?family=Arvo:700|Lato:400,400i" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body>
+<body @if($isMenuPage ?? false) class="menu-body" @endif>
 <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
-@include('front.partials.navbar')
-@yield('content')
+<div id="app">
+    @include('front.partials.navbar')
+    @yield('content')
+</div>
+
 
 <script src="{{ mix('js/front.js') }}"></script>
 <script>

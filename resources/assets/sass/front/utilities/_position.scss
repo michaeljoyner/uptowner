@@ -1,0 +1,23 @@
+.sticky {
+  position: fixed;
+}
+
+.sticky-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.absolute-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

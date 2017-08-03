@@ -17,6 +17,7 @@ class CreateMenuPagesTable extends Migration
             $table->increments('id');
             $table->text('name');
             $table->boolean('published')->default(0);
+            $table->integer('position')->nullable();
             $table->timestamps();
         });
     }

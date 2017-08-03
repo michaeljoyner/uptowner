@@ -12,18 +12,19 @@ $brand_light: #FFFEFA;
 
 //sizes
 $sizes: (
-  1: .25rem,
-  2: .5rem,
-  3: .75rem,
-  4: 1rem,
-  5: 1.25rem,
-  6: 1.5rem,
-  7: 2rem,
-  8: 2.5rem,
-  9: 3rem,
-  10: 5rem,
-  11: 7rem,
-  12: 10rem
+        0: 0,
+        1: .25rem,
+        2: .5rem,
+        3: .75rem,
+        4: 1rem,
+        5: 1.25rem,
+        6: 1.5rem,
+        7: 2rem,
+        8: 2.5rem,
+        9: 3rem,
+        10: 5rem,
+        11: 7rem,
+        12: 10rem
 );
 
 $border_sizes: (
@@ -33,6 +34,8 @@ $border_sizes: (
         4: 5px
 );
 
+$nav_height: 75px;
+$menu_nav_height: 60px;
 
 
 

@@ -45,4 +45,12 @@ class MenuGroupController extends Controller
             'zh_description' => $group->getTranslation('description', 'zh')
         ]);
     }
+
+    /**
+     *@test
+     */
+    public function delete(MenuGroup $group)
+    {
+        $group->delete();
+    }
 }

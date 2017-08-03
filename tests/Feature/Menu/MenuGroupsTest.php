@@ -5,6 +5,7 @@ namespace Tests\Feature\Menu;
 
 
 use App\Menu\MenuGroup;
+use App\Menu\MenuItem;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
@@ -75,4 +76,33 @@ class MenuGroupsTest extends TestCase
         $this->assertArrayHasKey('description', $returned_group_data);
         $this->assertArrayHasKey('zh_description', $returned_group_data);
     }
+
+    /**
+     *@test
+     */
+    public function an_empty_menu_group_can_be_deleted()
+    {
+        $group = factory(MenuGroup::class)->create();
+
+        $response = $this->asLoggedInUser()->json('DELETE', '/admin/menu/groups/' . $group->id);
+        $response->assertStatus(200);
+
+        $this->assertDatabaseMissing('menu_groups', ['id' => $group->id]);
+    }
+
+    /**
+     *@test
+     */
+    public function an_non_empty_menu_group_can_be_deleted()
+    {
+        $group = factory(MenuGroup::class)->create();
+        factory(MenuItem::class)->create(['menu_group_id' => $group->id]);
+
+        $response = $this->asLoggedInUser()->json('DELETE', '/admin/menu/groups/' . $group->id);
+        $response->assertStatus(500);
+
+        $this->assertDatabaseHas('menu_groups', ['id' => $group->id]);
+    }
+
+
 }

@@ -20,6 +20,7 @@ class CreateEventsTable extends Migration
             $table->text('name')->nullable();
             $table->text('description')->nullable();
             $table->boolean('published')->default(0);
+            $table->boolean('featured')->default(0);
             $table->timestamps();
         });
     }

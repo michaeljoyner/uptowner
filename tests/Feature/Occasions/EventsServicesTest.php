@@ -44,6 +44,8 @@ class EventsServicesTest extends TestCase
             $this->assertEquals('満版復', $fetched_event['zh_time_of_day']);
             $this->assertEquals(Carbon::now()->format('Y-m-d'), $fetched_event['event_date']);
             $this->assertTrue($fetched_event['published']);
+            $this->assertArrayHasKey('image', $fetched_event);
+            $this->assertArrayHasKey('featured', $fetched_event);
         });
     }
 }

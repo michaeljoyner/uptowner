@@ -58,6 +58,7 @@ class MenuPagesServiceTest extends TestCase
             $this->assertArrayHasKey('is_assigned', $group);
             $this->assertArrayHasKey('page_name', $group);
             $this->assertArrayHasKey('page_id', $group);
+            $this->assertArrayHasKey('published', $group);
         });
     }
 }

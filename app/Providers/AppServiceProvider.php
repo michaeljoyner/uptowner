@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Menu\Menu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
@@ -31,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('menu', function() {
+            return new Menu;
+        });
     }
 }

@@ -4,11 +4,15 @@
 }
 
 .bg-col {
-  background: $brand_primary;
+  background-color: $brand_primary;
 }
 
 .bg-light {
-  background: $brand_light;
+  background-color: $brand_light;
+}
+
+.bg-opaque {
+  background-color: rgba($brand_light, .7);
 }
 
 .bg-blended-col {

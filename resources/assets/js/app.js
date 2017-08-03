@@ -45,6 +45,8 @@ Vue.component('menu-page', require('./components/MenuPage.vue'));
 Vue.component('menu-page-groups-app', require('./components/MenuPageGroupsApp.vue'));
 Vue.component('draggable-menu-group', require('./components/DraggableMenuGroup.vue'));
 Vue.component('assigned-menu-group', require('./components/AssignedMenuGroup.vue'));
+Vue.component('item-orderer', require('./components/ItemOrderer.vue'));
+Vue.component('menu-order-app', require('./components/MenuOrderApp.vue'));
 
 window.eventHub = new Vue();
 window.swal = require('sweetalert');

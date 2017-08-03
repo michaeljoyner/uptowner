@@ -23,6 +23,7 @@ class CreateMenuItemsTable extends Migration
             $table->boolean('is_vegetarian')->default(0);
             $table->boolean('is_recommended')->default(0);
             $table->boolean('published')->default(0);
+            $table->integer('position')->nullable();
             $table->timestamps();
         });
     }

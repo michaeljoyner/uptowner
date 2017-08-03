@@ -36,6 +36,9 @@ $factory->define(App\Menu\MenuGroup::class, function (Faker\Generator $faker) {
     $zh_faker = Faker\Factory::create('zh_TW');
 
     return [
+        'menu_page_id' => function() {
+            return factory(\App\Menu\MenuPage::class)->create()->id;
+        },
         'name'        => ['en' => $faker->name, 'zh' => $zh_faker->name],
         'description' => ['en' => $faker->sentence, 'zh' => $zh_faker->realText(10)]
     ];

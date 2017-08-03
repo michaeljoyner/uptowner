@@ -6,6 +6,8 @@ use App\DefaultImage;
 use App\Events\DeletingMenuItem;
 use App\HandlesTranslations;
 use App\HasModelImage;
+use App\HasPublishedScope;
+use App\Orderable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
@@ -13,17 +15,17 @@ use Spatie\Translatable\HasTranslations;
 
 class MenuItem extends Model implements HasMediaConversions
 {
-    use HasTranslations, HandlesTranslations, HasMediaTrait, HasModelImage;
+    use HasTranslations, HandlesTranslations, HasMediaTrait, HasModelImage, HasPublishedScope, Orderable;
 
-    const DEFAULT_IMG_URL = '/images/defaults/menuitem.jpg';
+    const DEFAULT_IMG_URL = '/images/defaults/default4x3.png';
 
     protected $table = 'menu_items';
 
     protected $casts = [
-        'is_spicy' => 'boolean',
-        'is_vegetarian' => 'boolean',
+        'is_spicy'       => 'boolean',
+        'is_vegetarian'  => 'boolean',
         'is_recommended' => 'boolean',
-        'published' => 'boolean'
+        'published'      => 'boolean'
     ];
 
     protected $fillable = [
@@ -33,7 +35,8 @@ class MenuItem extends Model implements HasMediaConversions
         'is_vegetarian',
         'is_spicy',
         'is_recommended',
-        'published'
+        'published',
+        'position'
     ];
 
     public $events = [
@@ -55,17 +58,17 @@ class MenuItem extends Model implements HasMediaConversions
     public function presentAttributes()
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'zh_name' => $this->getTranslation('name', 'zh'),
-            'description' => $this->description,
+            'id'             => $this->id,
+            'name'           => $this->name,
+            'zh_name'        => $this->getTranslation('name', 'zh'),
+            'description'    => $this->description,
             'zh_description' => $this->getTranslation('description', 'zh'),
-            'price' => $this->price,
-            'is_spicy' => $this->is_spicy,
-            'is_vegetarian' => $this->is_vegetarian,
+            'price'          => $this->price,
+            'is_spicy'       => $this->is_spicy,
+            'is_vegetarian'  => $this->is_vegetarian,
             'is_recommended' => $this->is_recommended,
-            'published' => $this->published,
-            'image' => $this->imageUrl('thumb')
+            'published'      => $this->published,
+            'image'          => $this->imageUrl('thumb')
         ];
     }
 
@@ -86,7 +89,12 @@ class MenuItem extends Model implements HasMediaConversions
 
     public function isFeatured()
     {
-        return !! $this->featureParent;
+        return !!$this->featureParent;
+    }
+
+    protected function childList()
+    {
+        return null;
     }
 
 

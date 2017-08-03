@@ -1,0 +1,10 @@
+body.menu-body {
+  padding-top: $nav_height + $menu_nav_height;
+}
+
+.menu-nav {
+  position: fixed;
+  top: $nav_height;
+  width: 100%;
+  height: $menu_nav_height;
+}

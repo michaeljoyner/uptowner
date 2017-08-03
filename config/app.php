@@ -228,7 +228,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Loc' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class
+        'Loc' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+        'Menu' => \App\Facades\Menu::class
 
     ],
 

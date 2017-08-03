@@ -4,16 +4,18 @@ namespace App\Menu;
 
 use App\Events\DeletingMenuPage;
 use App\HandlesTranslations;
+use App\HasPublishedScope;
+use App\Orderable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
 class MenuPage extends Model
 {
-    use HasTranslations, HandlesTranslations;
+    use HasTranslations, HandlesTranslations, HasPublishedScope, Orderable;
 
     protected $table = 'menu_pages';
 
-    protected $fillable = ['name', 'published'];
+    protected $fillable = ['name', 'published', 'position'];
 
     public $translatable = ['name'];
 
@@ -23,9 +25,27 @@ class MenuPage extends Model
         'deleting' => DeletingMenuPage::class
     ];
 
+
+
     public function groups()
     {
         return $this->hasMany(MenuGroup::class);
+    }
+
+    public function publishedGroups()
+    {
+        return $this->hasMany(MenuGroup::class)->published();
+    }
+
+    public function publishedItemImages()
+    {
+        return $this->publishedGroups->flatMap(function($group) {
+            return $group->publishedItems;
+        })->filter(function($item) {
+            return $item->hasOwnImage();
+        })->map(function($item) {
+            return ['src' => $item->imageUrl('thumb'), 'alt' => $item->name];
+        });
     }
 
     public function addGroup($group_id)
@@ -41,5 +61,10 @@ class MenuPage extends Model
     public function releaseGroup(MenuGroup $group)
     {
         $group->detachFromPage();
+    }
+
+    protected function childList()
+    {
+        return ['page' => $this->id, 'group' => null];
     }
 }

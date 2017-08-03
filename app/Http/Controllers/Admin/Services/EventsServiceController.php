@@ -20,7 +20,9 @@ class EventsServiceController extends Controller
                 'time_of_day' => $event->time_of_day,
                 'zh_time_of_day' => $event->getTranslation('time_of_day', 'zh'),
                 'event_date' => $event->event_date->format('Y-m-d'),
-                'published' => $event->published
+                'published' => $event->published,
+                'image' => $event->imageUrl('thumb'),
+                'featured' => $event->featured
             ];
         });
     }

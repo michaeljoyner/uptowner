@@ -18,8 +18,10 @@ class MenuPagesMenuGroupsServicesController extends Controller
                 'description' => $group->description,
                 'zh_description' => $group->getTranslation('description', 'zh'),
                 'is_assigned' => !! $group->page,
+                'published' => $group->published,
                 'page_name' => $group->page->name ?? null,
                 'page_id' => $group->page->id ?? null,
+                'can_delete' => $group->canBeDeleted()
             ];
         });
     }

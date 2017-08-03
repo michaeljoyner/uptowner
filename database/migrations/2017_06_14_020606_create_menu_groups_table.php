@@ -18,6 +18,8 @@ class CreateMenuGroupsTable extends Migration
             $table->unsignedInteger('menu_page_id')->nullable();
             $table->text('name');
             $table->text('description');
+            $table->boolean('published')->default(0);
+            $table->integer('position')->nullable();
             $table->timestamps();
         });
     }
