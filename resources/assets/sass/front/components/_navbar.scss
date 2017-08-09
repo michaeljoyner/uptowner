@@ -1,4 +1,11 @@
 .main-navbar {
   height: $nav_height;
   z-index: 100;
+  transition: .7s ease-in;
+}
+
+body.home-page {
+  .main-navbar.hidden {
+    opacity: 0;
+  }
 }

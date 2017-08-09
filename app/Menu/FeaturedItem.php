@@ -14,4 +14,16 @@ class FeaturedItem extends Model
     {
         return $this->belongsTo(MenuItem::class);
     }
+
+    public static function currentlyFeatured($amount = 4)
+    {
+        return static::latest()->get()->map->item()->filter(function($item) {
+            return $item->published;
+        })->take($amount);
+    }
+
+    public function item()
+    {
+        return $this->menuItem;
+    }
 }

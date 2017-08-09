@@ -17,11 +17,11 @@ class EventsList
 
     public function comingSoon()
     {
-        return $this->all->take(3);
+        return $this->all->filter->hasOwnImage()->take(3);
     }
 
     public function restOfEvents()
     {
-        return $this->all->slice(3);
+        return $this->all->diff($this->comingSoon());
     }
 }

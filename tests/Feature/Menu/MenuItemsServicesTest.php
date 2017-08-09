@@ -62,6 +62,53 @@ class MenuItemsServicesTest extends TestCase
     /**
      *@test
      */
+    public function a_menu_item_with_model_image_when_fetched_has_the_image_id_included()
+    {
+        $this->disableExceptionHandling();
+        $item = factory(MenuItem::class)->create();
+        $image = $item->setImage(UploadedFile::fake()->image('testpic.jpg'));
+
+
+        $response = $this->asLoggedInUser()
+            ->json('GET', '/admin/services/menu/groups/' . $item->menuGroup->id . '/items');
+        $response->assertStatus(200);
+
+        $fetched_items = $response->decodeResponseJson();
+
+        $this->assertCount(1, $fetched_items);
+
+        collect($fetched_items)->each(function($item) use ($image) {
+            $this->assertArrayHasKey('image', $item);
+            $this->assertEquals($image->id, $item['image_id']);
+        });
+    }
+
+    /**
+     *@test
+     */
+    public function a_menu_item_without_an_image_has_a_image_id_of_null()
+    {
+        $this->disableExceptionHandling();
+        $item = factory(MenuItem::class)->create();
+
+
+        $response = $this->asLoggedInUser()
+            ->json('GET', '/admin/services/menu/groups/' . $item->menuGroup->id . '/items');
+        $response->assertStatus(200);
+
+        $fetched_items = $response->decodeResponseJson();
+
+        $this->assertCount(1, $fetched_items);
+
+        collect($fetched_items)->each(function($item) {
+            $this->assertArrayHasKey('image_id', $item);
+            $this->assertNull($item['image_id']);
+        });
+    }
+
+    /**
+     *@test
+     */
     public function a_menu_items_thumbnail_image_source_is_returned_with_the_item_data()
     {
         $item = factory(MenuItem::class)->create();

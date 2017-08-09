@@ -111,7 +111,8 @@ class MenuItemsTest extends TestCase
             'is_vegetarian' => true,
             'is_recommended' => true,
             'published' => false,
-            'image' => MenuItem::DEFAULT_IMG_URL
+            'image' => MenuItem::DEFAULT_IMG_URL,
+            'image_id' => null
         ];
 
         $this->assertEquals($expected_attributes, $menu_item->presentAttributes());

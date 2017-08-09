@@ -1,0 +1,21 @@
+.two-split {
+  display: flex;
+  justify-content: space-between;
+
+  @include respond-to(phone) {
+    flex-direction: column;
+  }
+
+  & > * {
+    width: 45%;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+
+    @include respond-to(phone) {
+      width: 100%;
+    }
+  }
+
+
+}

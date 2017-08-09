@@ -1,10 +1,9 @@
-@extends('front.base')
+@extends('front.base', ['pageName' => 'menu-page'])
 
 @section('content')
-    <div class="menu-nav bg-light flex flex-space text-colour uppercase pd-y-4 heading bb-2 bd-col">
+    <div class="menu-nav zz-top bg-light flex flex-space text-colour uppercase pd-y-4 heading bb-2 bd-col">
         @foreach(Menu::pages() as $page)
             <scroll-link hash-link="#{{ str_slug($page->name) }}" link-text="{{ $page->name }}"></scroll-link>
-            {{--<a href="#{{ str_slug($page->name) }}">{{ $page->name }}</a>--}}
         @endforeach
     </div>
     @foreach(Menu::pages() as $page)
@@ -12,9 +11,12 @@
         <div class="flex flex-center pd-y-9 bg-pattern-grey bt-2 bd-col">
             <h1 class="h1 uppercase text-colour text-center">{{ $page->name }}</h1>
         </div>
-        <div class="flex flex-adapt flex-start">
+        <div data-flickity='{"cellAlign": "left", "contain": true, "groupCells": true, "imagesLoaded": true, "pageDots": false}'>
             @foreach($page->publishedItemImages() as $image)
-                <img width="290" src="{{ $image['src'] }}" alt="{{ $image['alt'] }}">
+                <div class="relative">
+                    <img draggable="false" width="290" src="{{ $image['src'] }}" alt="{{ $image['alt'] }}">
+                    <p class="absolute-bottom-right text-colour-light h4">{{ $image['alt'] }}</p>
+                </div>
             @endforeach
         </div>
         <div class="w-con mg-x-a">

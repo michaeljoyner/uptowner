@@ -1,4 +1,4 @@
-<div class="main-navbar flex flex-spaced bg-col bb-2 bd-col-light sticky-top">
+<div class="hidden main-navbar flex flex-spaced bg-col bb-2 bd-col-light sticky-top">
     <div class="nav-branding flex-static flex flex-center pd-2">
         <img src="/images/logos/logo_white.svg" alt="Uptowner Taichung Logo" width="150px">
     </div>

@@ -36,13 +36,7 @@ class MenuPagesController extends Controller
 
         $page->updateWithTranslations(request(['name', 'zh_name']));
 
-        $page = $page->fresh();
-
-        return response()->json([
-            'id' => $page->id,
-            'name' => $page->name,
-            'zh_name' => $page->getTranslation('name', 'zh')
-        ]);
+        return $page->fresh()->toJsonableArray();
     }
 
     public function delete(MenuPage $page)

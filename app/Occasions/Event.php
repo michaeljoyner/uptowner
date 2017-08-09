@@ -44,7 +44,7 @@ class Event extends Model implements HasMediaConversions
 
     public static function setFeatured(Event $event)
     {
-        static::where('featured', 1)->get()->each(function($ev) {
+        static::where('featured', 1)->get()->each(function ($ev) {
             $ev->update(['featured' => false]);
         });
         $event->update(['featured' => true]);
@@ -52,9 +52,9 @@ class Event extends Model implements HasMediaConversions
 
     public static function featured()
     {
-        $featured =  static::published()->upcoming()->where('featured', 1)->first();
+        $featured = static::published()->upcoming()->where('featured', 1)->first();
 
-        if(! $featured) {
+        if (!$featured) {
             $next_best = static::published()->upcoming()->get()->filter->hasOwnImage()->first();
         }
 
@@ -64,5 +64,23 @@ class Event extends Model implements HasMediaConversions
     public static function upcomingList()
     {
         return new EventsList(static::featured(), static::published()->upcoming()->get());
+    }
+
+    public function toJsonableArray()
+    {
+        return [
+            'id'             => $this->id,
+            'name'           => $this->name,
+            'zh_name'        => $this->getTranslation('name', 'zh'),
+            'description'    => $this->description,
+            'zh_description' => $this->getTranslation('description', 'zh'),
+            'time_of_day'    => $this->time_of_day,
+            'zh_time_of_day' => $this->getTranslation('time_of_day', 'zh'),
+            'event_date'     => $this->event_date->format('Y-m-d'),
+            'published'      => $this->published,
+            'image'          => $this->imageUrl('thumb'),
+            'image_id'       => $this->getImage()->id,
+            'featured'       => $this->featured
+        ];
     }
 }

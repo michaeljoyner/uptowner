@@ -128,4 +128,35 @@ class EventsTest extends TestCase
 
         $this->assertEquals($eventB->id, Event::featured()->id);
     }
+
+    /**
+     *@test
+     */
+    public function an_event_can_present_itself_as_a_jsonable_array()
+    {
+        $event = factory(Event::class)->create([
+            'name' => ['en' => 'TEST NAME', 'zh' => '満版復'],
+            'description' => ['en' => 'TEST DESCRIPTION', 'zh' => '永門義会可際査別件村約候証民'],
+            'event_date' => Carbon::today(),
+            'time_of_day' => ['en' => 'TEST TIME', 'zh' => '満版復'],
+            'published' => true,
+            'featured' => false
+        ]);
+        $image = $event->setImage(UploadedFile::fake()->image('testpic.jpg'));
+        
+        $jsonable_array = $event->toJsonableArray();
+
+        $this->assertEquals($event->id, $jsonable_array['id']);
+        $this->assertEquals('TEST NAME', $jsonable_array['name']);
+        $this->assertEquals('満版復', $jsonable_array['zh_name']);
+        $this->assertEquals('TEST DESCRIPTION', $jsonable_array['description']);
+        $this->assertEquals('永門義会可際査別件村約候証民', $jsonable_array['zh_description']);
+        $this->assertEquals('TEST TIME', $jsonable_array['time_of_day']);
+        $this->assertEquals('満版復', $jsonable_array['zh_time_of_day']);
+        $this->assertEquals(Carbon::today()->format('Y-m-d'), $jsonable_array['event_date']);
+        $this->assertTrue($jsonable_array['published']);
+        $this->assertEquals($image->getUrl('thumb'), $jsonable_array['image']);
+        $this->assertEquals($image->id, $jsonable_array['image_id']);
+        $this->assertFalse($jsonable_array['featured']);
+    }
 }

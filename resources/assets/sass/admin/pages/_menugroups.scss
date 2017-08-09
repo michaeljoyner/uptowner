@@ -2,23 +2,21 @@
 
   .menu-group-index-card {
     margin: 2em 0;
-    width: 80%;
-    max-width: 800px;
     background: $white;
 
     header {
-      background: $brand_blue_light;
-      color: $white;
+      //background: $brand_blue_light;
+      color: $brand_red_dark;
       padding: 10px 20px;
 
       .main-header {
-        text-transform: uppercase;
+        //text-transform: uppercase;
         margin: 0;
       }
 
       .sub-header {
         font-size: 80%;
-        color: $brand_blue;
+        color: $brand_red_dark;
       }
     }
 

@@ -19,6 +19,8 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
+    "flickity": "^2.0.9",
+    "flickity-imagesloaded": "^2.0.0",
     "jump.js": "^1.0.2",
     "laravel-mix": "^1.1.1",
     "moment": "^2.18.1",

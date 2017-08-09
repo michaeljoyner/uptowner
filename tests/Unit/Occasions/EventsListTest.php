@@ -8,6 +8,7 @@ use App\Occasions\Event;
 use App\Occasions\EventsList;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class EventsListTest extends TestCase
@@ -41,7 +42,8 @@ class EventsListTest extends TestCase
      */
     public function the_event_list_has_a_list_of_coming_soon_events_with_up_to_three_events()
     {
-        factory(Event::class, 5)->create(['published' => true]);
+        $events = factory(Event::class, 5)->create(['published' => true]);
+        $events->each->setImage(UploadedFile::fake()->image('test.jpg'));
 
         $list = Event::upcomingList();
 
@@ -53,19 +55,24 @@ class EventsListTest extends TestCase
     /**
      * @test
      */
-    public function the_coming_soon_events_are_the_three_most_immediate()
+    public function the_coming_soon_events_are_the_three_most_immediate_that_have_images()
     {
         $eventA = factory(Event::class)->create(['published' => true, 'event_date' => Carbon::parse('+4 days')]);
         $eventB = factory(Event::class)->create(['published' => true, 'event_date' => Carbon::parse('+1 days')]);
-        $eventC = factory(Event::class)->create(['published' => true, 'event_date' => Carbon::parse('+3 days')]);
+        $eventC = factory(Event::class)->create(['published' => true, 'event_date' => Carbon::parse('+7 days')]);
         $eventD = factory(Event::class)->create(['published' => true, 'event_date' => Carbon::parse('+5 days')]);
-        $eventE = factory(Event::class)->create(['published' => true, 'event_date' => Carbon::parse('+2 days')]);
+        $eventE = factory(Event::class)->create(['published' => true, 'event_date' => Carbon::parse('+3 days')]);
+        $eventF = factory(Event::class)->create(['published' => true, 'event_date' => Carbon::parse('+2 days')]);
+
+        $eventB->setImage(UploadedFile::fake()->image('testpic.jpg'));
+        $eventC->setImage(UploadedFile::fake()->image('testpic.jpg'));
+        $eventF->setImage(UploadedFile::fake()->image('testpic.jpg'));
 
         $list = Event::upcomingList();
         $coming_soon = $list->comingSoon();
 
         $this->assertEquals($eventB->id, $coming_soon->first()->id);
-        $this->assertEquals($eventE->id, $coming_soon[1]->id);
+        $this->assertEquals($eventF->id, $coming_soon[1]->id);
         $this->assertEquals($eventC->id, $coming_soon->last()->id);
     }
 
@@ -75,6 +82,7 @@ class EventsListTest extends TestCase
     public function the_upcoming_list_also_includes_all_other_upcoming_published_events()
     {
         $upcoming = factory(Event::class, 3)->create(['published' => true, 'event_date' => Carbon::parse('+2 days')]);
+        $upcoming->each->setImage(UploadedFile::fake()->image('test.jpg'));
         $the_rest = factory(Event::class, 5)->create(['published' => true, 'event_date' => Carbon::parse('+4 days')]);
         $ghosts = factory(Event::class, 3)->create(['published' => false, 'event_date' => Carbon::parse('+3 days')]);
 

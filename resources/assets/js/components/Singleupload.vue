@@ -14,6 +14,7 @@
         <span class="upload-progress-bar"
               v-bind:style="{width: uploadPercentage + '%'}"></span>
         </div>
+        <div v-show="removeUrl" @click="clearImage" class="text-center">Clear Image</div>
         <p class="upload-message"
            v-bind:class="{'error': uploadStatus === 'error', 'success': uploadStatus === 'success'}"
            v-show="uploadMsg !== ''">{{ uploadMsg }}
@@ -32,7 +33,8 @@
             size: { type: String, default: 'large'},
             previewWidth: {type: Number, default: 300},
             previewHeight: {type: Number, default: 300},
-            unique: {type: Number, default: 1}
+            unique: {type: Number, default: 1},
+            'delete-url': {type: String, default: null}
         },
         data() {
             return {
@@ -40,12 +42,19 @@
                 uploadMsg: '',
                 uploading: false,
                 uploadStatus: '',
-                uploadPercentage: 0
+                uploadPercentage: 0,
+                removeImageUrl: null,
+                hasRemoved: false
             }
         },
         computed: {
             imageSrc() {
                 return this.imageSource ? this.imageSource : this.default;
+            },
+            removeUrl() {
+                if(! this.hasRemoved) {
+                    return this.removeImageUrl ? this.removeImageUrl : this.deleteUrl;
+                }
             },
             prevWidth() {
                 if(this.size === 'preview') {
@@ -101,7 +110,10 @@
                 this.uploadMsg = "Uploaded successfully";
                 this.uploadStatus = 'success'
                 this.uploading = false;
+                this.hasRemoved = false;
                 eventHub.$emit('singleuploadcomplete', res.data);
+                this.removeImageUrl = res.data.delete_url || null;
+                window.setTimeout(() => this.clearMessage(), 2000);
             },
             onUploadFailed(err) {
                 this.uploadMsg = 'The upload failed';
@@ -118,6 +130,16 @@
             },
             clearMessage() {
                 this.uploadMsg = ''
+            },
+            clearImage() {
+                axios.delete(this.removeUrl)
+                    .then(() => this.onRemoveSuccess())
+                    .catch(err => console.log(err));
+            },
+            onRemoveSuccess() {
+                this.imageSource = '/images/defaults/default4x3.png';
+                this.removeImageUrl = null;
+                this.hasRemoved = true;
             }
         }
     }

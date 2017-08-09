@@ -13,5 +13,7 @@ class EventsImageController extends Controller
         $this->validate(request(), ['image' => 'required|image']);
 
         $event->setImage(request('image'));
+
+        return $event->fresh()->imageInfoArray();
     }
 }

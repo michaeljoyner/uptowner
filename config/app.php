@@ -229,7 +229,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Loc' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
-        'Menu' => \App\Facades\Menu::class
+        'Menu' => \App\Facades\Menu::class,
+        'Instagram' => \App\Facades\Instagram::class
 
     ],
 

@@ -10,13 +10,6 @@ class MenuPagesServiceController extends Controller
 {
     public function index()
     {
-        return MenuPage::all()->map(function($page) {
-            return [
-                'id' => $page->id,
-                'name' => $page->name,
-                'zh_name' => $page->getTranslation('name', 'zh'),
-                'published' => $page->published
-            ];
-        });
+        return MenuPage::all()->map->toJsonableArray();
     }
 }

@@ -4,6 +4,8 @@ namespace App\Specials;
 
 use App\HandlesTranslations;
 use App\HasModelImage;
+use App\HasPublishedScope;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
@@ -11,7 +13,7 @@ use Spatie\Translatable\HasTranslations;
 
 class Special extends Model implements HasMediaConversions
 {
-    use HasTranslations, HandlesTranslations, HasMediaTrait, HasModelImage;
+    use HasTranslations, HandlesTranslations, HasMediaTrait, HasModelImage, HasPublishedScope;
 
     const DEFAULT_IMG_URL = '/images/defaults/default.jpg';
 
@@ -33,5 +35,24 @@ class Special extends Model implements HasMediaConversions
         $this->addMediaConversion('web')
             ->setManipulations(['w' => 800, 'h' => 400, 'fit' => 'crop', 'fm' => 'src'])
             ->performOnCollections('default');
+    }
+
+    public static function current()
+    {
+        return static::published()->orderBy('start_date')->get()->reject->isExpired();
+    }
+
+    public function isExpired()
+    {
+        return $this->end_date->lt(Carbon::today());
+    }
+
+    public function timeWindow()
+    {
+        if($this->start_date->gt(Carbon::today())) {
+            return 'Available from ' . $this->start_date->format('jS M, Y') . ' until ' . $this->end_date->format('jS M, Y');
+        }
+
+        return 'Available until ' . $this->end_date->format('jS M, Y');
     }
 }

@@ -49,6 +49,10 @@
   color: $brand_light;
 }
 
+.text-grey {
+  color: $mid_grey;
+}
+
 .text-large {
   font-size: map_get($sizes, 6);
 }

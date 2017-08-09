@@ -37,6 +37,36 @@ class MenuPagesServiceTest extends TestCase
     /**
      *@test
      */
+    public function the_menu_page_has_a_list_of_its_group_names()
+    {
+        $this->disableExceptionHandling();
+        $page = factory(MenuPage::class)->create();
+        factory(MenuGroup::class)->create([
+            'name' => ['en' => 'TEST GROUP A', 'zh' => '満版復'],
+            'menu_page_id' => $page->id
+        ]);
+        factory(MenuGroup::class)->create([
+            'name' => ['en' => 'TEST GROUP B', 'zh' => '満版復'],
+            'menu_page_id' => $page->id
+        ]);
+
+        $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/pages');
+        $response->assertStatus(200);
+
+        $fetched_pages = $response->decodeResponseJson();
+
+        $this->assertCount(1, $fetched_pages);
+        collect($fetched_pages)->each(function($page) {
+            $this->assertArrayHasKey('id', $page);
+            $this->assertArrayHasKey('name', $page);
+            $this->assertArrayHasKey('zh_name', $page);
+            $this->assertEquals(['TEST GROUP A', 'TEST GROUP B'], $page['group_names']);
+        });
+    }
+
+    /**
+     *@test
+     */
     public function a_list_of_a_menu_pages_groups_can_be_fetched_in_the_appropriate_format()
     {
         $this->disableExceptionHandling();

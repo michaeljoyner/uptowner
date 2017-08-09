@@ -1,0 +1,19 @@
+.svg-icon {
+  vertical-align: baseline;
+  margin-right: 10px;
+  height: map_get($sizes, 4);
+
+  path {
+    fill: $mid_grey;
+  }
+}
+
+.icon-large {
+  height: 60px;
+}
+
+.svg-icon.icon-colour {
+  path {
+    fill: $brand_primary;
+  }
+}

@@ -17,4 +17,9 @@ class DefaultImage
     {
         return $this->default_url;
     }
+
+    public function __get($arg)
+    {
+        return null;
+    }
 }

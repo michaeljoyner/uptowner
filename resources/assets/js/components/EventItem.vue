@@ -13,6 +13,7 @@
                                :preview-width="200"
                                :preview-height="150"
                                :unique="eventAttributes.id"
+                               :delete-url="eventAttributes.image_id ? `/admin/services/media/${eventAttributes.image_id}` : null"
                 ></single-upload>
             </div>
             <div class="event-en">

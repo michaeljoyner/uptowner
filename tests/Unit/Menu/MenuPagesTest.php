@@ -109,4 +109,31 @@ class MenuPagesTest extends TestCase
         $this->assertContains(['src' => $imageA->getUrl('thumb'), 'alt' => $itemB->name], $images);
         $this->assertContains(['src' => $imageB->getUrl('thumb'), 'alt' => $itemC->name], $images);
     }
+
+    /**
+     *@test
+     */
+    public function a_menu_page_can_present_itself_as_a_jsonable_array()
+    {
+        $page = factory(MenuPage::class)->create([
+            'name' => ['en' => 'TEST PAGE', 'zh' => '満版復'],
+        ]);
+        factory(MenuGroup::class)->create([
+            'name' => ['en' => 'TEST GROUP A', 'zh' => '満版復'],
+            'menu_page_id' => $page->id
+        ]);
+        factory(MenuGroup::class)->create([
+            'name' => ['en' => 'TEST GROUP B', 'zh' => '満版復'],
+            'menu_page_id' => $page->id
+        ]);
+
+        $expected = [
+            'name' => 'TEST PAGE',
+            'zh_name' => '満版復',
+            'id' => $page->id,
+            'group_names' => ['TEST GROUP A', 'TEST GROUP B']
+        ];
+
+        $this->assertEquals($expected, $page->fresh()->toJsonableArray());
+    }
 }

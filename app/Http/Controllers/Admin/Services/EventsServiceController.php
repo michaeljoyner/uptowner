@@ -10,20 +10,6 @@ class EventsServiceController extends Controller
 {
     public function index()
     {
-        return Event::orderBy('event_date')->get()->map(function($event) {
-            return [
-                'id' => $event->id,
-                'name' => $event->name,
-                'zh_name' => $event->getTranslation('name', 'zh'),
-                'description' => $event->description,
-                'zh_description' => $event->getTranslation('description', 'zh'),
-                'time_of_day' => $event->time_of_day,
-                'zh_time_of_day' => $event->getTranslation('time_of_day', 'zh'),
-                'event_date' => $event->event_date->format('Y-m-d'),
-                'published' => $event->published,
-                'image' => $event->imageUrl('thumb'),
-                'featured' => $event->featured
-            ];
-        });
+        return Event::orderBy('event_date')->get()->map->toJsonableArray();
     }
 }

@@ -1,10 +1,27 @@
+body.home-page {
+  padding-top: 0;
+}
+
 .home-hero {
   background-image: url('/images/burger_fries.jpeg');
-  width: 100%;
-  height: 33vw;
+
+  .hero-cta {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translate3d(-50%,0,0);
+    opacity: 1;
+    transition: .7s ease-in;
+    background: $brand_light;
+
+    &.hidden {
+      opacity: 0;
+      transform: translate3d(-50%,120px,0);
+      background: transparent;
+    }
+  }
 }
 
 .favorites {
   background-image: url('./images/burger_bg.jpg');
-  min-height: 50vw;
 }

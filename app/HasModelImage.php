@@ -23,9 +23,20 @@ trait HasModelImage
         return $this->imageUrl() !== static::DEFAULT_IMG_URL;
     }
 
-    private function getImage()
+    public function getImage()
     {
         return $this->getMedia()->first() ?? new DefaultImage(static::DEFAULT_IMG_URL ?? '');
+    }
+
+    public function imageInfoArray()
+    {
+        $image = $this->getImage();
+        return [
+            'image_id' => $image->id,
+            'web_url' => $image->getUrl('web'),
+            'thumb_url' => $image->getUrl('thumb'),
+            'delete_url' => '/admin/services/media/' . $image->id
+        ];
     }
 
     private function deleteAllImagesExcept($image)

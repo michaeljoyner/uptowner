@@ -1,5 +1,7 @@
 @import "front/variables";
 
+@import "~flickity/dist/flickity";
+
 @import "front/base";
 
 @import "front/utilities/typography";
@@ -16,6 +18,7 @@
 @import "front/components/navbar";
 @import "front/components/menunav";
 @import "front/components/banner";
+@import "front/components/svgicon";
 
 @import "front/pages/home";
 @import "front/pages/events";

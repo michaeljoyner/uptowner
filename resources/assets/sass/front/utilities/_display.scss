@@ -77,6 +77,12 @@
   display: grid;
 }
 
+.col-3 {
+  grid-template-columns: repeat(3, 30%);
+  justify-content: space-around;
+  grid-row-gap: map_get($sizes, 8);
+}
+
 .col-4 {
   grid-template-columns: repeat(4, 22%);
   justify-content: space-around;

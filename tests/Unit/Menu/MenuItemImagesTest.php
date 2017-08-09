@@ -103,4 +103,21 @@ class MenuItemImagesTest extends TestCase
 
         $this->assertTrue($item2->hasOwnImage());
     }
+
+    /**
+     *@test
+     */
+    public function a_model_that_has_a_model_image_can_present_its_image_info()
+    {
+        $item = factory(MenuItem::class)->create();
+        $image = $item->setImage(UploadedFile::fake()->image('testpic.jpg'));
+        $expected = [
+            'image_id' => $image->id,
+            'web_url' => $image->getUrl('web'),
+            'thumb_url' => $image->getUrl('thumb'),
+            'delete_url' => '/admin/services/media/' . $image->id
+        ];
+
+        $this->assertEquals($expected, $item->fresh()->imageInfoArray());
+    }
 }

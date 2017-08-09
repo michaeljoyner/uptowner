@@ -58,4 +58,70 @@ class FeaturedMenuItemsTest extends TestCase
 
         $this->assertFalse($menu_item->fresh()->isFeatured());
     }
+
+    /**
+     *@test
+     */
+    public function published_featured_items_can_be_listed_as_menu_items()
+    {
+        $items = factory(MenuItem::class, 5)->create(['published' => true]);
+        $items->each->feature();
+
+        $favourites = FeaturedItem::currentlyFeatured();
+
+        $favourites->each(function($item) {
+            $this->assertInstanceOf(MenuItem::class, $item);
+            $this->assertTrue($item->isFeatured());
+            $this->assertTrue($item->published);
+        });
+    }
+
+    /**
+     *@test
+     */
+    public function unpublished_items_are_not_included_in_the_currently_featured_items()
+    {
+        $items = factory(MenuItem::class, 5)->create(['published' => false]);
+        $items->each->feature();
+
+        $favourites = FeaturedItem::currentlyFeatured();
+
+        $this->assertCount(0, $favourites);
+    }
+
+    /**
+     *@test
+     */
+    public function a_maximum_of_four_items_are_returned_by_currently_featured_by_default()
+    {
+        $items = factory(MenuItem::class, 5)->create(['published' => true]);
+        $items->each->feature();
+
+        $favourites = FeaturedItem::currentlyFeatured();
+
+        $this->assertCount(4, $favourites);
+        $favourites->each(function($item) {
+            $this->assertInstanceOf(MenuItem::class, $item);
+            $this->assertTrue($item->isFeatured());
+            $this->assertTrue($item->published);
+        });
+    }
+
+    /**
+     *@test
+     */
+    public function an_amount_of_items_to_be_returned_by_currently_featured_can_be_specified()
+    {
+        $items = factory(MenuItem::class, 10)->create(['published' => true]);
+        $items->each->feature();
+
+        $favourites = FeaturedItem::currentlyFeatured(7);
+
+        $this->assertCount(7, $favourites);
+        $favourites->each(function($item) {
+            $this->assertInstanceOf(MenuItem::class, $item);
+            $this->assertTrue($item->isFeatured());
+            $this->assertTrue($item->published);
+        });
+    }
 }

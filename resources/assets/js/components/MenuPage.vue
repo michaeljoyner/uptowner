@@ -1,20 +1,23 @@
 <style></style>
 
 <template>
-    <div class="menu-page-component">
+    <div class="menu-page-component card">
         <header>
             <a :href="`/admin/menu/pages/${itemAttributes.id}`">
                 <h3>{{ name }}</h3>
                 <p>{{ zh_name }}</p>
             </a>
-            <menu-page-form :url="`/admin/menu/pages/${itemAttributes.id}`"
-                           form-type="update"
-                           button-text="edit"
-                           :formAttributes="itemAttributes"
-                           @menu-page-updated="updateItem"
-            ></menu-page-form>
         </header>
         <div>
+            <p class="lead">{{ itemAttributes.group_names.join(', ') }}</p>
+        </div>
+        <div class="right-strip">
+            <menu-page-form :url="`/admin/menu/pages/${itemAttributes.id}`"
+                            form-type="update"
+                            button-text="edit"
+                            :formAttributes="itemAttributes"
+                            @menu-page-updated="updateItem"
+            ></menu-page-form>
             <icon-switch switch-field="publish"
                          :initial="itemAttributes.published"
                          :url="`/admin/menu/pages/${itemAttributes.id}/publish`"

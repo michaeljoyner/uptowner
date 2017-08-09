@@ -76,7 +76,8 @@ class MenuPagesTest extends TestCase
         $this->assertEquals($response_data, [
             'id'      => $page->id,
             'name'    => 'Burgers',
-            'zh_name' => '満版復'
+            'zh_name' => '満版復',
+            'group_names' => []
         ]);
     }
 

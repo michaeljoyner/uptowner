@@ -1,0 +1,10 @@
+.right-strip {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 10px;
+
+  & > * {
+    margin-left: 1em;
+  }
+}

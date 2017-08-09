@@ -8,13 +8,16 @@
                 <p class="sub-header">{{ zh_name }}</p>
             </header>
         </a>
-        <div class="body">
+        <div class="body two-split">
             <p>{{ description }}</p>
             <p>{{ zh_description }}</p>
+
+        </div>
+        <div class="right-strip">
             <menu-group-form :url="`/admin/menu/groups/${itemAttributes.id}`"
-                            :formAttributes="itemAttributes"
-                            form-type="update"
-                            button-text="edit"
+                             :formAttributes="itemAttributes"
+                             form-type="update"
+                             button-text="edit"
                              @menu-group-updated="updateGroup"
             ></menu-group-form>
             <icon-switch switch-field="publish"
@@ -33,7 +36,7 @@
                            @item-deleted="removeGroup"
                            v-if="itemAttributes.can_delete"
             ></delete-button>
-            <p v-if="!itemAttributes.can_delete">Can't delete a non empty category</p>
+            <p v-if="!itemAttributes.can_delete" class="muted-alert">Can't delete a non empty category</p>
         </div>
     </div>
 </template>

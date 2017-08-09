@@ -36,4 +36,30 @@ class EventImagesTest extends TestCase
 
         $this->assertTrue($event->fresh()->hasOwnImage());
     }
+    
+    /**
+     *@test
+     */
+    public function uploading_an_event_image_returns_the_correct_data()
+    {
+        $this->disableExceptionHandling();
+        $event = factory(Event::class)->create();
+
+
+        $response = $this->asLoggedInUser()->json('POST', '/admin/events/' . $event->id . '/image', [
+            'image' => UploadedFile::fake()->image('foodpic.jpg')
+        ]);
+        $response->assertStatus(200);
+        $image_info = $response->decodeResponseJson();
+
+        $this->assertCount(1, $event->fresh()->getMedia());
+        $image = $event->fresh()->getImage();
+
+        $this->assertEquals([
+            'image_id' => $image->id,
+            'thumb_url' => $image->getUrl('thumb'),
+            'web_url' => $image->getUrl('web'),
+            'delete_url' => '/admin/services/media/' . $image->id
+        ], $image_info);
+    }
 }

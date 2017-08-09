@@ -67,4 +67,14 @@ class MenuPage extends Model
     {
         return ['page' => $this->id, 'group' => null];
     }
+
+    public function toJsonableArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->getTranslation('name', 'en'),
+            'zh_name' => $this->getTranslation('name', 'zh'),
+            'group_names' => $this->groups->map->getTranslation('name', 'en')->all()
+        ];
+    }
 }

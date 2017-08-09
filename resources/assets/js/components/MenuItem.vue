@@ -9,6 +9,7 @@
                            :preview-width="200"
                            :preview-height="150"
                            :unique="itemAttributes.id"
+                           :delete-url="`/admin/services/media/${itemAttributes.image_id}`"
             ></single-upload>
         </div>
         <div class="component-detail">

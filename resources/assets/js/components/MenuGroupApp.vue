@@ -2,19 +2,13 @@
 
 <template>
     <div class="menu-group-app-component">
-        <!--<article class="menu-group-index-card" v-for="group in menu_groups">-->
-            <!--<a :href="`/admin/menu/groups/${group.id}`">-->
-                <!--<header>-->
-                    <!--<h3 class="main-header">{{ group.name['en'] }}</h3>-->
-                    <!--<p class="sub-header">{{ group.name['zh'] }}</p>-->
-                <!--</header>-->
-            <!--</a>-->
-            <!--<div class="body">-->
-                <!--<p>{{ group.description['en'] }}</p>-->
-                <!--<p>{{ group.description['zh'] }}</p>-->
-            <!--</div>-->
-        <!--</article>-->
-        <menu-group v-for="group in menu_groups"
+        <div class="right-strip">
+            <div>
+                <span>Filter categories by name: </span>
+                <input type="search" v-model="filter_query" class="form-text-input">
+            </div>
+        </div>
+        <menu-group v-for="group in filtered_groups"
                     :key="group.id"
                     :itemAttributes="group"
                     @menu-group-deleted="removeGroup(group)"
@@ -26,8 +20,19 @@
     export default {
         data() {
             return {
-                menu_groups: []
+                menu_groups: [],
+                filter_query: ''
             };
+        },
+
+        computed: {
+            filtered_groups() {
+                if (this.filter_query === '') {
+                    return this.menu_groups;
+                }
+
+                return this.menu_groups.filter(group => this.queryMatchesGroupName(group));
+            }
         },
 
         mounted() {
@@ -36,6 +41,12 @@
         },
 
         methods: {
+
+            queryMatchesGroupName(group) {
+                const query = this.filter_query.toLowerCase();
+                return (group.name.toLowerCase().indexOf(this.filter_query) !== -1) ||
+                    (group.zh_name.toLowerCase().indexOf(this.filter_query) !== -1);
+            },
 
             fetchMenuGroups() {
                 axios.get('/admin/services/menu/groups')

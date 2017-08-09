@@ -35,4 +35,30 @@ class MenuItemImagesTest extends TestCase
 
         $this->assertCount(1, $item->fresh()->getMedia());
     }
+
+    /**
+     *@test
+     */
+    public function uploading_an_image_returns_the_correct_image_info()
+    {
+        $this->disableExceptionHandling();
+        $item = factory(MenuItem::class)->create();
+
+
+        $response = $this->asLoggedInUser()->json('POST', '/admin/menu/items/' . $item->id . '/image', [
+            'image' => UploadedFile::fake()->image('foodpic.jpg')
+        ]);
+        $response->assertStatus(200);
+        $image_info = $response->decodeResponseJson();
+
+        $this->assertCount(1, $item->fresh()->getMedia());
+        $image = $item->fresh()->getImage();
+
+        $this->assertEquals([
+            'image_id' => $image->id,
+            'thumb_url' => $image->getUrl('thumb'),
+            'web_url' => $image->getUrl('web'),
+            'delete_url' => '/admin/services/media/' . $image->id
+        ], $image_info);
+    }
 }

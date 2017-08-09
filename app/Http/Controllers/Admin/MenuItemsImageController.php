@@ -10,6 +10,10 @@ class MenuItemsImageController extends Controller
 {
     public function store(MenuItem $item)
     {
+        $this->validate(request(), ['image' => 'required|image']);
+
         $item->setImage(request('image'));
+
+        return $item->fresh()->imageInfoArray();
     }
 }

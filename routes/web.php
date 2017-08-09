@@ -18,7 +18,9 @@ Route::group([
     'middleware' => ['localeSessionRedirect', 'localizationRedirect']
 ], function () {
     Route::get('/', function () {
-        return view('front.home.page');
+        $favourites = \App\Menu\FeaturedItem::currentlyFeatured();
+        $specials = \App\Specials\Special::current();
+        return view('front.home.page', ['favourites' => $favourites, 'specials' => $specials]);
     });
 
     Route::get('menu', function() {
@@ -29,6 +31,8 @@ Route::group([
         return view('front.events.page', ['events' => \App\Occasions\Event::upcomingList()]);
     });
 });
+
+Route::get('service/instagram/feed', 'InstagramController@index');
 
 Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('admin/login', 'Auth\LoginController@login');
@@ -71,6 +75,8 @@ Route::group(['prefix' => 'admin/services', 'namespace' => 'Admin\Services'], fu
         Route::post('menu/pages/{page}/groups/order', 'MenuGroupsOrderController@update');
 
         Route::post('menu/groups/{group}/items/order', 'MenuItemsOrderController@update');
+
+        Route::delete('media/{media}', 'MediaServicesController@delete');
     });
 });
 

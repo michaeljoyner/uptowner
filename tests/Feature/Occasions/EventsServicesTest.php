@@ -45,6 +45,7 @@ class EventsServicesTest extends TestCase
             $this->assertEquals(Carbon::now()->format('Y-m-d'), $fetched_event['event_date']);
             $this->assertTrue($fetched_event['published']);
             $this->assertArrayHasKey('image', $fetched_event);
+            $this->assertArrayHasKey('image_id', $fetched_event);
             $this->assertArrayHasKey('featured', $fetched_event);
         });
     }

@@ -55,6 +55,11 @@ class MenuItem extends Model implements HasMediaConversions
             ->performOnCollections('default');
     }
 
+    public function menuGroup()
+    {
+        return $this->belongsTo(MenuGroup::class, 'menu_group_id');
+    }
+
     public function presentAttributes()
     {
         return [
@@ -68,7 +73,8 @@ class MenuItem extends Model implements HasMediaConversions
             'is_vegetarian'  => $this->is_vegetarian,
             'is_recommended' => $this->is_recommended,
             'published'      => $this->published,
-            'image'          => $this->imageUrl('thumb')
+            'image'          => $this->imageUrl('thumb'),
+            'image_id'       => $this->getImage()->id
         ];
     }
 
