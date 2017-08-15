@@ -57,6 +57,22 @@
                                   class="form-control"
                         ></textarea>
                     </div>
+                    <div class="form-group" :class="{'has-error': form.errors.long_description}">
+                        <label for="long_description">Long Description</label>
+                        <span class="error-message" v-show="form.errors.long_description">{{ form.errors.long_description }}</span>
+                        <textarea name="long_description"
+                                  v-model="form.data.long_description"
+                                  class="form-control"
+                        ></textarea>
+                    </div>
+                    <div class="form-group" :class="{'has-error': form.errors.zh_long_description}">
+                        <label for="zh_long_description">Chinese Long Description</label>
+                        <span class="error-message" v-show="form.errors.zh_long_description">{{ form.errors.zh_long_description }}</span>
+                        <textarea name="zh_long_description"
+                                  v-model="form.data.zh_long_description"
+                                  class="form-control"
+                        ></textarea>
+                    </div>
                     <div class="modal-form-button-bar">
                         <button class="dd-btn btn" type="button" @click="modalOpen = false">Cancel</button>
                         <button class="btn dd-btn" type="submit" :disabled="waiting">
@@ -110,6 +126,8 @@
                     zh_name: this.formAttributes.zh_name || '',
                     description: this.formAttributes.description || '',
                     zh_description: this.formAttributes.zh_description || '',
+                    long_description: this.formAttributes.long_description || '',
+                    zh_long_description: this.formAttributes.zh_long_description || '',
                     event_date: this.formAttributes.event_date || null,
                     time_of_day: this.formAttributes.time_of_day || '',
                     zh_time_of_day: this.formAttributes.zh_time_of_day || '',
@@ -145,6 +163,8 @@
                     event_date: res.data.event_date,
                     description: res.data.description,
                     zh_description: res.data.zh_description,
+                    long_description: res.data.long_description,
+                    zh_long_description: res.data.zh_long_description,
                     time_of_day: res.data.time_of_day,
                     zh_time_of_day: res.data.zh_time_of_day
                 };

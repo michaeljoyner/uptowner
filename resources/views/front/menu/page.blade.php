@@ -13,20 +13,20 @@
         </div>
         <div data-flickity='{"cellAlign": "left", "contain": true, "groupCells": true, "imagesLoaded": true, "pageDots": false}'>
             @foreach($page->publishedItemImages() as $image)
-                <div class="relative">
+                <div class="relative of-hidden">
                     <img draggable="false" width="290" src="{{ $image['src'] }}" alt="{{ $image['alt'] }}">
-                    <p class="absolute-bottom-right text-colour-light h4">{{ $image['alt'] }}</p>
+                    <p class="menu-image-title absolute-bottom pd-2 one-liner text-colour-light h6">{{ $image['alt'] }}</p>
                 </div>
             @endforeach
         </div>
         <div class="w-con mg-x-a">
             @foreach($page->publishedGroups()->ordered() as $group)
-                <p class="h3 text-center uppercase pd-y-7">{{ $group->name }}</p>
+                <p class="h2 text-center uppercase pd-y-7">{{ $group->name }}</p>
                 @foreach($group->publishedItems()->ordered() as $item)
                     <article class="pd-y-4 mg-x-4">
                         <p class="h3 mb-2">{{ $item->name }}</p>
                         <p class="body-text mg-y-2">{{ $item->description }}</p>
-                        <p class="h3 text-colour">NT${{ $item->price }}</p>
+                        <p class="h4 text-colour">NT${{ $item->price }}</p>
                     </article>
                 @endforeach
             @endforeach

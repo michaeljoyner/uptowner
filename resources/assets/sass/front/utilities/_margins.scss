@@ -1,40 +1,40 @@
-@for $i from 0 to 10 {
+@for $i from 0 to 11 {
   .mg-#{$i} { margin: map-get($sizes, $i); }
 }
 
-@for $i from 0 to 10 {
+@for $i from 0 to 11 {
   .mg-x-#{$i} {
     margin-left: map-get($sizes, $i);
     margin-right: map-get($sizes, $i);
   }
 }
 
-@for $i from 0 to 10 {
+@for $i from 0 to 11 {
   .mg-y-#{$i} {
     margin-top: map-get($sizes, $i);
     margin-bottom: map-get($sizes, $i);
   }
 }
 
-@for $i from 0 to 10 {
+@for $i from 0 to 11 {
   .mb-#{$i} {
     margin-bottom: map-get($sizes, $i);
   }
 }
 
-@for $i from 0 to 10 {
+@for $i from 0 to 11 {
   .mt-#{$i} {
     margin-top: map-get($sizes, $i);
   }
 }
 
-@for $i from 0 to 10 {
+@for $i from 0 to 11 {
   .ml-#{$i} {
     margin-left: map-get($sizes, $i);
   }
 }
 
-@for $i from 0 to 10 {
+@for $i from 0 to 11 {
   .mr-#{$i} {
     margin-right: map-get($sizes, $i);
   }

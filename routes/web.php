@@ -28,7 +28,11 @@ Route::group([
     });
 
     Route::get('events', function() {
-        return view('front.events.page', ['events' => \App\Occasions\Event::upcomingList()]);
+        return view('front.events.index', ['events' => \App\Occasions\Event::upcomingList()]);
+    });
+
+    Route::get('events/{event}', function(\App\Occasions\Event $event) {
+        return view('front.events.show', ['event' => $event]);
     });
 });
 

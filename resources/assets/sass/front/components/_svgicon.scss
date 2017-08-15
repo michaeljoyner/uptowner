@@ -17,3 +17,13 @@
     fill: $brand_primary;
   }
 }
+
+.social-icon {
+  svg {
+    height: 25px;
+
+    path {
+      fill: $brand_primary;
+    }
+  }
+}

@@ -1,12 +1,13 @@
 .heading {
   font-family: $serif;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.2;
+  font-weight: 700;
 }
 
 .h1 {
   @extend .heading;
-  font-size: map-get($sizes, 9);
+  font-size: map-get($sizes, 8);
 }
 
 .h2 {
@@ -24,8 +25,19 @@
   font-size: map-get($sizes, 5);
 }
 
+.h5 {
+  @extend .heading;
+  font-size: map-get($sizes, 4);
+}
+
+.h6 {
+  @extend .heading;
+  font-size: map-get($sizes, 3);
+}
+
 .body-text {
   font-family: $sans_serif;
+  line-height: 1.4;
 }
 
 .body-italic {
@@ -61,10 +73,26 @@
   font-size: map_get($sizes, 5);
 }
 
+.text-smaller {
+  font-size: map_get($sizes, 3);
+}
+
 .text-center {
   text-align: center;
 }
 
 .text-right {
   text-align: right;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.fw-300 {
+  font-weight: 300;
 }

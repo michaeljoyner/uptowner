@@ -24,6 +24,7 @@
 
 
 <script src="{{ mix('js/front.js') }}"></script>
+@yield('bodyscripts')
 <script>
     window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
     ga('create','UA-XXXXX-Y','auto');ga('send','pageview')

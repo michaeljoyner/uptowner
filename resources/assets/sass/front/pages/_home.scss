@@ -12,7 +12,6 @@ body.home-page {
     transform: translate3d(-50%,0,0);
     opacity: 1;
     transition: .7s ease-in;
-    background: $brand_light;
 
     &.hidden {
       opacity: 0;
@@ -24,4 +23,42 @@ body.home-page {
 
 .favorites {
   background-image: url('./images/burger_bg.jpg');
+}
+
+.specials {
+
+  .flickity-prev-next-button {
+    top: 200px;
+    transform: translateY(0);
+    background: transparent;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    svg path {
+      fill: $brand_light;
+    }
+
+    &:hover svg path {
+      fill: $brand_primary_soft;
+    }
+  }
+
+  .flickity-page-dots {
+    .dot.is-selected {
+      background-color: $brand_primary;
+    }
+  }
+}
+
+.location {
+
+  .location-image-box {
+    background-image: url(./images/cafe_outdoors.jpg);
+  }
+
+  .map-bg {
+    background-image: url(./images/map_background_1.png);
+  }
 }

@@ -14,6 +14,7 @@
 @import "front/utilities/widths";
 @import "front/utilities/misc";
 @import "front/utilities/position";
+@import "front/utilities/animations";
 
 @import "front/components/navbar";
 @import "front/components/menunav";
@@ -21,4 +22,5 @@
 @import "front/components/svgicon";
 
 @import "front/pages/home";
+@import "front/pages/menu";
 @import "front/pages/events";

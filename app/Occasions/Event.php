@@ -19,13 +19,21 @@ class Event extends Model implements HasMediaConversions
 
     protected $table = 'events';
 
-    protected $fillable = ['event_date', 'time_of_day', 'name', 'description', 'published', 'featured'];
+    protected $fillable = [
+        'event_date',
+        'time_of_day',
+        'name',
+        'description',
+        'published',
+        'featured',
+        'long_description'
+    ];
 
     protected $dates = ['event_date'];
 
     protected $casts = ['published' => 'boolean', 'featured' => 'boolean'];
 
-    public $translatable = ['time_of_day', 'name', 'description'];
+    public $translatable = ['time_of_day', 'name', 'description', 'long_description'];
 
     public function registerMediaConversions()
     {
@@ -74,6 +82,8 @@ class Event extends Model implements HasMediaConversions
             'zh_name'        => $this->getTranslation('name', 'zh'),
             'description'    => $this->description,
             'zh_description' => $this->getTranslation('description', 'zh'),
+            'long_description' => $this->long_description,
+            'zh_long_description' => $this->getTranslation('long_description', 'zh'),
             'time_of_day'    => $this->time_of_day,
             'zh_time_of_day' => $this->getTranslation('time_of_day', 'zh'),
             'event_date'     => $this->event_date->format('Y-m-d'),

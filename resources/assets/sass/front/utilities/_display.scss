@@ -92,5 +92,6 @@
 .col-5 {
   grid-template-columns: repeat(5, 18%);
   justify-content: space-around;
-  grid-row-gap: map_get($sizes, 8);
+  grid-row-gap: map_get($sizes, 4);
+  grid-column-gap: map_get($sizes, 4);
 }

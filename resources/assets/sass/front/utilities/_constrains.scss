@@ -5,3 +5,10 @@
 .text-constrain-small {
   max-width: 400px;
 }
+
+.one-liner {
+  width: 95%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

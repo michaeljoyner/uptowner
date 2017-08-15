@@ -25,7 +25,9 @@ class EventsTest extends TestCase
             'name'           => 'Happy Hour',
             'zh_name'        => '満版復',
             'description'    => 'Sixty minutes of pure joy',
-            'zh_description' => '永門義会可際査別件村約候証民'
+            'zh_description' => '永門義会可際査別件村約候証民',
+            'long_description' => 'This is a full bodied description of the event',
+            'zh_long_description' => '永門義会可際査別件村約候証民。昌原集前全者波有索男討家王合考作染美最。催優際田度読賞督密出将育別容'
         ];
         $response = $this->asLoggedInUser()->json('POST', '/admin/events',
             array_merge($event_data, ['event_date' => Carbon::parse('+5 days')->format('Y-m-d')]));
@@ -46,7 +48,8 @@ class EventsTest extends TestCase
         $update_data = [
             'event_date' => Carbon::parse('+5 days')->format('Y-m-d'),
             'name' => 'An Event Apart',
-            'description' => 'An exciting event at a locale near you'
+            'description' => 'An exciting event at a locale near you',
+            'long_description' => 'This is a whole new description'
         ];
         $expected_data = [
             'name' => 'An Event Apart',
@@ -54,7 +57,9 @@ class EventsTest extends TestCase
             'description' => 'An exciting event at a locale near you',
             'zh_description' => $event->getTranslation('description', 'zh'),
             'time_of_day' => $event->time_of_day,
-            'zh_time_of_day' => $event->getTranslation('time_of_day', 'zh')
+            'zh_time_of_day' => $event->getTranslation('time_of_day', 'zh'),
+            'long_description' => 'This is a whole new description',
+            'zh_long_description' => $event->getTranslation('long_description', 'zh'),
         ];
 
         $response = $this->asLoggedInUser()->json('POST', '/admin/events/' . $event->id, $update_data);
@@ -81,14 +86,9 @@ class EventsTest extends TestCase
 
         $updated_data = $response->decodeResponseJson();
         $event = $event->fresh();
-        
-        $this->assertEquals($event->name, $updated_data['name']);
-        $this->assertEquals($event->getTranslation('name', 'zh'), $updated_data['zh_name']);
-        $this->assertEquals($event->description, $updated_data['description']);
-        $this->assertEquals($event->getTranslation('description', 'zh'), $updated_data['zh_description']);
-        $this->assertEquals($event->time_of_day, $updated_data['time_of_day']);
-        $this->assertEquals($event->getTranslation('time_of_day', 'zh'), $updated_data['zh_time_of_day']);
-        $this->assertEquals($event->event_date->format('Y-m-d'), $updated_data['event_date']);
+
+        $this->assertEquals($event->fresh()->toJsonableArray(), $updated_data);
+
     }
 
     /**

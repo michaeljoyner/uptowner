@@ -81,6 +81,8 @@
                 zh_name: '',
                 description: '',
                 zh_description: '',
+                long_description: '',
+                zh_long_description: '',
                 time_of_day: '',
                 zh_time_of_day: ''
             };

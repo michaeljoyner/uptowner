@@ -80,6 +80,7 @@ $factory->define(App\Occasions\Event::class, function (Faker\Generator $faker) {
         'event_date'  => \Carbon\Carbon::parse('+' . $faker->numberBetween(1, 10) . ' days'),
         'name'        => ['en' => $faker->sentence, 'zh' => $zh_faker->realText(10)],
         'description' => ['en' => $faker->sentences(2, true), 'zh' => $zh_faker->realText(20)],
+        'long_description' => ['en' => $faker->sentences(5, true), 'zh' => $zh_faker->realText(30)],
         'time_of_day' => ['en' => $faker->sentence, 'zh' => $zh_faker->realText(12)],
         'published'   => false
     ];

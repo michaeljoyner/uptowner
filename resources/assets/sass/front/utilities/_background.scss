@@ -11,8 +11,12 @@
   background-color: $brand_light;
 }
 
+.bg-trans {
+  background-color: transparent;
+}
+
 .bg-opaque {
-  background-color: rgba($brand_light, .7);
+  background-color: rgba($brand_light, .8);
 }
 
 .bg-blended-col {

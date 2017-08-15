@@ -2,6 +2,41 @@
   height: $nav_height;
   z-index: 100;
   transition: .7s ease-in;
+
+  .nav-item {
+    position: relative;
+
+
+    span {
+      display: inline-block;
+      position: relative;
+      &:after {
+        content: '';
+        height: 4px;
+        background: $brand_light;
+        width: 100%;
+        transform-origin: left;
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        transform: rotateY(90deg);
+        transition: .4s;
+        opacity: 0;
+      }
+    }
+
+
+
+    &:hover {
+
+      span:after {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
+
+    }
+
+  }
 }
 
 body.home-page {
