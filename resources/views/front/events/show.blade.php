@@ -1,7 +1,7 @@
 @extends('front.base', ['pageName' => 'event-show'])
 
 @section('content')
-    <a href="/events" class="pd-4 dib h4 text-colour uppercase">&larr; Back to events page</a>
+    <a href="/events" class="pd-4 dib h5 text-colour uppercase">&larr; Back to events page</a>
     <div class="mt-10 mb-4 w-con-800 mg-x-a no-space">
         <img class="w-100 max-w-100" src="{{ $event->imageUrl('web') }}" alt="{{ $event->title }}">
     </div>

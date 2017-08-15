@@ -165,4 +165,14 @@ class EventsTest extends TestCase
         $this->assertEquals($image->id, $jsonable_array['image_id']);
         $this->assertFalse($jsonable_array['featured']);
     }
+
+    /**
+     *@test
+     */
+    public function an_event_has_a_slug()
+    {
+        $event = factory(Event::class)->create(['name' => ['en' => 'super cool event', 'zh' => '満版復']]);
+
+        $this->assertEquals($event->slug, 'super-cool-event');
+    }
 }

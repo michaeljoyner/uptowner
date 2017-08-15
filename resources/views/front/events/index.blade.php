@@ -5,7 +5,7 @@
         <div class="relative banner bg-covered"
              style="background-image: url({{ url($events->featured->imageURL('web')) }})">
             <div class="absolute-bottom bg-opaque flex-col flex-center-y">
-                <p class="mt-2 mb-0 h3 text-colour uppercase">{{ $events->featured->name }}</p>
+                <p class="mt-2 mb-0 h3 text-colour uppercase"><a href="/events/{{ $events->featured->slug }}">{{ $events->featured->name }}</a></p>
                 <p class="mg-y-0 body-text text-largish">{{ $events->featured->description }}</p>
                 <p class="mt-4 mb-0 fw-700 body-text">{{ $events->featured->event_date->format('jS M, Y') }}</p>
                 <p class="mt-0 mb-2 body-text">
@@ -27,10 +27,10 @@
         @foreach($events->comingSoon() as $event)
             <div class="flex bg-light w-con-800 mg-y-4 mg-x-a">
                 <div class="no-space">
-                    <img width="200" src="{{ $event->imageUrl('thumb') }}" alt="{{ $event->name }}">
+                    <a href="/events/{{ $event->slug }}"><img width="200" src="{{ $event->imageUrl('thumb') }}" alt="{{ $event->name }}"></a>
                 </div>
                 <div class="pt-2 pb-1 pd-x-4">
-                    <p class="mt mb-0 h3">{{ $event->name }}</p>
+                    <p class="mt mb-0 h3"><a href="/events/{{ $event->slug }}">{{ $event->name }}</a></p>
                     <p class="mg-y-1 body-text">{{ $event->description }}</p>
                     <p class="mt-5 mb-0 body-text">
                         <small>{{ $event->time_of_day }}</small>
@@ -45,7 +45,7 @@
         <h3 class="h1 mb-10 text-center uppercase">Upcoming Events</h3>
         @foreach($events->restOfEvents() as $event)
             <div class="pd-4 w-con-800 mg-x-a">
-                <p class="mb-0 text-colour h4">{{ $event->name }}</p>
+                <p class="mb-0 text-colour h4"><a href="/events/{{ $event->slug }}">{{ $event->name }}</a></p>
                 <p class="mb-2 mt-0 body-text text-largish">{{ $event->description }}</p>
                 <p class="body-text mt-5 mb-0">{{ $event->event_date->format('jS M, Y') }}</p>
                 <p class="mt-0 body-text"><em>{{ $event->time_of_day }}</em></p>

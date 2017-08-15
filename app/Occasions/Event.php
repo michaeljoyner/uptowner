@@ -6,6 +6,7 @@ use App\HandlesTranslations;
 use App\HasModelImage;
 use App\HasPublishedScope;
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
@@ -13,7 +14,7 @@ use Spatie\Translatable\HasTranslations;
 
 class Event extends Model implements HasMediaConversions
 {
-    use HasTranslations, HandlesTranslations, HasModelImage, HasMediaTrait, HasPublishedScope;
+    use HasTranslations, HandlesTranslations, HasModelImage, HasMediaTrait, HasPublishedScope, Sluggable;
 
     const DEFAULT_IMG_URL = '/images/defaults/default4x3.png';
 
@@ -34,6 +35,15 @@ class Event extends Model implements HasMediaConversions
     protected $casts = ['published' => 'boolean', 'featured' => 'boolean'];
 
     public $translatable = ['time_of_day', 'name', 'description', 'long_description'];
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     public function registerMediaConversions()
     {

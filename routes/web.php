@@ -31,6 +31,10 @@ Route::group([
         return view('front.events.index', ['events' => \App\Occasions\Event::upcomingList()]);
     });
 
+    Route::get('events/{slug}', function($slug) {
+        return view('front.events.show', ['event' => \App\Occasions\Event::where('slug', $slug)->firstOrFail()]);
+    });
+
     Route::get('events/{event}', function(\App\Occasions\Event $event) {
         return view('front.events.show', ['event' => $event]);
     });
