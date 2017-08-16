@@ -14,8 +14,8 @@
             </div>
         </div>
     @endif
-    <section class="pd-y-10 flex-col flex-center-y">
-        <h3 class="h1 text-colour uppercase mb-9">Live Sports & Events</h3>
+    <section class="pd-y-10 pd-x-4 flex-col flex-center-y">
+        <h3 class="h1 text-colour text-center uppercase mb-9">Live Sports & Events</h3>
         <p class="text-constrain body-text text-largish text-center mt-0">The Uptowner is one of the few places in Taichung
             that shows live sports from North America, including NFL, NBA and NHL. Catch the game on one of our 12
             plasma TV’s while munching on some snacks and drinking a cold beverage. We even open especially for big
@@ -31,7 +31,7 @@
                 </div>
                 <div class="pt-2 pb-1 pd-x-4">
                     <p class="mt mb-0 h3"><a href="/events/{{ $event->slug }}">{{ $event->name }}</a></p>
-                    <p class="mg-y-1 body-text">{{ $event->description }}</p>
+                    <p class="mg-y-1 body-text no-mobile">{{ $event->description }}</p>
                     <p class="mt-5 mb-0 body-text">
                         <small>{{ $event->time_of_day }}</small>
                     </p>

@@ -8,5 +8,16 @@ body.menu-page {
   width: 100%;
   height: $menu_nav_height;
 
+  @include respond-to(phone) {
+    display: inline;
+    overflow-x: auto;
+    white-space: nowrap;
+    z-index: 1;
+
+    a {
+      margin: 0 map_get($sizes, 5);
+    }
+  }
+
 
 }

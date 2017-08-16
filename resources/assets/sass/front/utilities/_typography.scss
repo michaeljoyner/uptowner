@@ -8,21 +8,37 @@
 .h1 {
   @extend .heading;
   font-size: map-get($sizes, 8);
+
+  @include respond-to(phone) {
+    font-size: map-get($sizes, 7);
+  }
 }
 
 .h2 {
   @extend .heading;
   font-size: map-get($sizes, 7);
+
+  @include respond-to(phone) {
+    font-size: map-get($sizes, 6);
+  }
 }
 
 .h3 {
   @extend .heading;
   font-size: map-get($sizes, 6);
+
+  @include respond-to(phone) {
+    font-size: map-get($sizes, 5);
+  }
 }
 
 .h4 {
   @extend .heading;
   font-size: map-get($sizes, 5);
+
+  @include respond-to(phone) {
+    font-size: map-get($sizes, 4);
+  }
 }
 
 .h5 {

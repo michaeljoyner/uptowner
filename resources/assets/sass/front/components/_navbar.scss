@@ -3,8 +3,35 @@
   z-index: 100;
   transition: .7s ease-in;
 
+  #nav-trigger:checked + .nav-list {
+    transform: rotateX(0deg);
+  }
+
+  @include respond-to(phone) {
+
+    .nav-list {
+
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: ($nav_height - 2px);
+      left: 0;
+      transform: rotateX(-90deg);
+      transition: .3s ease-in;
+      transform-origin: top;
+      z-index: 999;
+    }
+  }
+
   .nav-item {
     position: relative;
+    
+    @include respond-to(phone) {
+      display: block;
+      text-align: center;
+      font-size: 1.2rem;
+      margin: map_get($sizes, 4) 0;
+    }
 
 
     span {

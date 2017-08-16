@@ -1,8 +1,16 @@
 .banner {
   width: 100%;
   height: 40vw;
+
+  @include respond-to(phone) {
+    height: 100vw;
+  }
 }
 
 .banner.tall {
   height: 45vw;
+
+  @include respond-to(phone) {
+    height: 100vw;
+  }
 }

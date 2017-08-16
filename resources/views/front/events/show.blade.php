@@ -2,9 +2,11 @@
 
 @section('content')
     <a href="/events" class="pd-4 dib h5 text-colour uppercase">&larr; Back to events page</a>
+    @if($event->hasOwnImage())
     <div class="mt-10 mb-4 w-con-800 mg-x-a no-space">
         <img class="w-100 max-w-100" src="{{ $event->imageUrl('web') }}" alt="{{ $event->title }}">
     </div>
+    @endif
     <div class="flex-col flex-center-y">
         <p class="mt-2 mb-0 h3 text-colour uppercase">{{ $event->name }}</p>
         <p class="mg-y-0 h4">{{ $event->description }}</p>

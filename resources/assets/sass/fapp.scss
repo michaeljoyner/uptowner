@@ -1,5 +1,7 @@
 @import "front/variables";
 
+@import "admin/mixins/media";
+
 @import "~flickity/dist/flickity";
 
 @import "front/base";
@@ -15,6 +17,7 @@
 @import "front/utilities/misc";
 @import "front/utilities/position";
 @import "front/utilities/animations";
+@import "front/utilities/responsive";
 
 @import "front/components/navbar";
 @import "front/components/menunav";
