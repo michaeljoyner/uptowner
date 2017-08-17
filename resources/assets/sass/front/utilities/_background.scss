@@ -7,8 +7,16 @@
   background-color: $brand_primary;
 }
 
+.bg-col-soft {
+  background-color: $brand_primary_soft;
+}
+
 .bg-light {
   background-color: $brand_light;
+}
+
+.bg-muted {
+  background-color: $muted_background_colour;
 }
 
 .bg-trans {
@@ -34,4 +42,8 @@
   background-image: url('./images/pattern_orange.png');
   background-repeat: repeat;
   background-size: 300px;
+}
+
+.bg-blend-hard {
+  background-blend-mode: hard-light;
 }

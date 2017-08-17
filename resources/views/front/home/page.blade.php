@@ -13,7 +13,7 @@
     <h1 class="h1 uppercase text-center text-colour-light pb-0">Our Favorites</h1>
     <div class="favorites-grid w-con mg-x-a grid col-4 mt-9 mb-10">
         @foreach($favourites as $item)
-            <div class="pd-2 rounded-1 bg-light flex-col flex-spaced mg-x-a">
+            <div class="pd-2 rounded-1 bg-light flex-col flex-spaced">
                 <div class="inner-favorite-container">
                     <div class="image-box">
                         <img src="{{ $item->imageUrl('thumb') }}" alt="{{ $item->name }}" class="max-w-100">
@@ -43,7 +43,7 @@
             @endforeach
         </div>
     </section>
-    <section class="bg-col pb-10 pt-11 pd-x-4">
+    <section class="bg-col-soft pb-10 pt-11 pd-x-4">
         <div class="text-constrain mg-x-a">
             <p class="text-center text-colour-light h2">"The best American authentic food in Taichung"</p>
             <p class="text-right text-colour-light mb-0 body-text"><em>&dash; Brandon Pigeau</em></p>
@@ -63,7 +63,7 @@
             </div>
         </div>
     </section>
-    <section class="flex flex-space bg-col pd-y-10 text-colour-light text-center detail-panel">
+    <section class="flex flex-space bg-col-soft pd-y-10 text-colour-light text-center detail-panel">
         <div class="pd-x-6 body-text">
             <p class="h3">Bookings</p>
             <p class="mg-y-1">04 2326 0429 or</p>

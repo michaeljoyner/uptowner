@@ -1,4 +1,4 @@
-<footer class="grid col-3 bg-pattern-orange bg-col body-text text-colour-light pd-y-7">
+<footer class="grid col-3 bg-pattern-orange bg-col-soft bg-blend-hard body-text text-colour-light pd-y-7">
     <div class="flex-col flex-center-y">
         <h4 class="h4">Find Us</h4>
         <p class="mg-y-1">This is an address</p>

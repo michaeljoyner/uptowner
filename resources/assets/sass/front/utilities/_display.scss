@@ -78,24 +78,39 @@
 }
 
 .grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .col-3 {
-  grid-template-columns: repeat(3, 30%);
-  justify-content: space-around;
-  grid-row-gap: map_get($sizes, 8);
+  & > * {
+    width: 30%;
+    margin: 1em;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+  }
 }
 
 .col-4 {
-  grid-template-columns: repeat(4, 22%);
-  justify-content: space-around;
-  grid-row-gap: map_get($sizes, 8);
+
+  & > * {
+    width: 21%;
+    margin: 1em;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+  }
 }
 
 .col-5 {
-  grid-template-columns: repeat(5, 18%);
-  justify-content: space-around;
-  grid-row-gap: map_get($sizes, 4);
-  grid-column-gap: map_get($sizes, 4);
+
+  & > * {
+    width: 18%;
+    margin: 1em;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+  }
+
 }
