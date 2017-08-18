@@ -18,6 +18,7 @@ window.Vue = require('vue');
 Vue.component('modal', require('./components/Modal.vue'));
 Vue.component('scroll-link', require('./components/ScrollToLink.vue'));
 Vue.component('instagram-feed', require('./components/InstagramFeed.vue'));
+Vue.component('contact-form', require('./components/ContactForm.vue'));
 window.eventHub = new Vue();
 
 const app = new Vue({

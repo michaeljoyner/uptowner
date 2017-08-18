@@ -1,0 +1,30 @@
+body {
+  .flickity-prev-next-button {
+    background: transparent;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    svg {
+      transform: scale(1.2);
+    }
+
+    svg .arrow {
+      fill: $brand_light;
+    }
+
+    &:hover svg .arrow {
+      fill: $brand_primary_soft;
+    }
+  }
+
+  .flickity-page-dots {
+    .dot.is-selected {
+      background-color: $brand_primary;
+    }
+  }
+
+}
+
+

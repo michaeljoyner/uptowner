@@ -3,7 +3,7 @@ body.home-page {
 }
 
 .home-hero {
-  background-image: url('/images/burger_fries.jpeg');
+  background-image: url('./images/breakfast_bg.jpg');
 
   .hero-cta {
     position: absolute;
@@ -22,7 +22,7 @@ body.home-page {
 }
 
 .favorites {
-  background-image: url('./images/burger_bg.jpg');
+  background-image: url('./images/orange_bg_burger.jpg');
 
   .favorites-grid {
     @include respond-to(phone) {
@@ -57,37 +57,14 @@ body.home-page {
 }
 
 .specials {
-
   .flickity-prev-next-button {
     top: 200px;
     transform: translateY(0);
-    background: transparent;
 
     @include respond-to(phone) {
       top: 25vw;
     }
-
-
-
-    &:hover {
-      background-color: transparent;
-    }
-
-    svg path {
-      fill: $brand_light;
-    }
-
-    &:hover svg path {
-      fill: $brand_primary_soft;
-    }
   }
-
-  .flickity-page-dots {
-    .dot.is-selected {
-      background-color: $brand_primary;
-    }
-  }
-
   .special-slide {
     max-width: 100vw;
   }

@@ -38,6 +38,19 @@ Route::group([
     Route::get('events/{event}', function(\App\Occasions\Event $event) {
         return view('front.events.show', ['event' => $event]);
     });
+
+    Route::get('contact', function() {
+        return view('front.contact.page');
+    });
+
+
+
+
+});
+
+Route::post('contact', function() {
+
+    Mail::to('test@example.com')->send(new \App\Mail\ContactMessage(request()->only('name', 'email', 'phone', 'enquiry')));
 });
 
 Route::get('service/instagram/feed', 'InstagramController@index');
