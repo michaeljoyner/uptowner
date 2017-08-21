@@ -3,6 +3,7 @@
 @import "admin/mixins/media";
 
 @import "~flickity/dist/flickity";
+@import "admin/shared/sweetalert";
 
 @import "front/base";
 
@@ -24,6 +25,8 @@
 @import "front/components/menunav";
 @import "front/components/banner";
 @import "front/components/svgicon";
+@import "front/components/forms";
+@import "front/components/spinner";
 
 @import "front/pages/home";
 @import "front/pages/menu";

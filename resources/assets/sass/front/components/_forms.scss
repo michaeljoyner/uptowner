@@ -1,0 +1,21 @@
+.text-input {
+  width: 100%;
+  height: 32px;
+  border: 3px solid $brand_primary;
+  padding-left: map_get($sizes, 2);
+  border-radius: 5px;
+}
+
+.std-textarea {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  border: 3px solid $brand_primary;
+  padding: map_get($sizes, 2);
+  border-radius: 5px;
+}
+
+.form-group {
+  margin: map_get($sizes, 4) 0;
+}
+

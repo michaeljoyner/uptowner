@@ -24,7 +24,13 @@ Route::group([
     });
 
     Route::get('menu', function() {
-        return view('front.menu.page', ['isMenuPage' => true]);
+        $fillerImages = collect([
+            '/images/menu_fillers/image_1.jpg',
+            '/images/menu_fillers/image_2.jpg',
+            '/images/menu_fillers/image_3.jpg',
+            '/images/menu_fillers/image_4.jpg'
+        ]);
+        return view('front.menu.page', ['isMenuPage' => true, 'fillerImages' => $fillerImages]);
     });
 
     Route::get('events', function() {
@@ -39,19 +45,14 @@ Route::group([
         return view('front.events.show', ['event' => $event]);
     });
 
-    Route::get('contact', function() {
-        return view('front.contact.page');
-    });
+    Route::get('contact', 'ContactController@show');
 
 
 
 
 });
 
-Route::post('contact', function() {
-
-    Mail::to('test@example.com')->send(new \App\Mail\ContactMessage(request()->only('name', 'email', 'phone', 'enquiry')));
-});
+Route::post('contact', 'ContactController@store');
 
 Route::get('service/instagram/feed', 'InstagramController@index');
 

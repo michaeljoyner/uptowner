@@ -11,6 +11,7 @@
         <div class="flex flex-center pd-y-9 bg-pattern-grey bt-2 bd-col">
             <h1 class="h1 uppercase text-colour text-center">{{ $page->name }}</h1>
         </div>
+        @if($page->publishedItemImages()->count() > 2)
         <div data-flickity='{"cellAlign": "left", "contain": true, "groupCells": true, "imagesLoaded": true, "pageDots": false}'>
             @foreach($page->publishedItemImages() as $image)
                 <div class="relative of-hidden">
@@ -21,12 +22,13 @@
                 @if($loop->count < 5)
                     @foreach(range(1, 5 - $page->publishedItemImages()->count()) as $item)
                         <div class="relative of-hidden">
-                            <img draggable="false" width="290" src="/images/egg.jpg" alt="placeholder image">
+                            <img draggable="false" width="290" src="{{ $fillerImages->random() }}" alt="placeholder image">
                             <p class="menu-image-title absolute-bottom pd-2 one-liner text-colour-light h6">It is an egg</p>
                         </div>
                     @endforeach
                 @endif
         </div>
+        @endif
         <div class="w-con mg-x-a">
             @foreach($page->publishedGroups()->ordered() as $group)
                 <p class="h2 text-center uppercase pd-y-7">{{ $group->name }}</p>

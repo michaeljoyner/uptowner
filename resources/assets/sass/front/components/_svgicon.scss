@@ -26,4 +26,13 @@
       fill: $brand_primary;
     }
   }
+
+  &.white-icon {
+    svg {
+
+      path {
+        fill: $brand_light;
+      }
+    }
+  }
 }

@@ -53,6 +53,7 @@ export default {
             this.form.clearForm(this.formType === 'create' ? {} : updated_data);
             this.modalOpen = false;
             this.emitEvent(updated_data);
+            this.$emit('successfully-submitted');
         },
 
         onFailure(res) {

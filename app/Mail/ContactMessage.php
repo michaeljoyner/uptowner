@@ -32,6 +32,6 @@ class ContactMessage extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject('Uptowner site message from ' . $this->name)->markdown('email.contact');
     }
 }

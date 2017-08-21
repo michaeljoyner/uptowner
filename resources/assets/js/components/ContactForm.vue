@@ -1,30 +1,36 @@
 <style></style>
 
 <template>
-    <form action="POST" @submit.stop.prevent="submit">
+    <form action="POST" @submit.stop.prevent="submit" class="w-con-600 mg-x-a" :class="{'opaque': waiting}">
         <p class="lead text-danger" v-show="mainError">{{ mainError }}</p>
         <div class="form-group" :class="{'has-error': form.errors.name}">
-            <label for="name">Name</label>
+            <label class="text-colour h6 uppercase" for="name">Name</label>
             <span class="error-message" v-show="form.errors.name">{{ form.errors.name }}</span>
-            <input type="text" name="name" v-model="form.data.name" class="form-control">
+            <input type="text" name="name" v-model="form.data.name" class="text-input">
         </div>
         <div class="form-group" :class="{'has-error': form.errors.email}">
-            <label for="email">Email</label>
+            <label class="text-colour h6 uppercase" for="email">Email</label>
             <span class="error-message" v-show="form.errors.email">{{ form.errors.email }}</span>
-            <input type="text" name="email" v-model="form.data.email" class="form-control">
+            <input type="text" name="email" v-model="form.data.email" class="text-input">
         </div>
         <div class="form-group" :class="{'has-error': form.errors.phone}">
-            <label for="phone">Phone</label>
+            <label class="text-colour h6 uppercase" for="phone">Phone</label>
             <span class="error-message" v-show="form.errors.phone">{{ form.errors.phone }}</span>
-            <input type="text" name="phone" v-model="form.data.phone" class="form-control">
+            <input type="text" name="phone" v-model="form.data.phone" class="text-input">
         </div>
         <div class="form-group" :class="{'has-error': form.errors.enquiry}">
-            <label for="enquiry">Message</label>
+            <label class="text-colour h6 uppercase" for="enquiry">Message</label>
             <span class="error-message" v-show="form.errors.enquiry">{{ form.errors.enquiry }}</span>
-            <input type="text" name="enquiry" v-model="form.data.enquiry" class="form-control">
+            <textarea name="enquiry" v-model="form.data.enquiry" class="std-textarea"></textarea>
         </div>
         <div class="form-group">
-            <button type="submit">Submit</button>
+            <button type="submit" class="wmin-100 h4 text-colour uppercase bd-col bd-4 fw-700 rounded-2 pd-x-4 pd-y-2 bg-light block mg-x-a"><span v-show="!waiting">Submit</span>
+                <div class="spinner" v-show="waiting">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+            </button>
         </div>
     </form>
 </template>
@@ -47,6 +53,15 @@
                     enquiry: ''
                 })
             }
+        },
+
+        mounted() {
+          eventHub.$on('contact-message-sent', () => eventHub.$emit('user-alert', {
+              type: 'success',
+              title: 'Your Message has been Sent!',
+              text: 'Thanks for getting in touch!',
+              confirm: true
+          }));
         },
 
         methods: {
