@@ -7,3 +7,40 @@
     font-size: 0;
   }
 }
+
+.menu-icon {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    bottom: 25px;
+    left: 20px;
+    content: 'tooltip';
+    background: rgba(0,0,0,.6);
+    color: $brand_light;
+    font-size: 50%;
+    font-family: $sans_serif;
+    padding: 5px 8px;
+    border-radius: 4px;
+    display: none;
+  }
+
+  &:hover:after {
+    display: block;
+  }
+
+  &.vegetarian:after {
+    background: #afd152;
+    content: 'Vegetarian';
+  }
+
+  &.spicy:after {
+    background: #bc3a2c;
+    content: 'Spicy';
+  }
+
+  &.recommended:after {
+    background: #eaa645;
+    content: 'Recommended';
+  }
+}

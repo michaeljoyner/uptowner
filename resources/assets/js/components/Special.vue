@@ -77,10 +77,16 @@
 
         computed: {
             formatted_start_date() {
+                if(! this.start_date) {
+                    return 'Date not set';
+                }
                 return moment(this.start_date).format('MMMM, Do, YYYY');
             },
 
             formatted_end_date() {
+                if(! this.end_date) {
+                    return 'Date not set';
+                }
                 return moment(this.end_date).format('MMMM, Do, YYYY');
             }
         },

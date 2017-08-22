@@ -25,6 +25,13 @@ class MenuPage extends Model
         'deleting' => DeletingMenuPage::class
     ];
 
+    protected $fillerImages = [
+        ['src' => '/images/menu_fillers/image_1.jpg', 'alt' => 'Bottoms up'],
+        ['src' => '/images/menu_fillers/image_2.jpg', 'alt' => 'Eat and be merry'],
+        ['src' => '/images/menu_fillers/image_3.jpg', 'alt' => 'Good food, good times'],
+        ['src' => '/images/menu_fillers/image_4.jpg', 'alt' => 'Cheers']
+    ];
+
 
 
     public function groups()
@@ -46,6 +53,26 @@ class MenuPage extends Model
         })->map(function($item) {
             return ['src' => $item->imageUrl('thumb'), 'alt' => $item->name];
         });
+    }
+
+    public function getFilledImageRow()
+    {
+        $real_images = $this->publishedItemImages();
+
+        if($real_images->count() < 3) {
+            return collect([]);
+        }
+
+        if($real_images->count() < 6) {
+            return $real_images->merge($this->getFillerImages(6 - $real_images->count()));
+        }
+
+        return $real_images;
+    }
+
+    protected function getFillerImages($count)
+    {
+        return collect($this->fillerImages)->random($count);
     }
 
     public function addGroup($group_id)
@@ -74,7 +101,8 @@ class MenuPage extends Model
             'id' => $this->id,
             'name' => $this->getTranslation('name', 'en'),
             'zh_name' => $this->getTranslation('name', 'zh'),
-            'group_names' => $this->groups->map->getTranslation('name', 'en')->all()
+            'group_names' => $this->groups->map->getTranslation('name', 'en')->all(),
+            'published' => $this->published
         ];
     }
 }

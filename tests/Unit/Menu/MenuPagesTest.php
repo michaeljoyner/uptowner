@@ -113,6 +113,61 @@ class MenuPagesTest extends TestCase
     /**
      *@test
      */
+    public function a_page_can_present_all_its_images_padded_with_fillers_if_necessary()
+    {
+        $page = factory(MenuPage::class)->create();
+        $groupA = factory(MenuGroup::class)->create(['published' => true, 'menu_page_id' => $page->id]);
+        $groupB = factory(MenuGroup::class)->create(['published' => true, 'menu_page_id' => $page->id]);
+
+        $itemA = factory(MenuItem::class)->create(['published' => true, 'menu_group_id' => $groupA->id]);
+        $itemB = factory(MenuItem::class)->create(['published' => true, 'menu_group_id' => $groupA->id]);
+        $itemC = factory(MenuItem::class)->create(['published' => true, 'menu_group_id' => $groupB->id]);
+        $itemD = factory(MenuItem::class)->create(['published' => true, 'menu_group_id' => $groupB->id]);
+
+        $imageA = $itemB->setImage(UploadedFile::fake()->image('testpic1.jpg'));
+        $imageB = $itemC->setImage(UploadedFile::fake()->image('testpic1.jpg'));
+        $imageC = $itemD->setImage(UploadedFile::fake()->image('testpic1.jpg'));
+
+        $images = $page->fresh()->getFilledImageRow();
+
+        $this->assertCount(6, $images);
+        $this->assertContains(['src' => $imageA->getUrl('thumb'), 'alt' => $itemB->name], $images);
+        $this->assertContains(['src' => $imageB->getUrl('thumb'), 'alt' => $itemC->name], $images);
+        $this->assertContains(['src' => $imageC->getUrl('thumb'), 'alt' => $itemD->name], $images);
+
+        $filler_images = collect($images)->filter(function($image) {
+            return str_contains($image['src'], 'images/menu_fillers');
+        })->all();
+
+        $this->assertCount(3, $filler_images);
+    }
+
+    /**
+     *@test
+     */
+    public function a_menu_page_with_less_than_three_images_has_an_empty_image_row()
+    {
+        $page = factory(MenuPage::class)->create();
+        $groupA = factory(MenuGroup::class)->create(['published' => true, 'menu_page_id' => $page->id]);
+        $groupB = factory(MenuGroup::class)->create(['published' => true, 'menu_page_id' => $page->id]);
+
+        $itemA = factory(MenuItem::class)->create(['published' => true, 'menu_group_id' => $groupA->id]);
+        $itemB = factory(MenuItem::class)->create(['published' => true, 'menu_group_id' => $groupA->id]);
+        $itemC = factory(MenuItem::class)->create(['published' => true, 'menu_group_id' => $groupB->id]);
+        $itemD = factory(MenuItem::class)->create(['published' => false, 'menu_group_id' => $groupB->id]);
+
+        $itemB->setImage(UploadedFile::fake()->image('testpic1.jpg'));
+        $itemC->setImage(UploadedFile::fake()->image('testpic1.jpg'));
+        $itemD->setImage(UploadedFile::fake()->image('testpic1.jpg'));
+
+        $images = $page->fresh()->getFilledImageRow();
+
+        $this->assertCount(0, $images);
+    }
+
+    /**
+     *@test
+     */
     public function a_menu_page_can_present_itself_as_a_jsonable_array()
     {
         $page = factory(MenuPage::class)->create([

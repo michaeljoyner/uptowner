@@ -1,0 +1,15 @@
+.main-footer {
+  @include respond-to(phone) {
+    .footer-row {
+      flex-direction: column;
+    }
+
+    .footer-column {
+      width: 100%;
+      margin: 0;
+      margin-bottom: 30px;
+    }
+  }
+
+}
+

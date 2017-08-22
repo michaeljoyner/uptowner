@@ -16,7 +16,7 @@ class Event extends Model implements HasMediaConversions
 {
     use HasTranslations, HandlesTranslations, HasModelImage, HasMediaTrait, HasPublishedScope, Sluggable;
 
-    const DEFAULT_IMG_URL = '/images/defaults/default4x3.png';
+    const DEFAULT_IMG_URL = '/images/defaults/default4x3.jpg';
 
     protected $table = 'events';
 

@@ -39,3 +39,10 @@
     padding-right: map-get($sizes, $i);
   }
 }
+
+.pd-y-10 {
+  @include respond-to(phone) {
+    padding-top: map_get($sizes, 9);
+    padding-bottom: map_get($sizes, 9);
+  }
+}

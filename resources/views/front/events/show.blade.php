@@ -1,7 +1,7 @@
 @extends('front.base', ['pageName' => 'event-show'])
 
 @section('content')
-    <a href="/events" class="pd-4 dib h5 text-colour uppercase">&larr; Back to events page</a>
+    <a href="/events" class="pd-4 dib h5 text-colour uppercase hover-blue">&larr; @lang('event_show.nav.back')</a>
     @if($event->hasOwnImage())
     <div class="mt-10 mb-4 w-con-800 mg-x-a no-space">
         <img class="w-100 max-w-100" src="{{ $event->imageUrl('web') }}" alt="{{ $event->title }}">
@@ -18,15 +18,15 @@
     </div>
     @include('front.partials.location_info')
     <div class="flex-center-y flex-col mg-y-10">
-        <p class="h3 text-colour uppercase">Let your friends know</p>
+        <p class="h3 text-colour uppercase">@lang('event_show.social.heading')</p>
         <div class="pt-7">
             <a href="#" class="social-icon mg-2">@include('svgicons.facebook')</a>
             <a href="#" class="social-icon mg-2">@include('svgicons.twitter')</a>
         </div>
     </div>
     <div class="flex-col flex-center-y mg-y-10">
-        <a href="#" class="h4 text-colour uppercase bd-col bd-4 fw-700 rounded-2 pd-x-4 pd-y-2">Book a table</a>
-        <a href="/events" class="mt-6 text-colour uppercase h5">Back to events</a>
+        <a href="/contact" class="h4 text-colour uppercase bd-col bd-4 fw-700 rounded-2 pd-x-8 pd-y-2 hover-btn-invert">@lang('event_show.cta')</a>
+        <a href="/events" class="mt-6 text-colour uppercase h5 hover-blue">@lang('event_show.nav.back')</a>
     </div>
 
 @endsection

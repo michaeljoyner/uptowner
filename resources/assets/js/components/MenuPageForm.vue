@@ -5,7 +5,7 @@
         <button class="dd-btn btn" @click="modalOpen = true">{{ buttonText }}</button>
         <modal :show="modalOpen">
             <div slot="header">
-                <h3>{{ formType === 'create' ? 'Add A New Page' : 'Update this Page' }}</h3>
+                <h3>{{ formType === 'create' ? 'Add A New Category' : 'Update this Category' }}</h3>
             </div>
             <div slot="body">
                 <p class="lead text-danger" v-show="mainError">{{ mainError }}</p>
@@ -61,7 +61,7 @@
             },
             'button-text': {
                 type: String,
-                default: 'add page'
+                default: 'add category'
             }
         },
 

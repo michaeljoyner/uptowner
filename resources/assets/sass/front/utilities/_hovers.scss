@@ -1,11 +1,61 @@
-.hover-shadow {
+.hover-shadow-light {
   &:hover {
-    box-shadow: 0 0 7px 3px $brand_primary_dark;
+    box-shadow: 0 0 5px 3px rgba($brand_light, .4);
+  }
+}
+
+.hover-shadow-orange {
+  &:hover {
+    box-shadow: 0 0 5px 3px rgba($brand_primary_soft, .4);
   }
 }
 
 .hover-blue {
   &:hover {
     color: $brand_blue;
+  }
+}
+
+.hover-bd-blue {
+  &:hover {
+    border-color: $brand_blue;
+  }
+}
+
+.hover-primary {
+  &:hover {
+    color: $brand_primary;
+  }
+}
+
+.hover-bd-primary {
+  &:hover {
+    border-color: $brand_primary;
+  }
+}
+
+.hover-primary-soft {
+  &:hover {
+    color: $brand_primary_soft;
+  }
+}
+
+.hover-bd-primary-soft {
+  &:hover {
+    border-color: $brand_primary_soft;
+  }
+}
+
+.hover-btn-invert {
+  &:hover {
+    background: $brand_primary;
+    color: $brand_light;
+  }
+}
+
+.hover-btn-invert-two {
+  &:hover {
+    background: $brand_light;
+    color: $brand_primary;
   }
 }

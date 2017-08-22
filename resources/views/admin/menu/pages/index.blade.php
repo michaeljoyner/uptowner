@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="dd-page-header">
-        <h1 class="page-title">Menu Pages</h1>
+        <h1 class="page-title">Menu Categories</h1>
         <div class="page-header-actions">
             <menu-page-form url="/admin/menu/pages"></menu-page-form>
         </div>

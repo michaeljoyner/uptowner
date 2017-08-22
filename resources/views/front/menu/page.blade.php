@@ -13,20 +13,12 @@
         </div>
         @if($page->publishedItemImages()->count() > 2)
         <div data-flickity='{"cellAlign": "left", "contain": true, "groupCells": true, "imagesLoaded": true, "pageDots": false}'>
-            @foreach($page->publishedItemImages() as $image)
+            @foreach($page->getFilledImageRow() as $image)
                 <div class="relative of-hidden">
                     <img draggable="false" width="290" src="{{ $image['src'] }}" alt="{{ $image['alt'] }}">
                     <p class="menu-image-title absolute-bottom pd-2 one-liner text-colour-light h6">{{ $image['alt'] }}</p>
                 </div>
             @endforeach
-                @if($loop->count < 5)
-                    @foreach(range(1, 5 - $page->publishedItemImages()->count()) as $item)
-                        <div class="relative of-hidden">
-                            <img draggable="false" width="290" src="{{ $fillerImages->random() }}" alt="placeholder image">
-                            <p class="menu-image-title absolute-bottom pd-2 one-liner text-colour-light h6">It is an egg</p>
-                        </div>
-                    @endforeach
-                @endif
         </div>
         @endif
         <div class="w-con mg-x-a">
@@ -34,8 +26,19 @@
                 <p class="h2 text-center uppercase pd-y-7">{{ $group->name }}</p>
                 @foreach($group->publishedItems()->ordered() as $item)
                     <article class="pd-y-4 mg-x-4">
-                        <p class="h3 mb-2">{{ $item->name }}</p>
-                        <p class="body-text mg-y-2 text-constrain">{{ $item->description }}</p>
+                        <div class="h3 mb-2">
+                            {{ $item->name }}
+                            @if($item->is_vegetarian)
+                                <span class="menu-icon vegetarian">@include('svgicons.vegetarian')</span>
+                            @endif
+                            @if($item->is_spicy)
+                                <span class="menu-icon spicy">@include('svgicons.spicy')</span>
+                            @endif
+                            @if($item->is_recommended)
+                                <span class="menu-icon recommended">@include('svgicons.recommended')</span>
+                            @endif
+                        </div>
+                        <p class="body-text mb-2 mt-0 text-constrain">{{ $item->description }}</p>
                         <p class="h4 text-colour-soft">NT${{ $item->price }}</p>
                     </article>
                 @endforeach

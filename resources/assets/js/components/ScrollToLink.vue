@@ -1,7 +1,7 @@
 <style></style>
 
 <template>
-    <a :href="hashLink" @click.prevent="scrollTo" class="scrolling-link">{{ linkText }}</a>
+    <a :href="hashLink" @click.prevent="scrollTo" class="scrolling-link hover-blue">{{ linkText }}</a>
 </template>
 
 <script type="text/babel">

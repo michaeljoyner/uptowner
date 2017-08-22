@@ -13,6 +13,9 @@ window.Flickity = Flickity;
 window.swal = require('sweetalert');
 window.Vue = require('vue');
 
+import jump from "jump.js";
+window.jump = jump;
+
 
 
 Vue.component('modal', require('./components/Modal.vue'));
@@ -49,4 +52,12 @@ function showNavbar() {
 }
 
 window.addEventListener('scroll', showNavbar);
-window.setTimeout(showNavbar, 2000);
+window.setTimeout(showNavbar, 1000);
+
+const to_top = document.querySelector('.footer_logo_top_link');
+
+if(to_top) {
+    to_top.addEventListener('click', () => {
+        jump('#app', {offset: -75});
+    });
+}

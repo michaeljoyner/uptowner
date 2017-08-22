@@ -4,7 +4,7 @@
     <div class="menu-group-app-component">
         <div class="right-strip">
             <div>
-                <span>Filter categories by name: </span>
+                <span>Filter groups by name: </span>
                 <input type="search" v-model="filter_query" class="form-text-input">
             </div>
         </div>

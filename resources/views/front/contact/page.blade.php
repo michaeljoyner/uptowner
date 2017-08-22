@@ -1,9 +1,11 @@
 @extends('front.base', ['pageName' => 'contact-page'])
 
 @section('content')
-    <h1 class="h1 text-colour mt-10 uppercase text-center">Contact Us</h1>
-    <p class="body-text mg-y-7 text-center w-con-600 mg-x-a">Stay tuned for our new booking form, coming soon! In the meantime, if you'd like to book a table please send a message and let us know for how many people, and when.</p>
-    <contact-form url="/contact" button-text="send"></contact-form>
+    <div class="flex flex-center pd-y-9 bg-pattern-grey bd-col bb-2">
+        <h1 class="h1 uppercase text-colour text-center">@lang('contact.intro.heading')</h1>
+    </div>
+    <p class="body-text mg-y-7 text-center w-con-600 mg-x-a">@lang('contact.intro.body')</p>
+    <contact-form url="/contact" button-text="send" form-locale="{{ app()->getLocale() }}"></contact-form>
     <section class="mg-y-10">
         @include('front.partials.location_info')
     </section>

@@ -1,0 +1,15 @@
+.ease-in {
+  transition-timing-function: ease-in;
+}
+
+.ease-out {
+  transition-timing-function: ease-out;
+}
+
+.transition-slow {
+  transition-duration: .8s;
+}
+
+.transition-quick {
+  transition-duration: .3s;
+}

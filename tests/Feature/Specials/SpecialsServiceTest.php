@@ -47,4 +47,27 @@ class SpecialsServiceTest extends TestCase
             $this->assertEquals(Carbon::parse('+7 days')->format('Y-m-d'), $special['end_date']);
         });
     }
+
+    /**
+     *@test
+     */
+    public function a_special_can_have_null_dates()
+    {
+        $this->disableExceptionHandling();
+        factory(Special::class, 10)->create([
+            'start_date' => null,
+            'end_date' => null,
+        ]);
+
+        $response = $this->asLoggedInUser()->json('GET', '/admin/services/specials');
+        $response->assertStatus(200);
+
+        $fetched_specials = $response->decodeResponseJson();
+
+        $this->assertCount(10, $fetched_specials);
+        collect($fetched_specials)->each(function($special) {
+            $this->assertNull($special['start_date']);
+            $this->assertNull($special['end_date']);
+        });
+    }
 }

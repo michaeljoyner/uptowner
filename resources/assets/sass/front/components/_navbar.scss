@@ -54,7 +54,7 @@
 
 
 
-    &:hover {
+    &:hover, &.active {
 
       span:after {
         transform: rotateY(0deg);

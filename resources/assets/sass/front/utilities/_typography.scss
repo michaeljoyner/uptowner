@@ -10,7 +10,7 @@
   font-size: map-get($sizes, 8);
 
   @include respond-to(phone) {
-    font-size: map-get($sizes, 7);
+    font-size: 1.75rem;
   }
 }
 
@@ -37,7 +37,7 @@
   font-size: map-get($sizes, 5);
 
   @include respond-to(phone) {
-    font-size: map-get($sizes, 4);
+    font-size: map-get($sizes, 5);
   }
 }
 

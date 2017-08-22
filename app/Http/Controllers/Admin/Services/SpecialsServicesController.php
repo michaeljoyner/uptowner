@@ -19,8 +19,8 @@ class SpecialsServicesController extends Controller
                 'description' => $special->description,
                 'zh_description' => $special->getTranslation('description', 'zh'),
                 'price' => $special->price,
-                'start_date' => $special->start_date->format('Y-m-d'),
-                'end_date' => $special->end_date->format('Y-m-d'),
+                'start_date' => $special->start_date ? $special->start_date->format('Y-m-d') : null,
+                'end_date' => $special->end_date ? $special->end_date->format('Y-m-d') : null,
                 'published' => $special->published
             ];
         });

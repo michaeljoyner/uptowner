@@ -11,7 +11,7 @@ body.home-page {
     bottom: 40px;
     transform: translate3d(-50%,0,0);
     opacity: 1;
-    transition: .7s ease-in;
+    transition: .7s transform ease-in;
 
     &.hidden {
       opacity: 0;
@@ -77,6 +77,12 @@ body.home-page {
 
     @include respond-to(phone) {
       display: none;
+    }
+  }
+
+  .heading {
+    @include respond-to(phone) {
+      font-size: 1.75rem;
     }
   }
 

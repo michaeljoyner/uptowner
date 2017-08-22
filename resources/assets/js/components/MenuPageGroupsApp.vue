@@ -3,7 +3,7 @@
 <template>
     <div class="menu-page-groups-app-component">
         <div class="group-selection-box">
-            <p>Drag an available menu group below into the box to assign it to this page.</p>
+            <p>Drag an available menu group below into the box to assign it to this category.</p>
             <draggable-menu-group v-for="group in availableGroups"
                                   :key="group.id"
                                   :assigned="group.is_assigned"
@@ -14,7 +14,7 @@
             ></draggable-menu-group>
         </div>
         <div class="group-dropzone-box">
-            <p class="lead">This page's groups are:</p>
+            <p class="lead">This category's groups are:</p>
             <div class="group-dropzone"
                  @dragover="dragOverBox($event)"
                  @dragenter="dragEnterBox($event)"
