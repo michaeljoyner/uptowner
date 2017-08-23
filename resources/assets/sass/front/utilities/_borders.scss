@@ -25,6 +25,15 @@
   }
 }
 
+@for $i from 1 to 5 {
+  .btb-#{$i} {
+    @extend .border-solid;
+    border-width: 0;
+    border-top-width: map-get($border_sizes, $i);
+    border-bottom-width: map-get($border_sizes, $i);
+  }
+}
+
 .bd-col {
   border-color: $brand_primary;
 }

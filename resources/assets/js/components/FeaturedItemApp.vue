@@ -11,6 +11,7 @@
             <menu-item-small v-for="item in selection"
                              :key="item.id"
                              :itemAttributes="item"
+                             @add-featured="addItemToFeaturedCollection"
             ></menu-item-small>
         </div>
         <div class="current-featured-items">
@@ -20,10 +21,10 @@
                  @dragenter="dragEnterBox($event)"
                  @drop="itemDropped($event)"
             >
-                <featured-item v-for="featuredEvent in featured_items"
-                               :key="featuredEvent.id"
-                               :item-attributes="featuredEvent"
-                               @remove-featured-item="removeFromFeatured(featuredEvent)"
+                <featured-item v-for="featured in featured_items"
+                               :key="featured.id"
+                               :item-attributes="featured"
+                               @remove-featured-item="removeFromFeatured(featured)"
                 ></featured-item>
             </div>
         </div>
@@ -110,7 +111,7 @@
             removeFromFeatured(item) {
                 console.log(item);
                 this.featured_items.splice(this.featured_items.indexOf(item), 1);
-                axios.delete(`/admin/menu/featuredEvent/${item.id}`)
+                axios.delete(`/admin/menu/featured/${item.id}`)
                     .then(() => this.fetchFeaturedItems())
                     .catch(err => console.log(err));
             }

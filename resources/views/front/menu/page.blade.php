@@ -8,7 +8,7 @@
     </div>
     @foreach(Menu::pages() as $page)
     <section class="pb-7" id="{{ str_slug($page->name) }}">
-        <div class="flex flex-center pd-y-9 bg-pattern-grey bt-2 bd-col">
+        <div class="flex flex-center pd-y-9 bg-pattern-grey btb-2 bd-col">
             <h1 class="h1 uppercase text-colour text-center">{{ $page->name }}</h1>
         </div>
         @if($page->publishedItemImages()->count() > 2)

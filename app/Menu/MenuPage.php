@@ -26,9 +26,9 @@ class MenuPage extends Model
     ];
 
     protected $fillerImages = [
-        ['src' => '/images/menu_fillers/image_1.jpg', 'alt' => 'Bottoms up'],
-        ['src' => '/images/menu_fillers/image_2.jpg', 'alt' => 'Eat and be merry'],
-        ['src' => '/images/menu_fillers/image_3.jpg', 'alt' => 'Good food, good times'],
+        ['src' => '/images/menu_fillers/image_1.jpg', 'alt' => 'Bottoms Up'],
+        ['src' => '/images/menu_fillers/image_2.jpg', 'alt' => 'Eat and be Merry'],
+        ['src' => '/images/menu_fillers/image_3.jpg', 'alt' => 'Good Food, Good Times'],
         ['src' => '/images/menu_fillers/image_4.jpg', 'alt' => 'Cheers']
     ];
 

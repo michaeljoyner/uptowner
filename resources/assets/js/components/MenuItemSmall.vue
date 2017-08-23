@@ -9,6 +9,7 @@
             <p>{{ itemAttributes.name }}</p>
             <p>{{ itemAttributes.zh_name }}</p>
             <p class="price">NT${{ itemAttributes.price }}</p>
+            <p class="add-btn" @click="addToList">Add to Featured</p>
         </div>
     </div>
 </template>
@@ -23,7 +24,9 @@
                 event.dataTransfer.setData('it_is_a_menu_item', 'true');
             },
 
-
+            addToList() {
+                this.$emit('add-featured', this.itemAttributes.id);
+            }
         }
     }
 </script>

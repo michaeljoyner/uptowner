@@ -11,6 +11,7 @@
                                   :id="group.id"
                                   :page-name="group.page_name"
                                   :page-id="group.page_id"
+                                  @add-draggable="assignGroupToPage"
             ></draggable-menu-group>
         </div>
         <div class="group-dropzone-box">

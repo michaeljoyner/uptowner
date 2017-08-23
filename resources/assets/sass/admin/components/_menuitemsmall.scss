@@ -52,5 +52,17 @@
       right: 0;
       padding: 0 10px 10px 0;
     }
+
+    .add-btn {
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+      color: $brand_orange;
+      cursor: default;
+
+      &:hover {
+        color: $brand_blue;
+      }
+    }
   }
 }

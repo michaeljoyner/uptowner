@@ -9,6 +9,9 @@
             <p v-if="assigned">Currently assigned to <a :href="`/admin/menu/pages/${pageId}`">{{ pageName }}</a></p>
             <p v-if="!assigned">Does not currently belong to any page</p>
         </div>
+        <footer>
+            <div v-if="!assigned" @click="addToList">Add to list</div>
+        </footer>
     </div>
 </template>
 
@@ -22,6 +25,10 @@
             startDrag(event) {
                 event.dataTransfer.setData('text/plain', this.id);
                 event.dataTransfer.setData('it_is_a_menu_group', 'true');
+            },
+
+            addToList() {
+                this.$emit('add-draggable', this.id);
             }
         }
     }

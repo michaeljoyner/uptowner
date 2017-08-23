@@ -6,6 +6,10 @@
   .flickity-slider > div {
     font-size: 0;
   }
+
+  div[data-flickity] {
+    margin-top: -2px;
+  }
 }
 
 .menu-icon {
