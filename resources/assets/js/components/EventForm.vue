@@ -3,7 +3,7 @@
 <template>
     <span class="event-form-component">
         <button class="dd-btn btn" @click="modalOpen = true">{{ buttonText }}</button>
-        <modal :show="modalOpen">
+        <modal :show="modalOpen"  class="form-modal">
             <div slot="header">
                 <h3>{{ formType === 'create' ? 'Add A New Event' : 'Update this Event' }}</h3>
             </div>

@@ -3,7 +3,7 @@
 <template>
     <span class="add-user-component">
         <button class="dd-btn btn" @click="modalOpen = true">Add User</button>
-        <modal :show="modalOpen">
+        <modal :show="modalOpen" class="form-modal">
             <div slot="header">
                 <h3>Register a New User</h3>
             </div>

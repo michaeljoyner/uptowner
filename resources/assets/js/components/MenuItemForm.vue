@@ -3,7 +3,7 @@
 <template>
     <span class="add-menu-item-component">
         <button class="dd-btn btn" @click="modalOpen = true">{{ buttonText }}</button>
-        <modal :show="modalOpen">
+        <modal :show="modalOpen"  class="form-modal">
             <div slot="header">
                 <h3>{{ formType === 'create' ? 'Add A New Menu Item' : 'Update this Menu Item' }}</h3>
             </div>
