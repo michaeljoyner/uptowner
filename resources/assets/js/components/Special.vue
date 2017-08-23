@@ -88,7 +88,7 @@
                     return 'Date not set';
                 }
                 return moment(this.end_date).format('MMMM, Do, YYYY');
-            }
+            },
         },
 
         mounted() {

@@ -3,7 +3,7 @@
 <template>
     <span class="add-special-component">
         <button class="dd-btn btn" @click="modalOpen = true">{{ formType === 'create' ? 'New Special' : 'Edit' }}</button>
-        <modal :show="modalOpen">
+        <modal :show="modalOpen" class="form-modal">
             <div slot="header">
                 <h3>{{ formType === 'create' ? 'Create a New Special' : 'Update This Special' }}</h3>
             </div>
@@ -46,12 +46,12 @@
                     <div class="form-group" :class="{'has-error': form.errors.start_date}">
                         <label for="start_date">Start Date</label>
                         <span class="error-message" v-show="form.errors.start_date">{{ form.errors.start_date }}</span>
-                        <input type="date" name="start_date" v-model="form.data.start_date" class="form-control">
+                        <datepicker v-model="form.data.start_date" name="start_date"></datepicker>
                     </div>
                     <div class="form-group" :class="{'has-error': form.errors.end_date}">
                         <label for="end_date">End Date</label>
                         <span class="error-message" v-show="form.errors.end_date">{{ form.errors.end_date }}</span>
-                        <input type="date" name="end_date" v-model="form.data.end_date" class="form-control">
+                        <datepicker v-model="form.data.end_date" name="end_date"></datepicker>
                     </div>
                     <div class="modal-form-button-bar">
                         <button class="dd-btn btn" type="button" @click="modalOpen = false">Cancel</button>
@@ -105,8 +105,8 @@
                     description: this.formAttributes.description || '',
                     zh_description: this.formAttributes.zh_description || '',
                     price: this.formAttributes.price || 0,
-                    start_date: this.formAttributes.start_date || moment().add(7, 'days').format('YYYY-MM-DD'),
-                    end_date: this.formAttributes.end_date || moment().add(14, 'days').format('YYYY-MM-DD')
+                    start_date: this.formAttributes.start_date || null,
+                    end_date: this.formAttributes.end_date || null
                 }),
             };
         },

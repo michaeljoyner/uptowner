@@ -186,7 +186,8 @@ class MenuPagesTest extends TestCase
             'name' => 'TEST PAGE',
             'zh_name' => '満版復',
             'id' => $page->id,
-            'group_names' => ['TEST GROUP A', 'TEST GROUP B']
+            'group_names' => ['TEST GROUP A', 'TEST GROUP B'],
+            'published' => false
         ];
 
         $this->assertEquals($expected, $page->fresh()->toJsonableArray());

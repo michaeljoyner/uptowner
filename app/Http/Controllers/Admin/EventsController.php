@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\EventsForm;
 use App\Occasions\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,27 +15,16 @@ class EventsController extends Controller
         return view('admin.events.index');
     }
 
-    public function store()
+    public function store(EventsForm $form)
     {
-        $this->validate(request(), [
-            'event_date' => 'required|date|after_or_equal:today',
-            'name' => 'required_without:zh_name',
-            'zh_name' => 'required_without:name'
-        ]);
-        $event = Event::createWithTranslations(request()->all());
+        $event = Event::createWithTranslations($form->sanitizedData());
 
-        return $event;
+        return $event->toJsonableArray();
     }
 
-    public function update(Event $event)
+    public function update(Event $event, EventsForm $form)
     {
-        $this->validate(request(), [
-            'event_date' => 'required|date|after_or_equal:today',
-            'name' => 'required_without:zh_name',
-            'zh_name' => 'required_without:name'
-        ]);
-
-        $event->updateWithTranslations(request()->all());
+        $event->updateWithTranslations($form->sanitizedData());
         return $event->fresh()->toJsonableArray();
     }
 

@@ -40,6 +40,32 @@ class EventsTest extends TestCase
     }
 
     /**
+     * @test
+     */
+    public function an_event_can_be_created_with_a_long_form_date_time_string()
+    {
+        $this->disableExceptionHandling();
+        $event_data = [
+            'time_of_day'    => 'all day',
+            'zh_time_of_day' => 'zh all day',
+            'name'           => 'Happy Hour',
+            'zh_name'        => '満版復',
+            'description'    => 'Sixty minutes of pure joy',
+            'zh_description' => '永門義会可際査別件村約候証民',
+            'long_description' => 'This is a full bodied description of the event',
+            'zh_long_description' => '永門義会可際査別件村約候証民。昌原集前全者波有索男討家王合考作染美最。催優際田度読賞督密出将育別容'
+        ];
+        $response = $this->asLoggedInUser()->json('POST', '/admin/events',
+            array_merge($event_data, ['event_date' => Carbon::parse('+5 days')->format('Y-m-d') . 'T00:00:00.000Z']));
+        $response->assertStatus(200);
+
+        $this->assertTranslatableTableHas('events', $event_data);
+
+        $this->assertCount(1, Event::all());
+        $this->assertTrue(Event::first()->event_date->isSameDay(Carbon::parse('+5 days')));
+    }
+
+    /**
      *@test
      */
     public function an_event_may_be_updated()

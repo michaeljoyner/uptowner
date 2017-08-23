@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\SpecialsForm;
 use App\Specials\Special;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,36 +15,16 @@ class SpecialsController extends Controller
         return view('admin.specials.index');
     }
 
-    public function store()
+    public function store(SpecialsForm $form)
     {
-        $this->validate(request(), [
-            'title' => 'required_without:zh_title',
-            'zh_title' => 'required_without:title',
-        ]);
-
-        Special::createWithTranslations(request()->all());
+        Special::createWithTranslations($form->sanitizedData());
     }
 
-    public function update(Special $special)
+    public function update(Special $special, SpecialsForm $form)
     {
-        $this->validate(request(), [
-            'title' => 'required_without:zh_title',
-            'zh_title' => 'required_without:title',
-        ]);
+        $special->updateWithTranslations($form->sanitizedData());
 
-        $special->updateWithTranslations(request()->all());
-
-        $special = $special->fresh();
-
-        return [
-            'title' => $special->title,
-            'zh_title' => $special->getTranslation('title', 'zh'),
-            'description' => $special->description,
-            'zh_description' => $special->getTranslation('description', 'zh'),
-            'price' => $special->price,
-            'start_date' => $special->start_date->format('Y-m-d'),
-            'end_date' => $special->end_date->format('Y-m-d')
-        ];
+        return $special->fresh()->toJsonableArray();
     }
 
     public function delete(Special $special)

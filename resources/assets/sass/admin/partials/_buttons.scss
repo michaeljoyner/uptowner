@@ -8,5 +8,9 @@
   &:hover {
     background: $brand_orange;
     color: $white;
+
+    .spinner > div {
+      background: $white;
+    }
   }
 }

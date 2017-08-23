@@ -87,7 +87,7 @@ class EventsTest extends TestCase
     {
         $featured = factory(Event::class)->create(['featured' => true, 'published' => true]);
 
-        $this->assertEquals($featured->id, Event::featured()->id);
+        $this->assertEquals($featured->id, Event::featuredEvent()->id);
     }
 
     /**
@@ -97,7 +97,7 @@ class EventsTest extends TestCase
     {
         $featured = factory(Event::class)->create(['featured' => true, 'published' => false]);
 
-        $this->assertNull(Event::featured());
+        $this->assertNull(Event::featuredEvent());
     }
 
     /**
@@ -126,7 +126,7 @@ class EventsTest extends TestCase
         $this->assertFalse($eventA->hasOwnImage());
         $this->assertTrue($eventB->hasOwnImage());
 
-        $this->assertEquals($eventB->id, Event::featured()->id);
+        $this->assertEquals($eventB->id, Event::featuredEvent()->id);
     }
 
     /**

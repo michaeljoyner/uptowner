@@ -44,15 +44,49 @@ class Special extends Model implements HasMediaConversions
 
     public function isExpired()
     {
-        return $this->end_date->lt(Carbon::today());
+        return $this->end_date !== null && $this->end_date->lt(Carbon::today());
     }
 
     public function timeWindow()
     {
-        if($this->start_date->gt(Carbon::today())) {
-            return 'Available from ' . $this->start_date->format('jS M, Y') . ' until ' . $this->end_date->format('jS M, Y');
+        $start = $this->start_date ? $this->start_date->format('jS M, Y') : null;
+        $end = $this->end_date ? $this->end_date->format('jS M, Y') : null;
+        $has_begun = is_null($this->start_date) || $this->start_date->lte(Carbon::today());
+
+        if ($this->isExpired() || (!$this->published)) {
+            return 'Sorry, this special is not currently valid';
         }
 
-        return 'Available until ' . $this->end_date->format('jS M, Y');
+        if ($has_begun && is_null($end)) {
+            return null;
+        }
+
+        if (!$has_begun) {
+            $time_frame = 'Available from ' . $start;
+
+            if ($end) {
+                $time_frame .= ' until ' . $end;
+            }
+
+            return $time_frame;
+        }
+
+        return 'Available until ' . $end;
+    }
+
+    public function toJsonableArray()
+    {
+        return [
+            'id'             => $this->id,
+            'image'          => $this->imageUrl('web'),
+            'title'          => $this->title,
+            'zh_title'       => $this->getTranslation('title', 'zh'),
+            'description'    => $this->description,
+            'zh_description' => $this->getTranslation('description', 'zh'),
+            'price'          => $this->price,
+            'start_date'     => $this->start_date ? $this->start_date->format('Y-m-d') : null,
+            'end_date'       => $this->end_date ? $this->end_date->format('Y-m-d') : null,
+            'published'      => $this->published
+        ];
     }
 }

@@ -68,7 +68,7 @@ class Event extends Model implements HasMediaConversions
         $event->update(['featured' => true]);
     }
 
-    public static function featured()
+    public static function featuredEvent()
     {
         $featured = static::published()->upcoming()->where('featured', 1)->first();
 
@@ -81,7 +81,7 @@ class Event extends Model implements HasMediaConversions
 
     public static function upcomingList()
     {
-        return new EventsList(static::featured(), static::published()->upcoming()->get());
+        return new EventsList(static::featuredEvent(), static::published()->upcoming()->get());
     }
 
     public function toJsonableArray()

@@ -13,7 +13,7 @@
                     <div class="form-group" :class="{'has-error': form.errors.event_date}">
                         <label for="event_date">Event date</label>
                         <span class="error-message" v-show="form.errors.event_date">{{ form.errors.event_date }}</span>
-                        <input type="date" name="event_date" v-model="form.data.event_date" class="form-control">
+                        <datepicker v-model="form.data.event_date" name="event_date"></datepicker>
                     </div>
                     <div class="form-group" :class="{'has-error': form.errors.time_of_day}">
                         <label for="time_of_day">Time of day</label>

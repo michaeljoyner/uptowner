@@ -37,8 +37,8 @@ class InstagramTest extends TestCase
         $this->assertInstanceOf(Collection::class, $images);
 
         $images->each(function($image) {
-            $this->assertContains('instagram.com', $image['src_low']);
-            $this->assertContains('instagram.com', $image['src_std']);
+            $this->assertContains('https://instagram', $image['src_low']);
+            $this->assertContains('https://instagram', $image['src_std']);
         });
     }
 }

@@ -10,19 +10,6 @@ class SpecialsServicesController extends Controller
 {
     public function index()
     {
-        return Special::all()->map(function($special) {
-            return [
-                'id' => $special->id,
-                'image' => $special->imageUrl('web'),
-                'title' => $special->title,
-                'zh_title' => $special->getTranslation('title', 'zh'),
-                'description' => $special->description,
-                'zh_description' => $special->getTranslation('description', 'zh'),
-                'price' => $special->price,
-                'start_date' => $special->start_date ? $special->start_date->format('Y-m-d') : null,
-                'end_date' => $special->end_date ? $special->end_date->format('Y-m-d') : null,
-                'published' => $special->published
-            ];
-        });
+        return Special::all()->map->toJsonableArray();
     }
 }

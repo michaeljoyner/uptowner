@@ -10,6 +10,8 @@ require('./bootstrap');
 import Vue from 'vue';
 window.Vue = Vue;
 
+import Datepicker from 'vuejs-datepicker';
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -47,6 +49,7 @@ Vue.component('draggable-menu-group', require('./components/DraggableMenuGroup.v
 Vue.component('assigned-menu-group', require('./components/AssignedMenuGroup.vue'));
 Vue.component('item-orderer', require('./components/ItemOrderer.vue'));
 Vue.component('menu-order-app', require('./components/MenuOrderApp.vue'));
+Vue.component('datepicker', Datepicker);
 
 window.eventHub = new Vue();
 window.swal = require('sweetalert');

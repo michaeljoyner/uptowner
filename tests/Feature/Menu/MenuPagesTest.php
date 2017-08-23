@@ -73,12 +73,7 @@ class MenuPagesTest extends TestCase
         $response->assertStatus(200);
         $response_data = $response->decodeResponseJson();
 
-        $this->assertEquals($response_data, [
-            'id'      => $page->id,
-            'name'    => 'Burgers',
-            'zh_name' => '満版復',
-            'group_names' => []
-        ]);
+        $this->assertEquals($response_data, $page->fresh()->toJsonableArray());
     }
 
     /**
