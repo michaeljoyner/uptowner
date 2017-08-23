@@ -23,6 +23,7 @@
         @endif
         <div class="w-con mg-x-a">
             @foreach($page->publishedGroups()->ordered() as $group)
+                @if($group->publishedItems()->count() > 0)
                 <p class="h2 text-center uppercase pd-y-7">{{ $group->name }}</p>
                 @foreach($group->publishedItems()->ordered() as $item)
                     <article class="pd-y-4 mg-x-4">
@@ -42,6 +43,7 @@
                         <p class="h4 text-colour-soft">NT${{ $item->price }}</p>
                     </article>
                 @endforeach
+                @endif
             @endforeach
         </div>
     </section>

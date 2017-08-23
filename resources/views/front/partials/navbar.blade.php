@@ -1,4 +1,4 @@
-<div class="hidden main-navbar flex flex-spaced bg-col sticky-top flex-center-y">
+<div class="hidden main-navbar flex flex-spaced bg-col sticky-top flex-center-y pr-5">
     <div class="nav-branding flex-static flex flex-center pl-7">
         <a href="/"><img src="/images/logos/logo_white.svg" class="hover-shake" alt="Uptowner Taichung Logo"
                          width="150px"></a>
@@ -14,7 +14,7 @@
         <a href="/contact"
            class="nav-item uppercase h4 fw-700 text-colour-light pd-x-4 @activeclass('/contact')"
         ><span>@lang('navbar.contact')</span></a>
-        <a href="#"
+        <a href="{{ app()->getLocale() === 'en' ? Loc::getLocalizedURL('zh', null, [], true) : Loc::getLocalizedURL('en', null, [], true) }}"
            class="nav-item uppercase h4 fw-700 text-colour-light pd-x-4"
         ><span>@lang('navbar.language')</span></a>
         <label for="nav-trigger"
