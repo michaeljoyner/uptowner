@@ -15,7 +15,7 @@ class Special extends Model implements HasMediaConversions
 {
     use HasTranslations, HandlesTranslations, HasMediaTrait, HasModelImage, HasPublishedScope;
 
-    const DEFAULT_IMG_URL = '/images/defaults/default.jpg';
+    const DEFAULT_IMG_URL = '/images/defaults/default2x1.jpg';
 
     protected $table = 'specials';
 
