@@ -3,6 +3,12 @@
   margin-right: 10px;
   height: map_get($sizes, 4);
 
+  &:hover {
+    path {
+      fill: $brand_blue;
+    }
+  }
+
   path {
     fill: $mid_grey;
   }
@@ -25,6 +31,12 @@
     path {
       fill: $brand_primary;
     }
+
+    &:hover {
+      path {
+        fill: $brand_blue;
+      }
+    }
   }
 
   &.white-icon {
@@ -32,6 +44,12 @@
 
       path {
         fill: $brand_light;
+      }
+
+      &:hover {
+        path {
+          fill: $brand_blue;
+        }
       }
     }
   }
