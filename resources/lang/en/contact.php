@@ -2,7 +2,8 @@
 
 return [
     'meta' => [
-        'title' => 'Get in touch with Uptowner Taichung'
+        'title' => 'Get in touch with Uptowner Taichung',
+        'description' => 'Contact us to make suggestions, get info or even book a table.'
     ],
     'intro' => [
         'heading' => 'Contact Us',

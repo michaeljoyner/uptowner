@@ -1,5 +1,17 @@
 @extends('front.base', ['pageName' => 'menu-page'])
 
+@section('title')
+    Authentic American Food - The Uptowner's Menu
+@endsection
+
+@section('head')
+    @include('front.partials.ogmeta', [
+        'ogImage' => url('images/facebook.jpg'),
+        'ogDescription' => trans('menu.meta.description'),
+        'ogTitle' => trans('menu.meta.title')
+    ])
+@endsection
+
 @section('content')
     <div class="menu-nav zz-top bg-light flex flex-space text-colour uppercase pd-y-4 heading bb-2 bd-col">
         @foreach(Menu::pages() as $page)

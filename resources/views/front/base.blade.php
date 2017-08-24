@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ mix('css/fapp.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Arvo:700|Lato:400,400i" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('head')
 </head>
 <body  class="{{ $pageName ?? '' }}">
 <!--[if lte IE 9]>

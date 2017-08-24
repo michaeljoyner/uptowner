@@ -2,7 +2,8 @@
 
 return [
     'meta' => [
-        'title' => 'The Uptowner Taichung'
+        'title' => 'The Uptowner Taichung',
+        'description' => 'The most authentic American diner in Taichung'
     ],
     'hero' => [
         'cta' => 'Book now'

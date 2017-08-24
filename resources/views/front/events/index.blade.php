@@ -1,5 +1,17 @@
 @extends('front.base')
 
+@section('title')
+    What's Happening at The Uptowner - Upcoming Events
+@endsection
+
+@section('head')
+    @include('front.partials.ogmeta', [
+        'ogImage' => url('images/facebook.jpg'),
+        'ogDescription' => trans('events.meta.description'),
+        'ogTitle' => trans('events.meta.title')
+    ])
+@endsection
+
 @section('content')
     @if($events->featured && $events->featured->hasOwnImage())
         <div class="relative banner bg-covered"

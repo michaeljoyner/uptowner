@@ -2,7 +2,8 @@
 
 return [
     'meta' => [
-        'title' => 'Live Sports and Events at the Uptowner'
+        'title' => 'Live Sports and Events at the Uptowner',
+        'description' => 'Come watch live sporting events or join us for a number of great social events with good people.'
     ],
     'intro' => [
         'heading' => 'Live Sports and Events',

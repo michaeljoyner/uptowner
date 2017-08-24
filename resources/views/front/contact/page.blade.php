@@ -1,5 +1,17 @@
 @extends('front.base', ['pageName' => 'contact-page'])
 
+@section('title')
+    Get in Touch - Contact The Uptowner, Taichung
+@endsection
+
+@section('head')
+    @include('front.partials.ogmeta', [
+        'ogImage' => url('images/facebook.jpg'),
+        'ogDescription' => trans('contact.meta.description'),
+        'ogTitle' => trans('contact.meta.title')
+    ])
+@endsection
+
 @section('content')
     <div class="flex flex-center pd-y-9 bg-pattern-grey bd-col bb-2">
         <h1 class="h1 uppercase text-colour text-center">@lang('contact.intro.heading')</h1>

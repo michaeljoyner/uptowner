@@ -17,39 +17,12 @@ Route::group([
     'prefix'     => Loc::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect']
 ], function () {
-    Route::get('/', function () {
-        $favourites = \App\Menu\FeaturedItem::currentlyFeatured();
-        $specials = \App\Specials\Special::current();
-        return view('front.home.page', ['favourites' => $favourites, 'specials' => $specials]);
-    });
-
-    Route::get('menu', function() {
-        $fillerImages = collect([
-            '/images/menu_fillers/image_1.jpg',
-            '/images/menu_fillers/image_2.jpg',
-            '/images/menu_fillers/image_3.jpg',
-            '/images/menu_fillers/image_4.jpg'
-        ]);
-        return view('front.menu.page', ['isMenuPage' => true, 'fillerImages' => $fillerImages]);
-    });
-
-    Route::get('events', function() {
-        return view('front.events.index', ['events' => \App\Occasions\Event::upcomingList()]);
-    });
-
-    Route::get('events/{slug}', function($slug) {
-        return view('front.events.show', ['event' => \App\Occasions\Event::where('slug', $slug)->firstOrFail()]);
-    });
-
-    Route::get('events/{event}', function(\App\Occasions\Event $event) {
-        return view('front.events.show', ['event' => $event]);
-    });
-
+    Route::get('/', 'HomePageController@show');
+    Route::get('menu', 'MenuPageController@show');
+    Route::get('events', 'EventsController@index');
+    Route::get('events/{slug}', 'EventsController@show');
     Route::get('contact', 'ContactController@show');
-
-
-
-
+    Route::get('about', 'AboutPageController@show');
 });
 
 Route::post('contact', 'ContactController@store');
