@@ -31,5 +31,6 @@
         <env name="MEDIA_FILE_SYSTEM" value="test_media"/>
         <env name="SITEMAP_NAME" value="test_sitemap.xml"/>
         <env name="MAIL_DRIVER" value="array"/>
+        <env name="SITEMAP_FILE" value="test_sitemap.xml"/>
     </php>
 </phpunit>
