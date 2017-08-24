@@ -55,11 +55,11 @@
                     enquiry: ''
                 }),
                 labels: {
-                    name: {en: 'name', zh: 'mingzi'},
-                    email: {en: 'email', zh: 'emaili'},
-                    phone: {en: 'phone', zh: 'dianhua'},
-                    enquiry: {en: 'your message', zh: 'nide message'},
-                    submit: {en: 'submit', zh: 'submity'}
+                    name: {en: 'name', zh: '您的大名'},
+                    email: {en: 'email', zh: '您的信箱'},
+                    phone: {en: 'phone', zh: '手機號碼'},
+                    enquiry: {en: 'your message', zh: '留言'},
+                    submit: {en: 'submit', zh: '送出'}
                 }
             }
         },
