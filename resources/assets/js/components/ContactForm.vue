@@ -59,7 +59,7 @@
                     email: {en: 'email', zh: '您的信箱'},
                     phone: {en: 'phone', zh: '手機號碼'},
                     enquiry: {en: 'your message', zh: '留言'},
-                    submit: {en: 'submit', zh: '送出'}
+                    submit: {en: 'Send Message', zh: '送出'}
                 }
             }
         },

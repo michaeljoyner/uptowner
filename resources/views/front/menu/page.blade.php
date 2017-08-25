@@ -15,11 +15,11 @@
 @section('content')
     <div class="menu-nav zz-top bg-light flex flex-space text-colour uppercase pd-y-4 heading bb-2 bd-col">
         @foreach(Menu::pages() as $page)
-            <scroll-link hash-link="#{{ str_slug($page->name) }}" link-text="{{ $page->name }}"></scroll-link>
+            <scroll-link hash-link="#{{ str_slug($page->getTranslation('name', 'en')) }}" link-text="{{ $page->name }}"></scroll-link>
         @endforeach
     </div>
     @foreach(Menu::pages() as $page)
-    <section class="pb-7" id="{{ str_slug($page->name) }}">
+    <section class="pb-7" id="{{ str_slug($page->getTranslation('name', 'en')) }}">
         <div class="flex flex-center pd-y-9 bg-pattern-grey btb-2 bd-col">
             <h1 class="h1 uppercase text-colour text-center">{{ $page->name }}</h1>
         </div>
@@ -42,13 +42,13 @@
                         <div class="h3 mb-2">
                             {{ $item->name }}
                             @if($item->is_vegetarian)
-                                <span class="menu-icon vegetarian">@include('svgicons.vegetarian')</span>
+                                <span class="menu-icon vegetarian" data-tooltip="@lang('misc.vegetarian')">@include('svgicons.vegetarian')</span>
                             @endif
                             @if($item->is_spicy)
-                                <span class="menu-icon spicy">@include('svgicons.spicy')</span>
+                                <span class="menu-icon spicy" data-tooltip="@lang('misc.spicy')">@include('svgicons.spicy')</span>
                             @endif
                             @if($item->is_recommended)
-                                <span class="menu-icon recommended">@include('svgicons.recommended')</span>
+                                <span class="menu-icon recommended" data-tooltip="@lang('misc.recommended')">@include('svgicons.recommended')</span>
                             @endif
                         </div>
                         <p class="body-text mb-2 mt-0 text-constrain">{{ $item->description }}</p>

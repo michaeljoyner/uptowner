@@ -31,20 +31,19 @@
 
   &:hover:after {
     display: block;
+    content: attr(data-tooltip);
+    white-space: nowrap;
   }
 
   &.vegetarian:after {
     background: #afd152;
-    content: 'Vegetarian';
   }
 
   &.spicy:after {
     background: #bc3a2c;
-    content: 'Spicy';
   }
 
   &.recommended:after {
     background: #eaa645;
-    content: 'Recommended';
   }
 }
