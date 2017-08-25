@@ -101,7 +101,7 @@
         methods: {
 
             removeItem() {
-                this.$emit('remove-event', {id: this.id});
+                this.$emit('remove-event', this.eventAttributes.id);
             },
 
             updateEvent(updated_data) {

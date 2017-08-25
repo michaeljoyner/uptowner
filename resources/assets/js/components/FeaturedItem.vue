@@ -20,7 +20,7 @@
 
         methods: {
             removeItem() {
-                this.$emit('remove-featured-item');
+                this.$emit('remove-featured-item', this.itemAttributes.id);
             }
         }
     }

@@ -33,7 +33,7 @@
                     .catch(err => console.log(err.response));
             },
 
-            removeEvent({id}) {
+            removeEvent(id) {
                 const removed = this.events.find(e => e.id === id);
                 const index = this.events.indexOf(removed);
                 this.events.splice(index, 1);
