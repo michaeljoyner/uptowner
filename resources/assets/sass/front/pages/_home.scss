@@ -1,5 +1,13 @@
 body.home-page {
   padding-top: 0;
+
+  .main-navbar {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: .8s;
+    animation-timing-function: cubic-bezier(.57,.09,.43,.93);
+    animation-fill-mode: forwards;
+  }
 }
 
 .home-hero {

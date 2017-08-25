@@ -35,7 +35,7 @@ class SpecialsForm extends FormRequest
 
     public function sanitizedData()
     {
-        return collect($this->intersect($this->acceptedFields))->flatMap(function($value, $key) {
+        return collect($this->only($this->acceptedFields))->flatMap(function($value, $key) {
             if(str_contains($key, '_date')) {
                 return [$key => $this->trimDateString($value)];
             }

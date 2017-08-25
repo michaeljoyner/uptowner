@@ -5,5 +5,5 @@ return [
     'events' => '活動',
     'contact' => '聯絡方式',
     'close' => '關閉',
-    'language' => 'English'
+    'language' => 'En'
 ];

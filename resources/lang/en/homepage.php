@@ -10,7 +10,7 @@ return [
     ],
     'welcome' => [
         'heading' => 'Welcome to the Uptowner',
-        'body' => 'We make delicious american diner style food. A huge emphasis on breakfast and lunch. Not to mention our mouth-watering burgers and sandwiches. Beers can be enjoyed on our patio or inside with live sport on.',
+        'body' => 'We make delicious American diner style food, with a huge emphasis on breakfast and lunch. Not to mention our mouth-watering burgers and sandwiches. Beers can be enjoyed on our patio or inside with live sport on.',
         'button' => 'Read On'
     ],
     'favourites' => [

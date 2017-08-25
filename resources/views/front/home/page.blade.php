@@ -15,7 +15,7 @@
 @section('content')
     <section id="hero" class="home-hero bg-covered relative of-hidden banner tall">
         <a href="/contact"
-           class="transparent rise-up hero-cta hidden bg-trans h4 fw-700 text-colour-light uppercase bd-col-light bd-4 rounded-2 pd-x-8 pd-y-2 hover-btn-invert-two one-line">@lang('homepage.hero.cta')</a>
+           class="transparent rise-up hero-cta bg-trans h4 fw-700 text-colour-light uppercase bd-col-light bd-4 rounded-2 pd-x-8 pd-y-2 hover-btn-invert-two one-line">@lang('homepage.hero.cta')</a>
     </section>
     <section class="flex-col flex-center-y pd-y-10 pd-x-2">
         <h1 class="h1 text-colour uppercase text-center">@lang('homepage.welcome.heading')</h1>
@@ -54,7 +54,7 @@
                          alt="{{ $special->name }}">
                     <p class="h3 mt-6 text-colour">{{ $special->title }}</p>
                     <p class="body-text mt-1 pd-x-4 text-center">{{ $special->description }}</p>
-                    <p class="h4 text-colour">NT${{ $special->price }}</p>
+                    <p class="h4 text-colour">{{ $special->price ? 'NT$' . $special->price : '' }}</p>
                     <p class="body-text"><em>{{ $special->timeWindow() }}</em></p>
                 </div>
             @endforeach

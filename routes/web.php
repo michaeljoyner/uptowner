@@ -137,6 +137,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('specials/{special}/image', 'SpecialImagesController@store');
         Route::post('specials/{special}/publish', 'SpecialPublishingController@update');
 
+        Route::delete('specials/{special}/dated', 'DatedSpecialsController@delete');
+
         Route::get('menu/featured', 'FeaturedMenuItemsController@index');
         Route::post('menu/featured', 'FeaturedMenuItemsController@update');
         Route::delete('menu/featured/{menuItemId}', 'FeaturedMenuItemsController@delete');

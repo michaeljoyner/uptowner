@@ -74,6 +74,7 @@
         <p>The top level, which is Categories, gets a navigation link on the Menu page on the site, and within each
             Category
             there may be several Groups, each with several Items.</p>
+        <p>An image strip of menu items is shown for each category. If a category has less than three images, no image strip will be shown. If a category has less than six images, placeholder images will be used.</p>
     </section>
     <section id="items">
         <h3>Menu Items</h3>

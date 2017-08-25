@@ -13,9 +13,7 @@
 @endsection
 
 @section('content')
-    <div class="flex flex-center pd-y-9 bg-pattern-grey bd-col bb-2">
-        <h1 class="h1 uppercase text-colour text-center">@lang('contact.intro.heading')</h1>
-    </div>
+    <h1 class="h1 uppercase text-colour text-center pd-y-9">@lang('contact.intro.heading')</h1>
     <p class="body-text mg-y-7 text-center w-con-600 mg-x-a">@lang('contact.intro.body')</p>
     <contact-form url="/contact" button-text="send" form-locale="{{ app()->getLocale() }}"></contact-form>
     <section class="mg-y-10">

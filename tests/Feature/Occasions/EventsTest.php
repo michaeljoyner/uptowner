@@ -94,6 +94,33 @@ class EventsTest extends TestCase
         $this->assertTranslatableTableHas('events', $expected_data);
         $this->assertTrue(Event::first()->event_date->isSameDay(Carbon::parse('+5 days')));
     }
+
+    /**
+     *@test
+     */
+    public function an_event_can_be_updated_with_blank_times()
+    {
+        $event = factory(Event::class)->create();
+
+        $response = $this->asLoggedInUser()->json('POST', '/admin/events/' . $event->id, [
+            'event_date' => Carbon::today()->format('Y-m-d'),
+            'time_of_day' => '',
+            'zh_time_of_day' => '',
+            'name' => 'An Event Apart',
+            'zh_name' => $event->getTranslation('name', 'zh'),
+            'description' => 'An exciting event at a locale near you',
+            'zh_description' => $event->getTranslation('description', 'zh'),
+            'long_description' => 'This is a whole new description',
+            'zh_long_description' => $event->getTranslation('long_description', 'zh'),
+        ]);
+        $response->assertStatus(200);
+
+        $this->assertTranslatableTableHas('events', [
+            'id' => $event->id,
+            'time_of_day' => '',
+            'zh_time_of_day' => ''
+        ]);
+    }
     
     /**
      *@test

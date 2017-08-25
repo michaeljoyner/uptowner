@@ -39,9 +39,12 @@ class EventsForm extends FormRequest
 
     public function sanitizedData()
     {
-        return collect($this->intersect($this->acceptedFields))->flatMap(function($value, $key) {
+        return collect($this->only($this->acceptedFields))->flatMap(function($value, $key) {
             if(str_contains($key, '_date')) {
                 return [$key => $this->trimDateString($value)];
+            }
+            if(str_contains($key, 'time_of_day')) {
+                return [$key => $value ?? ''];
             }
             return [$key => $value];
         })->all();
