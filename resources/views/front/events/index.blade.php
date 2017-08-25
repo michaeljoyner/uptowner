@@ -52,6 +52,7 @@
         @endforeach
     </section>
     @endif
+    @if($events->restOfEvents()->count() > 0)
     <section class="pd-y-10">
         <h3 class="h1 mb-10 text-center uppercase">@lang('events.upcoming.heading')</h3>
         @foreach($events->restOfEvents() as $event)
@@ -65,5 +66,6 @@
             </a>
         @endforeach
     </section>
+    @endif
 @endsection
 
