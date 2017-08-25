@@ -15,7 +15,7 @@
 @section('content')
     <section id="hero" class="home-hero bg-covered relative of-hidden banner tall">
         <a href="/contact"
-           class="hero-cta hidden bg-trans h4 fw-700 text-colour-light uppercase bd-col-light bd-4 rounded-2 pd-x-8 pd-y-2 hover-btn-invert-two one-line">@lang('homepage.hero.cta')</a>
+           class="transparent rise-up hero-cta hidden bg-trans h4 fw-700 text-colour-light uppercase bd-col-light bd-4 rounded-2 pd-x-8 pd-y-2 hover-btn-invert-two one-line">@lang('homepage.hero.cta')</a>
     </section>
     <section class="flex-col flex-center-y pd-y-10 pd-x-2">
         <h1 class="h1 text-colour uppercase text-center">@lang('homepage.welcome.heading')</h1>
@@ -46,6 +46,7 @@
     </section>
     <section class="specials bg-pattern-grey pd-y-9">
         <h1 class="h1 uppercase text-center text-colour pb-0">@lang('homepage.specials.heading')</h1>
+        @if($specials->count() > 0)
         <div data-flickity='{"imagesLoaded": true, "cellAlign": "left"}' class="w-con-800 mg-x-a mt-9">
             @foreach($specials as $special)
                 <div class="flex-col flex-center-y special-slide">
@@ -58,6 +59,7 @@
                 </div>
             @endforeach
         </div>
+        @endif
     </section>
     <section class="bg-col-soft pb-10 pt-11 pd-x-4">
         <div class="text-constrain mg-x-a">

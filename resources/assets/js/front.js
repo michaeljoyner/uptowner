@@ -43,16 +43,7 @@ const app = new Vue({
     }
 });
 
-function showNavbar() {
-    if(document.querySelector('.hero-cta')) {
-        document.querySelector('.hero-cta').classList.remove('hidden');
-    }
-    document.querySelector('.main-navbar').classList.remove('hidden');
-    window.removeEventListener('scroll', showNavbar);
-}
 
-window.addEventListener('scroll', showNavbar);
-window.setTimeout(showNavbar, 1000);
 
 const to_top = document.querySelector('.footer_logo_top_link');
 
