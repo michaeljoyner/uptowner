@@ -53,8 +53,18 @@
                         <span class="error-message" v-show="form.errors.end_date">{{ form.errors.end_date }}</span>
                         <datepicker v-model="form.data.end_date" name="end_date"></datepicker>
                     </div>
+                    <div>
+                        <button class="btn dd-btn" type="button" :disabled="waiting" @click="clearDates">
+                            <span v-show="!waiting">Clear Dates</span>
+                            <div class="spinner" v-show="waiting">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </button>
+                    </div>
                     <div class="modal-form-button-bar">
-                        <button class="dd-btn btn" type="button" @click="modalOpen = false">Cancel</button>
+                        <button class="dd-btn btn btn-grey" type="button" @click="modalOpen = false">Cancel</button>
                         <button class="btn dd-btn" type="submit" :disabled="waiting">
                             <span v-show="!waiting">{{ formType === 'create' ? 'Add' : 'Update' }} Item</span>
                             <div class="spinner" v-show="waiting">
@@ -171,6 +181,19 @@
             clearErrors() {
                 this.form.clearErrors();
                 this.mainError = '';
+            },
+
+            clearDates() {
+                this.waiting = true;
+                axios.delete(`/admin/specials/${this.formAttributes.id}/dated`)
+                    .then(() => {
+                        this.form.data.start_date = null;
+                        this.form.data.end_date = null;
+                        this.waiting = false;
+                    }).catch(err => {
+                        console.log(err);
+                        this.waiting = false;
+                });
             }
         }
     }

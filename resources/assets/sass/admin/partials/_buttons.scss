@@ -14,3 +14,19 @@
     }
   }
 }
+
+.dd-btn.btn-grey {
+  border: 1px solid $mid_grey;
+  color: $mid_grey;
+  text-transform: uppercase;
+  border-radius: 0;
+
+  &:hover {
+    background: $white;
+    color: $brand_orange_light;
+
+    .spinner > div {
+      background: $brand_orange_light;
+    }
+  }
+}

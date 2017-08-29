@@ -30,7 +30,7 @@
                 <div class="pd-2 rounded-1 bg-light flex-col flex-spaced">
                     <div class="inner-favorite-container">
                         <div class="image-box">
-                            <img src="{{ $item->imageUrl('thumb') }}" alt="{{ $item->name }}" class="max-w-100">
+                            <img src="{{ $item->imageUrl('thumb') }}" alt="{{ $item->name }}" class="w-100 max-w-100">
                         </div>
                         <div>
                             <p class="pl-2 h5">{{ $item->name }}</p>

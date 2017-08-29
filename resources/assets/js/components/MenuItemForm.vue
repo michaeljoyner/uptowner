@@ -46,7 +46,7 @@
                                class="form-control">
                     </div>
                     <div class="modal-form-button-bar">
-                        <button class="dd-btn btn" type="button" @click="modalOpen = false">Cancel</button>
+                        <button class="dd-btn btn btn-grey" type="button" @click="modalOpen = false">Cancel</button>
                         <button class="btn dd-btn" type="submit" :disabled="waiting">
                             <span v-show="!waiting">{{ formType === 'create' ? 'Add' : 'Update' }} Item</span>
                             <div class="spinner" v-show="waiting">
