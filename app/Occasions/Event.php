@@ -8,8 +8,10 @@ use App\HasPublishedScope;
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\MediaLibrary\Media;
 use Spatie\Translatable\HasTranslations;
 
 class Event extends Model implements HasMediaConversions
@@ -45,14 +47,17 @@ class Event extends Model implements HasMediaConversions
         ];
     }
 
-    public function registerMediaConversions()
+    public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
-            ->setManipulations(['w' => 400, 'h' => 300, 'fit' => 'crop', 'fm' => 'src'])
-            ->performOnCollections('default');
+            ->fit(Manipulations::FIT_CROP, 400, 300)
+            ->keepOriginalImageFormat()
+            ->optimize();
+
         $this->addMediaConversion('web')
-            ->setManipulations(['w' => 1500, 'h' => 500, 'fit' => 'crop', 'fm' => 'src'])
-            ->performOnCollections('default');
+            ->fit(Manipulations::FIT_CROP, 1500, 500)
+            ->keepOriginalImageFormat()
+            ->optimize();
     }
 
     public function scopeUpcoming($query)

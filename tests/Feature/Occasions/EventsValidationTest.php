@@ -25,7 +25,7 @@ class EventsValidationTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/events', $event_data);
 
         $response->assertStatus(422);
-        $response->assertJsonStructure(['event_date']);
+        $response->assertJsonStructure([ 'errors' => ['event_date']]);
     }
 
     /**
@@ -42,7 +42,7 @@ class EventsValidationTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/events', $event_data);
 
         $response->assertStatus(422);
-        $response->assertJsonStructure(['event_date']);
+        $response->assertJsonStructure([ 'errors' => ['event_date']]);
     }
 
     /**
@@ -59,7 +59,7 @@ class EventsValidationTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/events', $event_data);
 
         $response->assertStatus(422);
-        $response->assertJsonStructure(['event_date']);
+        $response->assertJsonStructure([ 'errors' => ['event_date']]);
     }
 
     /**
@@ -75,7 +75,7 @@ class EventsValidationTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/events', $event_data);
 
         $response->assertStatus(422);
-        $response->assertJsonStructure(['name']);
+        $response->assertJsonStructure([ 'errors' => ['name']]);
     }
 
     /**

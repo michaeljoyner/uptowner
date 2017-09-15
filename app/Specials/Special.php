@@ -7,8 +7,10 @@ use App\HasModelImage;
 use App\HasPublishedScope;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\MediaLibrary\Media;
 use Spatie\Translatable\HasTranslations;
 
 class Special extends Model implements HasMediaConversions
@@ -27,14 +29,17 @@ class Special extends Model implements HasMediaConversions
 
     protected $casts = ['published' => 'boolean'];
 
-    public function registerMediaConversions()
+    public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
-            ->setManipulations(['w' => 400, 'h' => 300, 'fit' => 'crop', 'fm' => 'src'])
-            ->performOnCollections('default');
+             ->fit(Manipulations::FIT_CROP, 400, 300)
+             ->keepOriginalImageFormat()
+             ->optimize();
+
         $this->addMediaConversion('web')
-            ->setManipulations(['w' => 800, 'h' => 400, 'fit' => 'crop', 'fm' => 'src'])
-            ->performOnCollections('default');
+             ->fit(Manipulations::FIT_CROP, 800, 400)
+             ->keepOriginalImageFormat()
+             ->optimize();
     }
 
     public static function current()

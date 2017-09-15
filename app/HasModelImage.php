@@ -50,6 +50,6 @@ trait HasModelImage
 
     protected function makeImage($file): \Spatie\MediaLibrary\Media
     {
-        return $this->addMedia($file)->preservingOriginal()->toCollection('default');
+        return $this->addMedia($file)->preservingOriginal()->toMediaCollection();
     }
 }

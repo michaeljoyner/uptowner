@@ -22,7 +22,7 @@ class MenuGroup extends Model
 
     protected $casts = ['published' => 'boolean'];
 
-    public $events = [
+    public $dispatchesEvents = [
         'deleting' => DeletingMenuGroup::class
     ];
 

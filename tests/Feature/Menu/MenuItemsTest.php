@@ -80,9 +80,7 @@ class MenuItemsTest extends TestCase
         ];
         $response = $this->asLoggedInUser()->json('POST', '/admin/menu/groups/' . $group->id  . '/items', $menu_item);
         $response->assertStatus(422);
-        $response->assertJsonStructure([
-           'name', 'zh_name'
-        ]);
+        $response->assertJsonStructure([ 'errors' => ['name', 'zh_name']]);
     }
 
     /**

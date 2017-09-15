@@ -9,8 +9,10 @@ use App\HasModelImage;
 use App\HasPublishedScope;
 use App\Orderable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\MediaLibrary\Media;
 use Spatie\Translatable\HasTranslations;
 
 class MenuItem extends Model implements HasMediaConversions
@@ -39,20 +41,24 @@ class MenuItem extends Model implements HasMediaConversions
         'position'
     ];
 
-    public $events = [
+    public $dispatchesEvents = [
         'deleting' => DeletingMenuItem::class
     ];
 
     public $translatable = ['name', 'description'];
 
-    public function registerMediaConversions()
+    public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
-            ->setManipulations(['w' => 400, 'h' => 300, 'fit' => 'crop', 'fm' => 'src'])
-            ->performOnCollections('default');
+            ->fit(Manipulations::FIT_CROP, 400, 300)
+            ->keepOriginalImageFormat()
+            ->optimize();
+
         $this->addMediaConversion('web')
-            ->setManipulations(['w' => 800, 'h' => 600, 'fit' => 'crop', 'fm' => 'src'])
-            ->performOnCollections('default');
+            ->fit(Manipulations::FIT_CROP, 800, 600)
+            ->keepOriginalImageFormat()
+            ->optimize();
+
     }
 
     public function menuGroup()

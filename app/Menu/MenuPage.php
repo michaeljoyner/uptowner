@@ -21,7 +21,7 @@ class MenuPage extends Model
 
     protected $casts = ['published' => 'boolean'];
 
-    public $events = [
+    public $dispatchesEvents = [
         'deleting' => DeletingMenuPage::class
     ];
 
