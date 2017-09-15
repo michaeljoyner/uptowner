@@ -10,10 +10,24 @@
   div[data-flickity] {
     margin-top: -2px;
   }
+
+  .menu-page-section {
+    position: relative;
+  }
+
+  .menu-image-slider {
+    position: sticky;
+    top: 135px;
+
+    @include respond-to(phone) {
+      position: static;
+    }
+  }
 }
 
 .menu-icon {
   position: relative;
+  z-index: -1;
 
   &:after {
     position: absolute;
