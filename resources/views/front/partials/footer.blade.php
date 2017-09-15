@@ -18,7 +18,7 @@
                 <h4 class="h4">@lang('footer.social.heading')</h4>
                 <div class="pt-7">
                     <a href="#" class="social-icon white-icon mg-2">@include('svgicons.facebook')</a>
-                    <a href="#" class="social-icon white-icon mg-2">@include('svgicons.twitter')</a>
+                    {{--<a href="#" class="social-icon white-icon mg-2">@include('svgicons.twitter')</a>--}}
                     <a href="#" class="social-icon white-icon mg-2">@include('svgicons.instagram')</a>
                 </div>
             </div>
