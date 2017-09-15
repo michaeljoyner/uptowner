@@ -137,7 +137,7 @@
                     .catch(err => console.log(err));
             },
             onRemoveSuccess() {
-                this.imageSource = '/images/defaults/default4x3.png';
+                this.imageSource = '/images/defaults/default4x3.jpg';
                 this.removeImageUrl = null;
                 this.hasRemoved = true;
             }
