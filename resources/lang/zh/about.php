@@ -7,5 +7,6 @@ return [
     ],
     'intro' => [
         'heading' => '我們的故事'
-    ]
+    ],
+    'back_btn' => '回首頁'
 ];

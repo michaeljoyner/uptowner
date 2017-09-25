@@ -13,6 +13,7 @@
 @endsection
 
 @section('content')
+    <a href="/" class="pd-4 dib h5 text-colour uppercase hover-blue">&larr; @lang('about.back_btn')</a>
     <h1 class="h1 uppercase text-colour text-center pd-y-9">@lang('about.intro.heading')</h1>
     <div class="w-con-800 pd-x-4 mg-y-10 mg-x-a">
         <p class="body-text text-constrain text-largish text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, ipsum, ratione! Aperiam assumenda distinctio dolorem, esse ex expedita harum laboriosam mollitia neque odit perspiciatis porro quibusdam quidem, repudiandae sed tempore.</p>

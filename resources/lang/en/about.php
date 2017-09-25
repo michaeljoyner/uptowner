@@ -7,5 +7,6 @@ return [
     ],
     'intro' => [
         'heading' => 'Our Story'
-    ]
+    ],
+    'back_btn' => 'Back to Home'
 ];
