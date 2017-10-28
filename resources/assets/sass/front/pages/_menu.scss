@@ -16,8 +16,8 @@
   }
 
   .menu-image-slider {
-    position: sticky;
-    top: 135px;
+    //position: sticky;
+    //top: 135px;
 
     @include respond-to(phone) {
       position: static;
