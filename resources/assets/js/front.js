@@ -55,12 +55,15 @@ if(to_top) {
 
 const options = {
     root: null,
-    rootMargin: '0px',
-    threshold: [0.2]
+    rootMargin: '135px 0px 0px 0px',
+    threshold: [0.1]
 };
 
 const cb = (entries, obs) => {
-    toggleMenuClass(entries[0].target.id);
+    if(entries[0].intersectionRatio > 0.10) {
+        toggleMenuClass(entries[0].target.id);
+    }
+    console.log(entries[0].target.id, entries[0].intersectionRatio);
 };
 
 const toggleMenuClass = (id) => {
