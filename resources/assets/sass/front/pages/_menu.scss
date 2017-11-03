@@ -61,3 +61,23 @@
     background: #eaa645;
   }
 }
+
+.menu-nav {
+
+  a::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: $brand_blue;
+    margin-right: 8px;
+    margin-bottom: 2px;
+    display: none;
+  }
+  a.visible {
+    color: $brand_blue;
+    &:before {
+      display: inline-block;
+    }
+  }
+}

@@ -36,7 +36,10 @@
         <div class="w-con mg-x-a">
             @foreach($page->publishedGroups()->ordered() as $group)
                 @if($group->publishedItems()->count() > 0)
-                <p class="h2 text-center uppercase pd-y-7">{{ $group->name }}</p>
+                    <div class="mt-10 mb-7">
+                        <p class="h2 text-center uppercase pt7">{{ $group->name }}</p>
+                        <p class="text-center w-con-600 mg-x-a body-text">{{ $group->description }}</p>
+                    </div>
                 @foreach($group->publishedItems()->ordered() as $item)
                     <article class="pd-y-4 mg-x-4">
                         <div class="h3 mb-2">

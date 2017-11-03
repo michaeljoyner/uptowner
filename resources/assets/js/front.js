@@ -52,3 +52,34 @@ if(to_top) {
         jump('#app', {offset: -75});
     });
 }
+
+const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: [0.2]
+};
+
+const cb = (entries, obs) => {
+    toggleMenuClass(entries[0].target.id);
+};
+
+const toggleMenuClass = (id) => {
+    const sections = document.querySelectorAll('.menu-nav a');
+
+    for(let x = 0; x < sections.length; x++) {
+        if(sections[x].hash === '#' + id) {
+            sections[x].classList.add('visible');
+        } else {
+            sections[x].classList.remove('visible');
+        }
+    }
+};
+
+const observer = new IntersectionObserver(cb, options);
+if(document.querySelector('.menu-page-section')) {
+    const sections = document.querySelectorAll('.menu-page-section');
+
+    for(let x = 0; x < sections.length; x++) {
+        observer.observe(sections[x]);
+    }
+}
