@@ -54,7 +54,7 @@
                                 <span class="menu-icon recommended" data-tooltip="@lang('misc.recommended')">@include('svgicons.recommended')</span>
                             @endif
                         </div>
-                        <p class="body-text mb-2 mt-0 text-constrain">{{ $item->description }}</p>
+                        <p class="body-text mb-2 mt-0 text-constrain">{!! nl2br($item->description) !!}</p>
                         <p class="h4 text-colour-soft">NT${{ $item->price }}</p>
                     </article>
                 @endforeach

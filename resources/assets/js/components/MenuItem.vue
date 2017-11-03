@@ -31,7 +31,7 @@
 
             </header>
             <div class="body">
-                <p>{{ description }}</p>
+                <p v-html="nl2br(description)"></p>
                 <p>{{ zh_description }}</p>
             </div>
             <div class="menu-items-actions">
@@ -144,6 +144,10 @@
 
             updateItem(updated_data) {
                 this.setDataFrom(updated_data);
+            },
+
+            nl2br(string) {
+                return string.replace(/(\n)/g, '<br>');
             }
         }
     }
