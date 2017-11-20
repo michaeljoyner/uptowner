@@ -19,15 +19,15 @@ class GuzzleInstagramClient implements InstagramClient
 
     public function fetch()
     {
-        $url = 'https://instagram.com/' . config('services.instagram.username') . '/media';
+        $url = 'https://instagram.com/' . config('services.instagram.username') . '?__a=1';
 
         $images = Cache::remember('instagram_feed', 60 * 24, function() use ($url) {
             try {
                 $response = \GuzzleHttp\json_decode($this->http->get($url)->getBody()->getContents(), true);
-                return collect($response['items'] ?? [])->map(function($item) {
+                return collect($response['user']['media']['nodes'])->map(function($image) {
                     return [
-                        'src_low' => $item['images']['low_resolution']['url'] ?? '',
-                        'src_std' => $item['images']['standard_resolution']['url'] ?? '',
+                        'src_low' => $image['thumbnail_resources'][3]['src'] ?? '',
+                        'src_std' => $image['thumbnail_resources'][4]['src'] ?? ''
                     ];
                 });
             } catch(\Exception $e) {
