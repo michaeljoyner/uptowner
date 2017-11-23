@@ -57,7 +57,7 @@ class MenuPage extends Model
 
     public function getFilledImageRow()
     {
-        $real_images = $this->publishedItemImages();
+        $real_images = $this->publishedItemImages()->shuffle()->values();
 
         if($real_images->count() < 3) {
             return collect([]);
