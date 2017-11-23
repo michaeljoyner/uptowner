@@ -36,7 +36,7 @@ return [
     ],
 
     'instagram' => [
-        'username' => 'moozjoyner'
+        'username' => 'uptownertaichung'
     ],
 
 ];
