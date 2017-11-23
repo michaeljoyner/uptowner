@@ -122,7 +122,7 @@
             },
             getUploadOptions() {
                 return {
-                    progress: (ev) => this.showProgress(parseInt(ev.loaded / ev.total * 100))
+                    onUploadProgress: (ev) => this.showProgress(parseInt(ev.loaded / ev.total * 100))
                 }
             },
             showProgress(progress) {
