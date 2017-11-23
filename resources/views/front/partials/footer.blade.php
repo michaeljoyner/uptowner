@@ -17,9 +17,10 @@
             <div class="flex-col flex-center-y">
                 <h4 class="h4">@lang('footer.social.heading')</h4>
                 <div class="pt-7">
-                    <a href="#" class="social-icon white-icon mg-2">@include('svgicons.facebook')</a>
+                    <a href="https://www.facebook.com/theuptownertaichung/" class="social-icon white-icon mg-2">@include('svgicons.facebook')</a>
                     {{--<a href="#" class="social-icon white-icon mg-2">@include('svgicons.twitter')</a>--}}
-                    <a href="#" class="social-icon white-icon mg-2">@include('svgicons.instagram')</a>
+                    <a href="https://www.instagram.com/uptownertaichung/" class="social-icon white-icon mg-2">@include('svgicons.instagram')</a>
+                    <a href="#" class="social-icon white-icon mg-2">@include('svgicons.uber_eats')</a>
                 </div>
             </div>
         </div>    
