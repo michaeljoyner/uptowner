@@ -21,7 +21,7 @@ return [
         'heading' => 'Special of the Day'
     ],
     'callout' => [
-        'body' => 'The best American authentic food in Taichung',
+        'body' => 'The best authentic American food in Taichung',
         'name' => 'Brandon Pigeau'
     ],
     'location' => [
