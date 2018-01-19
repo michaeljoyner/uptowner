@@ -13,17 +13,23 @@
 
 
 //localised routes
-Route::group([
-    'prefix'     => Loc::setLocale(),
-    'middleware' => ['localeSessionRedirect', 'localizationRedirect']
-], function () {
-    Route::get('/', 'HomePageController@show');
-    Route::get('menu', 'MenuPageController@show');
-    Route::get('events', 'EventsController@index');
-    Route::get('events/{slug}', 'EventsController@show');
-    Route::get('contact', 'ContactController@show');
+//Route::group([
+//    'prefix'     => Loc::setLocale(),
+//    'middleware' => ['localeSessionRedirect', 'localizationRedirect']
+//], function () {
+//    Route::get('/', 'HomePageController@show');
+//    Route::get('menu', 'MenuPageController@show');
+//    Route::get('events', 'EventsController@index');
+//    Route::get('events/{slug}', 'EventsController@show');
+//    Route::get('contact', 'ContactController@show');
 //    Route::get('about', 'AboutPageController@show');
-});
+//});
+
+Route::get('/', 'HomePageController@show');
+Route::get('menu', 'MenuPageController@show');
+Route::get('events', 'EventsController@index');
+Route::get('events/{slug}', 'EventsController@show');
+Route::get('contact', 'ContactController@show');
 
 Route::post('contact', 'ContactController@store');
 
