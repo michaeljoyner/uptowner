@@ -20,7 +20,7 @@
                     <a href="https://www.facebook.com/theuptownertaichung/" class="social-icon white-icon mg-2">@include('svgicons.facebook')</a>
                     {{--<a href="#" class="social-icon white-icon mg-2">@include('svgicons.twitter')</a>--}}
                     <a href="https://www.instagram.com/uptownertaichung/" class="social-icon white-icon mg-2">@include('svgicons.instagram')</a>
-                    <a href="#" class="social-icon white-icon mg-2">@include('svgicons.uber_eats')</a>
+                    {{--<a href="#" class="social-icon white-icon mg-2">@include('svgicons.uber_eats')</a>--}}
                 </div>
             </div>
         </div>    
