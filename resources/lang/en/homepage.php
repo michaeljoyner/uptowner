@@ -26,7 +26,7 @@ return [
     ],
     'location' => [
         'heading' => 'Join Us',
-        'body' => 'The Uptowner is the perfect place to relax and enjoy good food in a great atmosphere. We open at 7am for the early birds, welcome group bookings, show live sport, have a great patio area, allow pets in our outdoor seating area, serve ice cold beer on tap and have a range of cocktails.',
+        'body' => 'The Uptowner is the perfect place to relax and enjoy good food in a great atmosphere. We open at 7am for the early birds, welcome group bookings, show live sports, have a comfortable patio area, allow pets on the outdoor seating area, serve ice cold beer on tap and have a range of cocktails.',
         'link_text' => 'Opens in Google Maps'
     ],
     'details' => [
