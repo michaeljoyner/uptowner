@@ -22,7 +22,7 @@ Route::group([
     Route::get('events', 'EventsController@index');
     Route::get('events/{slug}', 'EventsController@show');
     Route::get('contact', 'ContactController@show');
-    Route::get('about', 'AboutPageController@show');
+//    Route::get('about', 'AboutPageController@show');
 });
 
 Route::post('contact', 'ContactController@store');
