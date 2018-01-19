@@ -21,7 +21,7 @@
     @endif
     <div class="flex-col flex-center-y">
         <p class="mt-2 mb-0 h3 text-colour uppercase">{{ $event->name }}</p>
-        <p class="mg-y-0 h4">{{ $event->description }}</p>
+        <p class="mg-y-0 h4 w-con-800 mg-x-a pd-x-4">{{ $event->description }}</p>
         <p class="mt-4 mb-0 fw-700 body-text">{{ $event->event_date->format('jS M, Y') }}</p>
         <p class="mt-0 mb-2 body-text">
             <small>{{ $event->time_of_day }}</small>

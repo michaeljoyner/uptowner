@@ -13,8 +13,8 @@
 @endsection
 
 @section('content')
-    <h1 class="h1 uppercase text-colour text-center pd-y-9">@lang('contact.intro.heading')</h1>
-    <p class="body-text mg-y-7 text-center w-con-600 mg-x-a">@lang('contact.intro.body')</p>
+    <h1 class="h1 uppercase text-colour text-center pd-y-9 pd-x-4">@lang('contact.intro.heading')</h1>
+    <p class="body-text mg-y-7 text-center w-con-600 mg-x-a pd-x-4">@lang('contact.intro.body')</p>
     <contact-form url="/contact" button-text="send" form-locale="{{ app()->getLocale() }}"></contact-form>
     <section class="mg-y-10">
         @include('front.partials.location_info')

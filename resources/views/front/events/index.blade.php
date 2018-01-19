@@ -18,7 +18,7 @@
              style="background-image: url({{ url($events->featured->imageURL('web')) }})">
             <div class="absolute-bottom bg-opaque flex-col flex-center-y">
                 <p class="mt-2 mb-0 h3 text-colour uppercase hover-blue"><a href="/events/{{ $events->featured->slug }}">{{ $events->featured->name }}</a></p>
-                <p class="mg-y-0 body-text text-largish">{{ $events->featured->description }}</p>
+                <p class="mg-y-0 body-text pd-x-4 text-largish text-center">{{ $events->featured->description }}</p>
                 <p class="mt-4 mb-0 fw-700 body-text">{{ $events->featured->event_date->format('jS M, Y') }}</p>
                 <p class="mt-0 mb-2 body-text text-largish">
                     <small>{{ $events->featured->time_of_day }}</small>
