@@ -14,9 +14,9 @@
         <a href="/contact"
            class="transparent drop-in an-del-4 nav-item uppercase h4 fw-700 text-colour-light pd-x-4 @activeclass('/contact')"
         ><span>@lang('navbar.contact')</span></a>
-        <a href="{{ app()->getLocale() === 'en' ? Loc::getLocalizedURL('zh', null, [], true) : Loc::getLocalizedURL('en', null, [], true) }}"
-           class="transparent drop-in an-del-5 nav-item uppercase h4 fw-700 text-colour-light pd-x-4"
-        ><span>@lang('navbar.language')</span></a>
+        {{--<a href="{{ app()->getLocale() === 'en' ? Loc::getLocalizedURL('zh', null, [], true) : Loc::getLocalizedURL('en', null, [], true) }}"--}}
+           {{--class="transparent drop-in an-del-5 nav-item uppercase h4 fw-700 text-colour-light pd-x-4"--}}
+        {{--><span>@lang('navbar.language')</span></a>--}}
         <label for="nav-trigger"
                class="nav-item mobile-only-block uppercase h4 fw-700 text-colour-light pd-x-4"
         ><span>@lang('navbar.close')</span></label>
