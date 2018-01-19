@@ -20,8 +20,8 @@
     <section class="flex-col flex-center-y pd-y-10 pd-x-2">
         <h1 class="h1 text-colour uppercase text-center">@lang('homepage.welcome.heading')</h1>
         <p class="text-largish text-center body-text text-constrain mb-9 mt-9">@lang('homepage.welcome.body')</p>
-        <a href="/about"
-           class="h4 text-colour uppercase bd-col bd-4 fw-700 rounded-2 pd-x-8 pd-y-2 hover-btn-invert">@lang('homepage.welcome.button')</a>
+        {{--<a href="/about"--}}
+           {{--class="h4 text-colour uppercase bd-col bd-4 fw-700 rounded-2 pd-x-8 pd-y-2 hover-btn-invert">@lang('homepage.welcome.button')</a>--}}
     </section>
     <section class="favorites bg-covered pd-y-10 flex-col flex-center-y">
         <h1 class="h1 uppercase text-center text-colour-light pb-0">@lang('homepage.favourites.heading')</h1>

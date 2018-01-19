@@ -10,7 +10,7 @@ return [
     ],
     'welcome' => [
         'heading' => 'Welcome to the Uptowner',
-        'body' => 'We make delicious American diner style food, with a huge emphasis on breakfast and lunch. Not to mention our mouth-watering burgers and sandwiches. Beers can be enjoyed on our patio or inside with live sport on.',
+        'body' => 'The Uptowner is an American style diner in the heart of Taichung City. Located near Sogo Department Store, we serve breakfast and brunch all day long and are well-known for our homemade burgers. Featuring a full bar and four TV\'s, feel free to come in to catch your favorite sporting events or just relax on our outdoor patio. Cheers, and thanks for coming!',
         'button' => 'Read On'
     ],
     'favourites' => [
