@@ -1,7 +1,7 @@
 <div class="main-navbar an-del-1 flex flex-spaced bg-col sticky-top flex-center-y pr-5">
     <div class="nav-branding flex-static flex flex-center pl-7">
         <a href="/"><img src="/images/logos/logo_white.svg" class="hover-shake" alt="Uptowner Taichung Logo"
-                         width="150px"></a>
+                         width="110px"></a>
     </div>
     <input type="checkbox" id="nav-trigger" class="dno">
     <nav class="nav-list flex-adapt bg-col flex flex-end flex-center-y">
