@@ -102,7 +102,7 @@
     <section class="pd-y-10 flex-col flex-center-y instagram">
         <h1 class="h1 mb-10 text-center uppercase text-colour">@lang('homepage.instagram.heading')</h1>
         <instagram-feed></instagram-feed>
-        <a href=""
+        <a href="https://www.instagram.com/uptownertaichung/"
            class="h4 text-colour uppercase bd-col bd-4 rounded-2 pd-x-8 pd-y-2 mt-9 hover-btn-invert">@lang('homepage.instagram.button')</a>
     </section>
 @endsection
