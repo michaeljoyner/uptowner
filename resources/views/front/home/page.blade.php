@@ -10,6 +10,7 @@
         'ogDescription' => trans('homepage.meta.description'),
         'ogTitle' => trans('homepage.meta.title')
     ])
+    <meta name="google-site-verification" content="jBHRbHqn_u1NZ5m-L8UiNFFgND2lYxv3oVNv34T09Rs" />
 @endsection
 
 @section('content')
