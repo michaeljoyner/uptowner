@@ -23,7 +23,6 @@ class ContactController extends Controller
         ]);
 
         Mail::to('joyner.michael@gmail.com')
-            ->from(request('email'), request('name'))
             ->send(new ContactMessage(request()->only('name', 'email', 'phone', 'enquiry')));
     }
 }
