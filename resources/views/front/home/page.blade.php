@@ -52,7 +52,7 @@
             @foreach($specials as $special)
                 <div class="flex-col flex-center-y special-slide">
                     <img src="{{ $special->imageUrl('web') }}" class="special-slide text-constrain"
-                         alt="{{ $special->name }}">s
+                         alt="{{ $special->name }}">
                     <p class="h3 mt-6 text-colour">{{ $special->title }}</p>
                     <p class="body-text mt-1 pd-x-4 text-center">{{ $special->description }}</p>
                     <p class="h4 text-colour">{{ $special->price ? 'NT$' . $special->price : '' }}</p>
