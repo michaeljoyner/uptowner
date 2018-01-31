@@ -21,6 +21,7 @@
                     {{--<a href="#" class="social-icon white-icon mg-2">@include('svgicons.twitter')</a>--}}
                     <a href="https://www.instagram.com/uptownertaichung/" class="social-icon white-icon mg-2">@include('svgicons.instagram')</a>
                     {{--<a href="#" class="social-icon white-icon mg-2">@include('svgicons.uber_eats')</a>--}}
+                    <a href="https://www.tripadvisor.com/Restaurant_Review-g297910-d7975130-Reviews-Uptowner_Taichung-Taichung.html" class="social-icon white-icon mg-2">@include('svgicons.tripadvisor')</a>
                 </div>
             </div>
         </div>    
