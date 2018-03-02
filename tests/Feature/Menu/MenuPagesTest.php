@@ -24,7 +24,7 @@ class MenuPagesTest extends TestCase
             'zh_name' => '満版復'
         ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
 
         $this->assertTranslatableTableHas('menu_pages', [
             'name'    => 'Burgers',

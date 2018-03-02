@@ -28,7 +28,7 @@ class MenuGroupsTest extends TestCase
 
         $response = $this->asLoggedInUser()->post('/admin/menu/groups', $menu_group);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
 
         $this->assertTranslatableTableHas('menu_groups', $menu_group);
     }

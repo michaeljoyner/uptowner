@@ -32,7 +32,7 @@ class MenuItemsTest extends TestCase
 
         ];
         $response = $this->asLoggedInUser()->post('/admin/menu/groups/' . $group->id  . '/items', $menu_item);
-        $response->assertStatus(200);
+        $response->assertStatus(201);
 
         $this->assertTranslatableTableHas('menu_items', array_merge(['menu_group_id'=> $group->id], $menu_item));
     }
@@ -50,7 +50,7 @@ class MenuItemsTest extends TestCase
             'price' => 99,
         ];
         $response = $this->asLoggedInUser()->post('/admin/menu/groups/' . $group->id  . '/items', $menu_item);
-        $response->assertStatus(200);
+        $response->assertStatus(201);
 
         $expected_table_data = [
             'menu_group_id' => $group->id,
