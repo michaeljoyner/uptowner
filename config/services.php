@@ -39,4 +39,8 @@ return [
         'username' => 'uptownertaichung'
     ],
 
+    'analytics' => [
+        'tracking_id' => env('GOOGLE_ANALYTICS')
+    ]
+
 ];
