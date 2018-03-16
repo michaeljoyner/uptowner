@@ -28,7 +28,7 @@
 @yield('bodyscripts')
 <script>
     window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-    ga('create', {{ config('services.analytics.tracking_id') }},'auto');ga('send','pageview')
+    ga('create', "{{ config('services.analytics.tracking_id') }}",'auto');ga('send','pageview')
 </script>
 <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 </body>
