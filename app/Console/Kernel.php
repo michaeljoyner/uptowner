@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\GenerateSitemap;
+use App\Console\Commands\RefreshInstagramFeed;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        GenerateSitemap::class
+        GenerateSitemap::class,
+        RefreshInstagramFeed::class
     ];
 
     /**
@@ -28,6 +30,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('sitemap:generate')->dailyAt('00:00');
         $schedule->command('backup:clean')->dailyAt('04:00');
         $schedule->command('backup:run')->dailyAt('05:00');
+        $schedule->command('instagram:refresh')->dailyAt('06:00');
     }
 
     /**
