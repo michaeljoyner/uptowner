@@ -102,7 +102,13 @@
     </section>
     <section class="pd-y-10 flex-col flex-center-y instagram">
         <h1 class="h1 mb-10 text-center uppercase text-colour">@lang('homepage.instagram.heading')</h1>
-        <instagram-feed></instagram-feed>
+        <div class="instagram-feed-component w-con grid col-5">
+            @foreach($instagrams as $instagram)
+            <div class="no-space flex flex-center">
+                <img class="max-w-100 min-h100" src="{{ $instagram['low'] }}" alt="Instagram post">
+            </div>
+            @endforeach
+        </div>
         <a href="https://www.instagram.com/uptownertaichung/"
            class="h4 text-colour uppercase bd-col bd-4 rounded-2 pd-x-8 pd-y-2 mt-9 hover-btn-invert">@lang('homepage.instagram.button')</a>
     </section>
