@@ -13,7 +13,6 @@ class HomePageController extends Controller
     {
         $favourites = FeaturedItem::currentlyFeatured();
         $specials = Special::current();
-        $instagrams = $instagram->fetch(['username' => 'uptownertaichung']) ?? [];
 
         return view('front.home.page', [
             'favourites' => $favourites,
