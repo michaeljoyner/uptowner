@@ -17,7 +17,6 @@ class HomePageController extends Controller
         return view('front.home.page', [
             'favourites' => $favourites,
             'specials' => $specials,
-            'instagrams' => $instagrams
         ]);
     }
 }
