@@ -104,19 +104,19 @@
         <h1 class="h1 mb-10 text-center uppercase text-colour">@lang('homepage.instagram.heading')</h1>
         <div class="instagram-feed-component w-con grid col-5">
             <div class="no-space flex flex-center">
-                <img class="max-w-100 min-h100" src="https://instagram.ftpe7-3.fna.fbcdn.net/vp/26763b4336316de683f54381724b0c09/5B6317FB/t51.2885-15/e35/24126274_511458312551542_115644416806354944_n.jpg" alt="Instagram post">
+                <img class="max-w-100 min-h100" src="/images/instagram/insta_1.jpg" alt="Instagram post">
             </div>
             <div class="no-space flex flex-center">
-                <img class="max-w-100 min-h100" src="https://instagram.ftpe7-3.fna.fbcdn.net/vp/cf67c0022892c3e0778a0eb22f4ccec8/5B775E1A/t51.2885-15/e35/23823449_297164104133870_8632576985819774976_n.jpg" alt="Instagram post">
+                <img class="max-w-100 min-h100" src="/images/instagram/insta_2.jpg" alt="Instagram post">
             </div>
             <div class="no-space flex flex-center">
-                <img class="max-w-100 min-h100" src="https://instagram.ftpe7-3.fna.fbcdn.net/vp/b6ad9010e9d48d9c34d0bf934da8e843/5B636034/t51.2885-15/sh0.08/e35/p750x750/23596084_2017752351806899_8214134780485173248_n.jpg" alt="Instagram post">
+                <img class="max-w-100 min-h100" src="/images/instagram/insta_3.jpg" alt="Instagram post">
             </div>
             <div class="no-space flex flex-center">
-                <img class="max-w-100 min-h100" src="https://instagram.ftpe7-3.fna.fbcdn.net/vp/c1ef8b4bcb863f84631c43b4267cc6dc/5B6D5B86/t51.2885-15/s750x750/sh0.08/e35/23594131_1749188615093748_6950826603416911872_n.jpg" alt="Instagram post">
+                <img class="max-w-100 min-h100" src="/images/instagram/insta_4.jpg" alt="Instagram post">
             </div>
             <div class="no-space flex flex-center">
-                <img class="max-w-100 min-h100" src="https://instagram.ftpe7-3.fna.fbcdn.net/vp/a4a4bbfc4b639591a1abd807a27951ac/5B65D32F/t51.2885-15/s640x640/sh0.08/e35/22857888_122789105081678_1619225734566379520_n.jpg" alt="Instagram post">
+                <img class="max-w-100 min-h100" src="/images/instagram/insta_5.jpg" alt="Instagram post">
             </div>
         </div>
         <a href="https://www.instagram.com/uptownertaichung/"

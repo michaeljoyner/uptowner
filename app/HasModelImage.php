@@ -48,7 +48,7 @@ trait HasModelImage
         });
     }
 
-    protected function makeImage($file): \Spatie\MediaLibrary\Media
+    protected function makeImage($file): \Spatie\MediaLibrary\Models\Media
     {
         return $this->addMedia($file)->preservingOriginal()->toMediaCollection();
     }
