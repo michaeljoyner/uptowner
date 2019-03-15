@@ -55,11 +55,11 @@ class MenuItemsTest extends TestCase
             'is_recommended' => true
         ];
 
-        $item = MenuItem::createWithTranslations($data);
-
+        $item = MenuItem::createWithTranslations($data)->fresh();
         $this->assertInstanceOf(MenuItem::class, $item);
         $this->assertEquals('Eggs Benedict', $item->name);
-        $this->assertEquals('', $item->getTranslation('name', 'zh'));
+        $this->assertEquals('', $item->description);
+        $this->assertEquals('Eggs Benedict', $item->getTranslation('name', 'zh'));
         $this->assertEquals('', $item->description);
         $this->assertEquals('永門義会可際査別件村約候証民', $item->getTranslation('description', 'zh'));
         $this->assertEquals(99, $item->price);

@@ -15,7 +15,7 @@ class MenuItemImagesTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function tearDown()
+    public function tearDown() :void
     {
         Storage::disk('test_media_dir')->deleteDirectory('media');
         Storage::disk('test_media_dir')->makeDirectory('media');

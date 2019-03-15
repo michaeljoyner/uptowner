@@ -172,7 +172,6 @@ return [
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Spatie\Sitemap\SitemapServiceProvider::class,
-        \michaeljoyner\SimpleJsonEndpoint\Providers\SimpleJsonEndpointServiceProvider::class,
 
         /*
          * Application Service Providers...
