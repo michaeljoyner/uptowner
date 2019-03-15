@@ -2,9 +2,6 @@
 
 namespace App\Providers;
 
-use App\Instagram\GuzzleInstagramClient;
-use App\Instagram\Instagram;
-use App\Instagram\InstagramClient;
 use App\Menu\Menu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
@@ -42,15 +39,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind('menu', function() {
             return new Menu;
-        });
-
-        $this->app->bind(InstagramClient::class, function() {
-           return new GuzzleInstagramClient();
-        });
-
-        $this->app->bind('instagram', function() {
-            $client = $this->app->make(InstagramClient::class);
-            return new Instagram($client);
         });
     }
 }
