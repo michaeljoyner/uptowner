@@ -16,3 +16,4 @@ npm-debug.log
 /public/build
 /public/mix-manifest.json
 .DS_Store
+.smithy.yaml
