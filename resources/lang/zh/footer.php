@@ -3,8 +3,8 @@
 return [
     'location' => [
         'heading' => '餐廳位置',
-        'line_one' => '華美街480巷1號',
-        'line_two' => '郵遞區號40360,台中市',
+        'line_one' => '西區中美街446號',
+        'line_two' => '台中市',
         'line_three' => '聯絡電話: 04 232 60429'
     ],
     'social' => [

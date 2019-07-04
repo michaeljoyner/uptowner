@@ -3,8 +3,8 @@
 return [
     'location' => [
         'heading' => 'Find Us',
-        'line_one' => 'Huamei Street, Alley 480, No. 1',
-        'line_two' => '40360, Taichung City, Taiwan',
+        'line_one' => '446 Zhongmei St, West District',
+        'line_two' => '403, Taichung City, Taiwan',
         'line_three' => 'Tel: 04 232 60429'
     ],
     'social' => [
