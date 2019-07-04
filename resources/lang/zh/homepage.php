@@ -37,7 +37,7 @@ return [
         ],
         'location' => [
             'heading' => '餐廳位置',
-            'line_one' => '華美街480巷1號',
+            'line_one' => '西區中美街446號',
             'line_two' => '台中市'
         ],
         'hours' => [

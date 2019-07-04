@@ -75,7 +75,7 @@
             <p class="h3 heading text-colour uppercase">@lang('homepage.location.heading')</p>
             <p class="body-text text-largish text-constrain-small pd-x-4 pt-4">@lang('homepage.location.body')</p>
             <div class="flex-col flex-center-y pt-7">
-                <a href="https://www.google.com.tw/maps/place/%E9%9B%99%E5%9F%8E%E7%BE%8E%E5%BC%8F%E9%A4%90%E5%BB%B3+(Uptowner)/@24.155377,120.6583873,17z/data=!3m1!4b1!4m5!3m4!1s0x34693d9c9eb0f023:0x3fef3d34c61f0da5!8m2!3d24.155377!4d120.660576?hl=en">
+                <a href="https://goo.gl/maps/DEfiZpnoAfq65fBc9">
                     @include('svgicons.location', ['classes' => 'icon-large icon-colour hover-shake'])
                 </a>
                 <p class="text-small mt-0 mb-4 pt-4 text-grey body-text"><em>@lang('homepage.location.link_text')</em>

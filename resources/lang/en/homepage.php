@@ -37,7 +37,7 @@ return [
         ],
         'location' => [
             'heading' => 'Location',
-            'line_one' => 'Huamei Street Alley 480, No. 1',
+            'line_one' => '446 Zhongmei St, West District',
             'line_two' => 'Taichung, Taiwan'
         ],
         'hours' => [
