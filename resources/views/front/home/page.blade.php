@@ -136,23 +136,16 @@
       "description": "Authentic American Diner experience with great food and atmosphere.",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Huamei Street, Alley 480, No. 1",
+        "streetAddress": "446 Zhongmei Street, West District",
         "addressLocality": "Taichung",
         "addressRegion": "Taichung",
-        "postalCode": "40360",
+        "postalCode": "403",
         "addressCountry": "Taiwan"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "24.155377",
-        "longitude": "120.660598"
-      },
+      
       "openingHours": "Mo, Tu, We, Th, Fr, Sa, Su 07:00-22:00",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+886 4 1234 5678",
-        "contactType": "general"
-      }
+      "telephone": "+886 4 2326 0429",
+      
 }
 </script>
 @endsection
