@@ -145,7 +145,8 @@
       
       "openingHours": "Mo, Tu, We, Th, Fr, Sa, Su 07:00-22:00",
       "telephone": "+886 4 2326 0429",
-      
+      "servesCuisine": "American",
+      "priceRange": "NT$130 - NT$310"
 }
 </script>
 @endsection
