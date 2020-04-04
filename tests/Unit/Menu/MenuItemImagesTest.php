@@ -32,7 +32,7 @@ class MenuItemImagesTest extends TestCase
 
         $this->assertInstanceOf(Media::class, $image);
         $this->assertCount(1, $item->getMedia());
-        $this->assertContains('testpic.jpg', $image->getPath());
+        $this->assertStringContainsString('testpic.jpg', $image->getPath());
     }
 
     /**
@@ -43,8 +43,8 @@ class MenuItemImagesTest extends TestCase
         $item = factory(MenuItem::class)->create();
         $image = $item->setImage(UploadedFile::fake()->image('testpic.jpg'));
 
-        $this->assertContains('.jpg', $image->getUrl('thumb'));
-        $this->assertContains('.jpg', $image->getUrl('web'));
+        $this->assertStringContainsString('.jpg', $image->getUrl('thumb'));
+        $this->assertStringContainsString('.jpg', $image->getUrl('web'));
     }
 
     /**
@@ -57,7 +57,7 @@ class MenuItemImagesTest extends TestCase
         $item->setImage(UploadedFile::fake()->image('testpic2.jpg'));
 
         $this->assertCount(1, $item->getMedia());
-        $this->assertContains('testpic2.jpg', $item->fresh()->getMedia()->first()->getPath());
+        $this->assertStringContainsString('testpic2.jpg', $item->fresh()->getMedia()->first()->getPath());
         $this->assertDatabaseMissing('media', ['id' => $image1->id]);
 
     }

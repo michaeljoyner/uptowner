@@ -20,12 +20,12 @@ abstract class TestCase extends BaseTestCase
             {
             }
 
-            public function report(\Exception $e)
+            public function report(\Throwable $e)
             {
                 // no-op
             }
 
-            public function render($request, \Exception $e)
+            public function render($request, \Throwable $e)
             {
                 throw $e;
             }

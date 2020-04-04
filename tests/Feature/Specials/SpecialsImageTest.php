@@ -34,6 +34,6 @@ class SpecialsImageTest extends TestCase
         $response->assertStatus(200);
 
         $this->assertCount(1, $special->fresh()->getMedia());
-        $this->assertContains('testpic.jpg', $special->fresh()->getMedia()->first()->getPath());
+        $this->assertStringContainsString('testpic.jpg', $special->fresh()->getMedia()->first()->getPath());
     }
 }
