@@ -10,14 +10,14 @@ use App\HasPublishedScope;
 use App\Orderable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
 class MenuItem extends Model implements HasMedia
 {
-    use HasTranslations, HandlesTranslations, HasMediaTrait, HasModelImage, HasPublishedScope, Orderable;
+    use HasTranslations, HandlesTranslations, InteractsWithMedia, HasModelImage, HasPublishedScope, Orderable;
 
     const DEFAULT_IMG_URL = '/images/defaults/default4x3.jpg';
 
@@ -47,7 +47,7 @@ class MenuItem extends Model implements HasMedia
 
     public $translatable = ['name', 'description'];
 
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 400, 300)

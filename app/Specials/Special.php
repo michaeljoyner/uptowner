@@ -8,14 +8,14 @@ use App\HasPublishedScope;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
 class Special extends Model implements HasMedia
 {
-    use HasTranslations, HandlesTranslations, HasMediaTrait, HasModelImage, HasPublishedScope;
+    use HasTranslations, HandlesTranslations, InteractsWithMedia, HasModelImage, HasPublishedScope;
 
     const DEFAULT_IMG_URL = '/images/defaults/default2x1.jpg';
 
@@ -29,7 +29,7 @@ class Special extends Model implements HasMedia
 
     protected $casts = ['published' => 'boolean'];
 
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
              ->fit(Manipulations::FIT_CROP, 400, 300)

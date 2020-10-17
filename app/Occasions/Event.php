@@ -9,14 +9,14 @@ use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
 class Event extends Model implements HasMedia
 {
-    use HasTranslations, HandlesTranslations, HasModelImage, HasMediaTrait, HasPublishedScope, Sluggable;
+    use HasTranslations, HandlesTranslations, HasModelImage, InteractsWithMedia, HasPublishedScope, Sluggable;
 
     const DEFAULT_IMG_URL = '/images/defaults/default4x3.jpg';
 
@@ -47,7 +47,7 @@ class Event extends Model implements HasMedia
         ];
     }
 
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
             ->fit(Manipulations::FIT_CROP, 400, 300)

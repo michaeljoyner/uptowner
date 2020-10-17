@@ -4,6 +4,8 @@
 namespace App;
 
 
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+
 trait HasModelImage
 {
     public function setImage($file)
@@ -48,7 +50,7 @@ trait HasModelImage
         });
     }
 
-    protected function makeImage($file): \Spatie\MediaLibrary\Models\Media
+    protected function makeImage($file): Media
     {
         return $this->addMedia($file)->preservingOriginal()->toMediaCollection();
     }
