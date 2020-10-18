@@ -39,7 +39,7 @@ class MenuItemsServicesTest extends TestCase
             ->json('GET', '/admin/services/menu/groups/' . $group->id . '/items');
         $response->assertStatus(200);
 
-        $fetched_items = $response->decodeResponseJson();
+        $fetched_items = $response->json();
 
         $this->assertCount(5, $fetched_items);
         foreach (range(1, 5) as $index) {
@@ -73,7 +73,7 @@ class MenuItemsServicesTest extends TestCase
             ->json('GET', '/admin/services/menu/groups/' . $item->menuGroup->id . '/items');
         $response->assertStatus(200);
 
-        $fetched_items = $response->decodeResponseJson();
+        $fetched_items = $response->json();
 
         $this->assertCount(1, $fetched_items);
 
@@ -96,7 +96,7 @@ class MenuItemsServicesTest extends TestCase
             ->json('GET', '/admin/services/menu/groups/' . $item->menuGroup->id . '/items');
         $response->assertStatus(200);
 
-        $fetched_items = $response->decodeResponseJson();
+        $fetched_items = $response->json();
 
         $this->assertCount(1, $fetched_items);
 
@@ -121,7 +121,7 @@ class MenuItemsServicesTest extends TestCase
             ->json('GET', '/admin/services/menu/groups/' . $item->menu_group_id . '/items');
         $response->assertStatus(200);
 
-        $result = $response->decodeResponseJson();
+        $result = $response->json();
         $this->assertCount(1, $result);
         $this->assertEquals($thumb_src, $result[0]['image']);
     }
@@ -137,7 +137,7 @@ class MenuItemsServicesTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/items');
         $response->assertStatus(200);
 
-        $fetched_items = $response->decodeResponseJson();
+        $fetched_items = $response->json();
 
         $this->assertEquals(
             $menu_items->pluck('id')->toArray(),
@@ -156,7 +156,7 @@ class MenuItemsServicesTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/items');
         $response->assertStatus(200);
 
-        $fetched_items = $response->decodeResponseJson();
+        $fetched_items = $response->json();
 
         collect($fetched_items)->each(function($item) {
            $this->assertArrayHasKey('image', $item);

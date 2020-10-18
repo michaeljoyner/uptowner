@@ -115,10 +115,9 @@ class EventsTest extends TestCase
         ]);
         $response->assertStatus(200);
 
-        $this->assertTranslatableTableHas('events', [
+        $this->assertDatabaseHas('events', [
             'id' => $event->id,
-            'time_of_day' => '',
-            'zh_time_of_day' => ''
+            'time_of_day' => json_encode(['zh' => ""]),
         ]);
     }
     
@@ -137,7 +136,7 @@ class EventsTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/events/' . $event->id, $update_data);
         $response->assertStatus(200);
 
-        $updated_data = $response->decodeResponseJson();
+        $updated_data = $response->json();
         $event = $event->fresh();
 
         $this->assertEquals($event->fresh()->toJsonableArray(), $updated_data);

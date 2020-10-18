@@ -25,7 +25,7 @@ class SpecialPublishingTest extends TestCase
             ->json('POST', '/admin/specials/' . $special->id . '/publish', ['publish' => true]);
         $response->assertStatus(200);
 
-        $this->assertEquals(['new_status' => true], $response->decodeResponseJson());
+        $this->assertEquals(['new_status' => true], $response->json());
 
         $this->assertTrue($special->fresh()->published);
     }

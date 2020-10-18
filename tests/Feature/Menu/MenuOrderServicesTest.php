@@ -26,7 +26,7 @@ class MenuOrderServicesTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/order/lists');
         $response->assertStatus(200);
 
-        $this->assertEquals($expected_lists, $response->decodeResponseJson());
+        $this->assertEquals($expected_lists, $response->json());
     }
 
     /**
@@ -72,6 +72,6 @@ class MenuOrderServicesTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/order/lists');
         $response->assertStatus(200);
 
-        $this->assertEquals($expected_lists, $response->decodeResponseJson());
+        $this->assertEquals($expected_lists, $response->json());
     }
 }

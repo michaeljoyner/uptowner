@@ -24,7 +24,7 @@ class UsersServiceTest extends TestCase
         $response = $this->actingAs($admin)->json('GET', '/admin/services/users');
         $response->assertStatus(200);
 
-        $data = $response->decodeResponseJson();
+        $data = $response->json();
 
         $this->assertCount(6, $data);
         $this->assertEquals(collect($data)->pluck('name')->toArray(), User::pluck('name')->toArray());

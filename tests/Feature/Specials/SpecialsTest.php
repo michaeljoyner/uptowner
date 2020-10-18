@@ -158,7 +158,7 @@ class SpecialsTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/specials/' . $special->id, $update_data);
         $response->assertStatus(200);
 
-        $returned_data = $response->decodeResponseJson();
+        $returned_data = $response->json();
         $freshSpecial = $special->fresh();
 
         $this->assertEquals($returned_data, $freshSpecial->toJsonableArray());

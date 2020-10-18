@@ -31,7 +31,7 @@ class SpecialsServiceTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/specials');
         $response->assertStatus(200);
 
-        $fetched_specials = $response->decodeResponseJson();
+        $fetched_specials = $response->json();
 
         $this->assertCount(10, $fetched_specials);
         collect($fetched_specials)->each(function($special) {
@@ -62,7 +62,7 @@ class SpecialsServiceTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/specials');
         $response->assertStatus(200);
 
-        $fetched_specials = $response->decodeResponseJson();
+        $fetched_specials = $response->json();
 
         $this->assertCount(10, $fetched_specials);
         collect($fetched_specials)->each(function($special) {

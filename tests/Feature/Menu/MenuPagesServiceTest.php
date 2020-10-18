@@ -24,7 +24,7 @@ class MenuPagesServiceTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/pages');
         $response->assertStatus(200);
 
-        $fetched_pages = $response->decodeResponseJson();
+        $fetched_pages = $response->json();
 
         $this->assertCount(5, $fetched_pages);
         collect($fetched_pages)->each(function($page) {
@@ -54,7 +54,7 @@ class MenuPagesServiceTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/pages');
         $response->assertStatus(200);
 
-        $fetched_pages = $response->decodeResponseJson();
+        $fetched_pages = $response->json();
 
         $this->assertCount(1, $fetched_pages);
         collect($fetched_pages)->each(function($page) {
@@ -77,7 +77,7 @@ class MenuPagesServiceTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/pages/' . $page->id . '/groups');
         $response->assertStatus(200);
 
-        $fetched_groups = $response->decodeResponseJson();
+        $fetched_groups = $response->json();
 
         $this->assertCount(5, $fetched_groups);
         collect($fetched_groups)->each(function($group) {

@@ -68,7 +68,7 @@ class MenuGroupsTest extends TestCase
 
         $response = $this->asLoggedInUser()->json('POST', '/admin/menu/groups/' . $menu_group->id, $edited_data);
         $response->assertStatus(200);
-        $returned_group_data = $response->decodeResponseJson();
+        $returned_group_data = $response->json();
 
         $this->assertArrayHasKey('id', $returned_group_data);
         $this->assertArrayHasKey('name', $returned_group_data);

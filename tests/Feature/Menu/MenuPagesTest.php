@@ -71,7 +71,7 @@ class MenuPagesTest extends TestCase
         ]);
 
         $response->assertStatus(200);
-        $response_data = $response->decodeResponseJson();
+        $response_data = $response->json();
 
         $this->assertEquals($response_data, $page->fresh()->toJsonableArray());
     }

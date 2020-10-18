@@ -22,7 +22,7 @@ class EventPublishingTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/events/' . $event->id . '/publish',
             ['published' => true]);
         $response->assertStatus(200);
-        $this->assertEquals(['new_status' => true], $response->decodeResponseJson());
+        $this->assertEquals(['new_status' => true], $response->json());
     }
 
 }

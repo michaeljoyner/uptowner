@@ -49,7 +49,7 @@ class MenuItemImagesTest extends TestCase
             'image' => UploadedFile::fake()->image('foodpic.jpg')
         ]);
         $response->assertStatus(200);
-        $image_info = $response->decodeResponseJson();
+        $image_info = $response->json();
 
         $this->assertCount(1, $item->fresh()->getMedia());
         $image = $item->fresh()->getImage();

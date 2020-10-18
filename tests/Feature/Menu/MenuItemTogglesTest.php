@@ -35,7 +35,7 @@ class MenuItemTogglesTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/menu/items/' . $item->id . '/publish',
             ['published' => true]);
         $response->assertStatus(200);
-        $this->assertEquals(['new_status' => true], $response->decodeResponseJson());
+        $this->assertEquals(['new_status' => true], $response->json());
 
         $this->assertTranslatableTableHas('menu_items', $expected_table_data);
     }
@@ -63,7 +63,7 @@ class MenuItemTogglesTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/menu/items/' . $item->id . '/publish',
             ['published' => false]);
         $response->assertStatus(200);
-        $this->assertEquals(['new_status' => false], $response->decodeResponseJson());
+        $this->assertEquals(['new_status' => false], $response->json());
 
         $this->assertTranslatableTableHas('menu_items', $expected_table_data);
     }
@@ -91,7 +91,7 @@ class MenuItemTogglesTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/menu/items/' . $item->id . '/spicy',
             ['is_spicy' => false]);
         $response->assertStatus(200);
-        $this->assertEquals(['new_status' => false], $response->decodeResponseJson());
+        $this->assertEquals(['new_status' => false], $response->json());
 
         $this->assertTranslatableTableHas('menu_items', $expected_table_data);
     }
@@ -119,7 +119,7 @@ class MenuItemTogglesTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/menu/items/' . $item->id . '/vegetarian',
             ['is_vegetarian' => true]);
         $response->assertStatus(200);
-        $this->assertEquals(['new_status' => true], $response->decodeResponseJson());
+        $this->assertEquals(['new_status' => true], $response->json());
 
         $this->assertTranslatableTableHas('menu_items', $expected_table_data);
     }
@@ -147,7 +147,7 @@ class MenuItemTogglesTest extends TestCase
         $response = $this->asLoggedInUser()->json('POST', '/admin/menu/items/' . $item->id . '/recommended',
             ['is_recommended' => true]);
         $response->assertStatus(200);
-        $this->assertEquals(['new_status' => true], $response->decodeResponseJson());
+        $this->assertEquals(['new_status' => true], $response->json());
 
         $this->assertTranslatableTableHas('menu_items', $expected_table_data);
     }

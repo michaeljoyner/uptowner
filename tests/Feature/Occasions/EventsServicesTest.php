@@ -31,7 +31,7 @@ class EventsServicesTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/events');
         $response->assertStatus(200);
 
-        $fetched_events = $response->decodeResponseJson();
+        $fetched_events = $response->json();
 
         $this->assertCount(10, $fetched_events);
 

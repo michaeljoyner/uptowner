@@ -22,7 +22,7 @@ class FeaturedMenuItemsTest extends TestCase
 
         $menu_item->feature();
 
-        $this->assertContains($menu_item->id, FeaturedItem::all()->pluck('menu_item_id')->toArray());
+        $this->assertEquals($menu_item->id, FeaturedItem::all()->pluck('menu_item_id')->first());
     }
 
     /**

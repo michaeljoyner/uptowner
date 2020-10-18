@@ -52,19 +52,16 @@ class MenuItemsTest extends TestCase
         $response = $this->asLoggedInUser()->post('/admin/menu/groups/' . $group->id  . '/items', $menu_item);
         $response->assertStatus(201);
 
-        $expected_table_data = [
+        $this->assertDatabaseHas('menu_items', [
             'menu_group_id' => $group->id,
-            'name' => 'Eggs Benedict',
-            'zh_name' => '',
-            'description' => '',
-            'zh_description' => '永門義会可際査別件村約候証民',
+            'name' => json_encode(['en' => 'Eggs Benedict', 'zh' => '']),
+            'description' => json_encode(['zh' => '永門義会可際査別件村約候証民']),
             'price' => 99,
             'is_spicy' => false,
             'is_vegetarian' => false,
             'is_recommended' => false
-        ];
+        ]);
 
-        $this->assertTranslatableTableHas('menu_items', $expected_table_data);
     }
 
     /**
@@ -133,7 +130,7 @@ class MenuItemsTest extends TestCase
         $response->assertStatus(200);
         $response->assertSessionMissing('errors');
 
-        $returned_item = $response->decodeResponseJson();
+        $returned_item = $response->json();
 
         $this->assertEquals('Eggs Benedict', $returned_item['name']);
         $this->assertEquals('満版復', $returned_item['zh_name']);

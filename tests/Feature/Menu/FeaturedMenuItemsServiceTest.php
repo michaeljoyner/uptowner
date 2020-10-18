@@ -23,7 +23,7 @@ class FeaturedMenuItemsServiceTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/featured');
         $response->assertStatus(200);
 
-        $fetched_menu_items = $response->decodeResponseJson();
+        $fetched_menu_items = $response->json();
 
         $this->assertEquals($featured_items->pluck('menu_item_id')->toArray(), collect($fetched_menu_items)->pluck('id')->toArray());
     }
@@ -39,7 +39,7 @@ class FeaturedMenuItemsServiceTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/featured');
         $response->assertStatus(200);
 
-        $fetched_menu_items = $response->decodeResponseJson();
+        $fetched_menu_items = $response->json();
 
         $this->assertArrayHasKey('image', $fetched_menu_items[0]);
         $this->assertArrayHasKey('name', $fetched_menu_items[0]);

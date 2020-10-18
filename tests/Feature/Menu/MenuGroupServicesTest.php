@@ -25,7 +25,7 @@ class MenuGroupServicesTest extends TestCase
         $response = $this->asLoggedInUser()->json('GET', '/admin/services/menu/groups');
         $response->assertStatus(200);
 
-        $fetched_groups = $response->decodeResponseJson();
+        $fetched_groups = $response->json();
 
         $this->assertCount(5, $fetched_groups);
         foreach (range(1, 5) as $index) {
