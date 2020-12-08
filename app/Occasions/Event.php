@@ -38,7 +38,7 @@ class Event extends Model implements HasMedia
 
     public $translatable = ['time_of_day', 'name', 'description', 'long_description'];
 
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [

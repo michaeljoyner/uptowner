@@ -7,6 +7,8 @@
 
 require('./bootstrap');
 
+import sweetalert from "sweetalert";
+
 import Vue from 'vue';
 window.Vue = Vue;
 
@@ -18,41 +20,74 @@ import Datepicker from 'vuejs-datepicker';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('password-email', require('./components/PasswordEmailRequest.vue'));
-Vue.component('modal', require('./components/Modal.vue'));
-Vue.component('add-user', require('./components/AddUser.vue'));
-Vue.component('delete-button', require('./components/DeleteButt.vue'));
-Vue.component('user-app', require('./components/UsersApp.vue'));
-Vue.component('menu-group-form', require('./components/MenuGroupForm.vue'));
-Vue.component('menu-group-app', require('./components/MenuGroupApp.vue'));
-Vue.component('menu-group', require('./components/MenuGroup.vue'));
-Vue.component('menu-item-form', require('./components/MenuItemForm.vue'));
-Vue.component('menu-item-app', require('./components/MenuItemsApp.vue'));
-Vue.component('menu-item', require('./components/MenuItem.vue'));
-Vue.component('single-upload', require('./components/Singleupload.vue'));
-Vue.component('small-switch', require('./components/SmallSwitch.vue'));
-Vue.component('icon-switch', require('./components/IconSwitch.vue'));
-Vue.component('event-form', require('./components/EventForm.vue'));
-Vue.component('event-app', require('./components/EventsApp.vue'));
-Vue.component('event-item', require('./components/EventItem.vue'));
-Vue.component('special-form', require('./components/SpecialForm.vue'));
-Vue.component('special-app', require('./components/SpecialsApp.vue'));
-Vue.component('special-item', require('./components/Special.vue'));
-Vue.component('featured-app', require('./components/FeaturedItemApp.vue'));
-Vue.component('menu-item-small', require('./components/MenuItemSmall.vue'));
-Vue.component('featured-item', require('./components/FeaturedItem.vue'));
-Vue.component('menu-page-form', require('./components/MenuPageForm.vue'));
-Vue.component('menu-page-app', require('./components/MenuPagesApp.vue'));
-Vue.component('menu-page', require('./components/MenuPage.vue'));
-Vue.component('menu-page-groups-app', require('./components/MenuPageGroupsApp.vue'));
-Vue.component('draggable-menu-group', require('./components/DraggableMenuGroup.vue'));
-Vue.component('assigned-menu-group', require('./components/AssignedMenuGroup.vue'));
-Vue.component('item-orderer', require('./components/ItemOrderer.vue'));
-Vue.component('menu-order-app', require('./components/MenuOrderApp.vue'));
+import PasswordEmail from './components/PasswordEmailRequest.vue';
+import Modal from './components/Modal.vue';
+import AddUser from './components/AddUser.vue';
+import DeleteButton from './components/DeleteButt.vue';
+import UserApp from './components/UsersApp.vue';
+import MenuGroupForm from './components/MenuGroupForm.vue';
+import MenuGroupApp from './components/MenuGroupApp.vue';
+import MenuGroup from './components/MenuGroup.vue';
+import MenuItemForm from './components/MenuItemForm.vue';
+import MenuItemApp from './components/MenuItemsApp.vue';
+import MenuItem from './components/MenuItem.vue';
+import SingleUpload from './components/Singleupload.vue';
+import SmallSwitch from './components/SmallSwitch.vue';
+import IconSwitch from './components/IconSwitch.vue';
+import EventForm from './components/EventForm.vue';
+import EventApp from './components/EventsApp.vue';
+import EventItem from './components/EventItem.vue';
+import SpecialForm from './components/SpecialForm.vue';
+import SpecialApp from './components/SpecialsApp.vue';
+import SpecialItem from './components/Special.vue';
+import FeaturedApp from './components/FeaturedItemApp.vue';
+import MenuItemSmall from './components/MenuItemSmall.vue';
+import FeaturedItem from './components/FeaturedItem.vue';
+import MenuPageForm from './components/MenuPageForm.vue';
+import MenuPageApp from './components/MenuPagesApp.vue';
+import MenuPage from './components/MenuPage.vue';
+import MenuPageGroupsApp from './components/MenuPageGroupsApp.vue';
+import DraggableMenuGroup from './components/DraggableMenuGroup.vue';
+import AssignedMenuGroup from './components/AssignedMenuGroup.vue';
+import ItemOrderer from './components/ItemOrderer.vue';
+import MenuOrderApp from './components/MenuOrderApp.vue';
+
+Vue.component('password-email', PasswordEmail);
+Vue.component('modal', Modal);
+Vue.component('add-user', AddUser);
+Vue.component('delete-button', DeleteButton);
+Vue.component('user-app', UserApp);
+Vue.component('menu-group-form', MenuGroupForm);
+Vue.component('menu-group-app', MenuGroupApp);
+Vue.component('menu-group', MenuGroup);
+Vue.component('menu-item-form', MenuItemForm);
+Vue.component('menu-item-app', MenuItemApp);
+Vue.component('menu-item', MenuItem);
+Vue.component('single-upload', SingleUpload);
+Vue.component('small-switch', SmallSwitch);
+Vue.component('icon-switch', IconSwitch);
+Vue.component('event-form', EventForm);
+Vue.component('event-app', EventApp);
+Vue.component('event-item', EventItem);
+Vue.component('special-form', SpecialForm);
+Vue.component('special-app', SpecialApp);
+Vue.component('special-item', SpecialItem);
+Vue.component('featured-app', FeaturedApp);
+Vue.component('menu-item-small', MenuItemSmall);
+Vue.component('featured-item', FeaturedItem);
+Vue.component('menu-page-form', MenuPageForm);
+Vue.component('menu-page-app', MenuPageApp);
+Vue.component('menu-page', MenuPage);
+Vue.component('menu-page-groups-app', MenuPageGroupsApp);
+Vue.component('draggable-menu-group', DraggableMenuGroup);
+Vue.component('assigned-menu-group', AssignedMenuGroup);
+Vue.component('item-orderer', ItemOrderer);
+Vue.component('menu-order-app', MenuOrderApp);
+
 Vue.component('datepicker', Datepicker);
 
 window.eventHub = new Vue();
-window.swal = require('sweetalert');
+window.swal = sweetalert;
 
 const app = new Vue({
     el: '#app',

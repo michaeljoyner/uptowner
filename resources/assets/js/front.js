@@ -7,20 +7,25 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
+import Vue from "vue";
 import Flickity from "flickity-imagesloaded";
+import sweetalert from "sweetalert";
 window.Flickity = Flickity;
 
-window.swal = require('sweetalert');
-window.Vue = require('vue');
+window.swal = sweetalert;
+window.Vue = Vue;
 
 import jump from "jump.js";
 window.jump = jump;
 
 
+import Modal from'./components/Modal.vue';
+import ScrollLink from'./components/ScrollToLink.vue';
+import ContactForm from'./components/ContactForm.vue';
 
-Vue.component('modal', require('./components/Modal.vue'));
-Vue.component('scroll-link', require('./components/ScrollToLink.vue'));
-Vue.component('contact-form', require('./components/ContactForm.vue'));
+Vue.component('modal', Modal);
+Vue.component('scroll-link', ScrollLink);
+Vue.component('contact-form', ContactForm);
 window.eventHub = new Vue();
 
 const app = new Vue({
