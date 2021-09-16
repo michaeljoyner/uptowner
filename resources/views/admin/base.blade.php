@@ -16,6 +16,7 @@
             {{--csrfToken: '{{ csrf_token() }}'--}}
         {{--}--}}
     {{--</script>--}}
+    <script defer src="https://unpkg.com/alpinejs@3.3.2/dist/cdn.min.js"></script>
 </head>
 <body>
 @if(Auth::check())
@@ -28,6 +29,8 @@
 </div>
 {{--<div class="main-footer"></div>--}}
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 @include('admin.partials.flash')
 @yield('bodyscripts')
 </body>

@@ -18,15 +18,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="/admin">Home</a></li>
-                <li class="dropdown">
+                <li class="dropdown" x-data="{show: false}">
                     <a href="#"
+                       @click="show = !show"
                        class="dropdown-toggle"
                        data-toggle="dropdown"
                        role="button"
                        aria-haspopup="true"
                        aria-expanded="false"
                     >Menu <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" x-show="show">
                         <li><a href="/admin/menu/overview">Arrange</a></li>
                         <li><a href="/admin/menu/pages">Categories</a></li>
                         <li><a href="/admin/menu/groups">Groups</a></li>
