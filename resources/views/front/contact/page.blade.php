@@ -25,8 +25,7 @@
 @section('bodyscripts')
     <script>
         function initMap() {
-            console.log('mapping');
-            var uptowner = {lat: 24.155553, lng: 120.660587};
+            var uptowner = {lat: 24.15448639510866, lng: 120.66074619782214};
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 16,
                 center: uptowner,
