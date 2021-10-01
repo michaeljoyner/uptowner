@@ -22,23 +22,3 @@
 
 @endsection
 
-@section('bodyscripts')
-    <script>
-        function initMap() {
-            var uptowner = {lat: 24.15448639510866, lng: 120.66074619782214};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 16,
-                center: uptowner,
-                gestureHandling: 'cooperative',
-                scrollwheel: false
-            });
-            var marker = new google.maps.Marker({
-                position: uptowner,
-                map: map
-            });
-        }
-    </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7yHnO6d1o5taaCXBBtvDxZuu9n_8dyF4&callback=initMap">
-    </script>
-@endsection
