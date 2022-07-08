@@ -25,7 +25,7 @@
     "flickity": "^2.0.9",
     "flickity-imagesloaded": "^2.0.0",
     "jump.js": "^1.0.2",
-    "moment": "^2.18.1",
+    "moment": "^2.29.4",
     "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "sortablejs": "^1.6.0",
     "sweetalert": "^1.1.3",
