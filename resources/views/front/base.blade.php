@@ -11,6 +11,17 @@
     <link rel="stylesheet" href="{{ mix('css/fapp.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Arvo:700|Lato:400,400i" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.analytics.tracking_id') }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ config('services.analytics.tracking_id') }}');
+    </script>
+
     @yield('head')
 </head>
 <body  class="{{ $pageName ?? '' }}">
@@ -26,10 +37,6 @@
 
 <script src="{{ mix('js/front.js') }}"></script>
 @yield('bodyscripts')
-<script>
-    window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-    ga('create', "{{ config('services.analytics.tracking_id') }}",'auto');ga('send','pageview')
-</script>
-<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
 </body>
 </html>
